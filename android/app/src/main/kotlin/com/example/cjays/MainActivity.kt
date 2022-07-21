@@ -1,0 +1,6 @@
+package com.example.cjays
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity: FlutterActivity() {
+}
