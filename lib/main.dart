@@ -1,3 +1,4 @@
+import 'package:cjays/constants/routes.dart';
 import 'package:cjays/constants/text.dart';
 import 'package:cjays/views/splash/splash.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const SplashScreen(),
+      initialRoute: SplashScreen.routeName,
+      routes: routes,
     );
   }
 }

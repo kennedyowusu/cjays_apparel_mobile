@@ -1,13 +1,15 @@
 import 'package:cjays/constants/colors.dart';
-import 'package:cjays/constants/images.dart';
+import 'package:cjays/constants/sizes.dart';
 import 'package:cjays/constants/text.dart';
-import 'package:cjays/views/home/home.dart';
+import 'package:cjays/views/onboarding/onboarding.dart';
 import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
+
+  static String routeName = "/splash";
 
   @override
   _SplashScreenState createState() => _SplashScreenState();
@@ -46,25 +48,23 @@ class _SplashScreenState extends State<SplashScreen>
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     double height = size.height;
-    double width = size.width;
-    Orientation orientation = MediaQuery.of(context).orientation;
     return SafeArea(
       child: Scaffold(
         body: Stack(
           children: [
             Container(
               padding: EdgeInsets.symmetric(
-                horizontal: orientation == Orientation.portrait
+                horizontal: SizeConfig.orientation == Orientation.portrait
                     ? size.width * .1
                     : size.width * .05,
-                vertical: orientation == Orientation.portrait
+                vertical: SizeConfig.orientation == Orientation.portrait
                     ? size.height * .1
                     : size.height * .05,
               ),
               width: size.width,
               child: CircleAvatar(
                 backgroundColor: ProjectColors.kPrimaryColor,
-                radius: orientation == Orientation.portrait
+                radius: SizeConfig.orientation == Orientation.portrait
                     ? size.width * 0.12
                     : size.width * .075,
                 child: Icon(
@@ -78,14 +78,14 @@ class _SplashScreenState extends State<SplashScreen>
               alignment: Alignment.bottomCenter,
               child: Container(
                 padding: EdgeInsets.only(
-                  top: orientation == Orientation.portrait
+                  top: SizeConfig.orientation == Orientation.portrait
                       ? size.height * .02
                       : size.height * .05,
                 ),
                 height: size.height / 2.0,
                 child: Column(
                   children: [
-                    orientation == Orientation.portrait
+                    SizeConfig.orientation == Orientation.portrait
                         ? RichText(
                             textAlign: TextAlign.center,
                             text: TextSpan(
@@ -106,7 +106,7 @@ class _SplashScreenState extends State<SplashScreen>
                             ),
                           ),
                     SizedBox(
-                      height: orientation == Orientation.portrait
+                      height: SizeConfig.orientation == Orientation.portrait
                           ? height * 0.02
                           : height * 0.07,
                     ),
@@ -127,7 +127,7 @@ class _SplashScreenState extends State<SplashScreen>
                           context,
                           PageTransition(
                             type: PageTransitionType.rightToLeft,
-                            child: HomeScreen(),
+                            child: OnboardingScreen(),
                           ),
                         );
                       },
@@ -138,7 +138,7 @@ class _SplashScreenState extends State<SplashScreen>
                             context,
                             PageTransition(
                               type: PageTransitionType.rightToLeft,
-                              child: HomeScreen(),
+                              child: OnboardingScreen(),
                             ),
                           );
                         }
@@ -148,7 +148,8 @@ class _SplashScreenState extends State<SplashScreen>
                           children: [
                             Padding(
                               padding: EdgeInsets.only(
-                                bottom: orientation == Orientation.portrait
+                                bottom: SizeConfig.orientation ==
+                                        Orientation.portrait
                                     ? height * 0.02
                                     : height * 0.01,
                               ),

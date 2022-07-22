@@ -19,6 +19,7 @@ dependencies:
   get: ^4.6.5
   community_material_icon: ^5.9.55
   page_transition: ^2.0.9
+  flutter_svg: ^1.1.1+1
 
 dev_dependencies:
   flutter_test:
