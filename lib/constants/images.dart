@@ -7,4 +7,5 @@ class ProjectImages {
   static const String verified = "assets/images/verified.png";
   static const String kBannerImage = "assets/images/ImageBanner.png";
   static const String kProfileImage = "assets/images/ProfileImage.png";
+  static const String kCart = "assets/images/cart.png";
 }

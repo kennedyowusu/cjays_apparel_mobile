@@ -1,4 +1,5 @@
 import 'package:cjays/constants/colors.dart';
+import 'package:cjays/constants/images.dart';
 import 'package:cjays/constants/sizes.dart';
 import 'package:cjays/constants/text.dart';
 import 'package:cjays/views/onboarding/onboarding.dart';
@@ -48,35 +49,26 @@ class _SplashScreenState extends State<SplashScreen>
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     double height = size.height;
+    double width = size.width;
     return SafeArea(
       child: Scaffold(
-        body: Stack(
-          children: [
-            Container(
-              padding: EdgeInsets.symmetric(
-                horizontal: SizeConfig.orientation == Orientation.portrait
-                    ? size.width * .1
-                    : size.width * .05,
-                vertical: SizeConfig.orientation == Orientation.portrait
-                    ? size.height * .1
-                    : size.height * .05,
-              ),
-              width: size.width,
-              child: CircleAvatar(
-                backgroundColor: ProjectColors.kPrimaryColor,
-                radius: SizeConfig.orientation == Orientation.portrait
-                    ? size.width * 0.12
-                    : size.width * .075,
-                child: Icon(
-                  CommunityMaterialIcons.tshirt_crew_outline,
-                  size: size.width * 0.12,
-                  color: ProjectColors.kWhiteColor,
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Spacer(flex: 5),
+              Text(
+                ProjectText.kAppName,
+                style: TextStyle(
+                  fontSize: SizeConfig.orientation == Orientation.portrait
+                      ? width * .04
+                      : width * .05,
+                  fontWeight: FontWeight.bold,
+                  color: ProjectColors.kPrimaryColor,
                 ),
               ),
-            ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Container(
+              Spacer(),
+              Container(
                 padding: EdgeInsets.only(
                   top: SizeConfig.orientation == Orientation.portrait
                       ? size.height * .02
@@ -84,27 +76,21 @@ class _SplashScreenState extends State<SplashScreen>
                 ),
                 height: size.height / 2.0,
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizeConfig.orientation == Orientation.portrait
-                        ? RichText(
-                            textAlign: TextAlign.center,
-                            text: TextSpan(
-                              text: ProjectText.kSplashScreenMainText,
-                              style: TextStyle(
-                                color: ProjectColors.kPrimaryColor,
-                                fontSize: size.width * 0.08,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          )
-                        : Text(
-                            "LIVE YOUR PERFECT",
-                            style: TextStyle(
-                              color: ProjectColors.kPrimaryColor,
-                              fontWeight: FontWeight.bold,
-                              fontSize: size.width * 0.03,
-                            ),
-                          ),
+                    Hero(
+                      tag: "logo",
+                      child: ColorFiltered(
+                        colorFilter: ColorFilter.mode(
+                          Colors.black.withOpacity(0.5),
+                          BlendMode.modulate,
+                        ),
+                        child: Image.asset(
+                          ProjectImages.kCart,
+                          height: size.height / 6.0,
+                        ),
+                      ),
+                    ),
                     SizedBox(
                       height: SizeConfig.orientation == Orientation.portrait
                           ? height * 0.02
@@ -116,13 +102,38 @@ class _SplashScreenState extends State<SplashScreen>
                         text:
                             "Elegance, gorgeous & fashionable\ncollection makes you cool",
                         style: TextStyle(
-                            color: ProjectColors.kSecondaryColor, fontSize: 14),
+                          color: ProjectColors.kSecondaryColor,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                     ),
-                    const Spacer(),
-                    GestureDetector(
-                      behavior: HitTestBehavior.translucent,
-                      onTap: () {
+                    SizedBox(
+                      height: SizeConfig.orientation == Orientation.portrait
+                          ? height * 0.02
+                          : height * 0.07,
+                    ),
+                  ],
+                ),
+              ),
+              Spacer(),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  GestureDetector(
+                    behavior: HitTestBehavior.translucent,
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        PageTransition(
+                          type: PageTransitionType.rightToLeft,
+                          child: OnboardingScreen(),
+                        ),
+                      );
+                    },
+                    onVerticalDragUpdate: (details) {
+                      int sensitivity = 8;
+                      if (details.delta.dy < -sensitivity) {
                         Navigator.push(
                           context,
                           PageTransition(
@@ -130,60 +141,48 @@ class _SplashScreenState extends State<SplashScreen>
                             child: OnboardingScreen(),
                           ),
                         );
-                      },
-                      onVerticalDragUpdate: (details) {
-                        int sensitivity = 8;
-                        if (details.delta.dy < -sensitivity) {
-                          Navigator.push(
-                            context,
-                            PageTransition(
-                              type: PageTransitionType.rightToLeft,
-                              child: OnboardingScreen(),
+                      }
+                    },
+                    child: AbsorbPointer(
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(
+                              bottom:
+                                  SizeConfig.orientation == Orientation.portrait
+                                      ? height * 0.02
+                                      : height * 0.01,
                             ),
-                          );
-                        }
-                      },
-                      child: AbsorbPointer(
-                        child: Column(
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.only(
-                                bottom: SizeConfig.orientation ==
-                                        Orientation.portrait
-                                    ? height * 0.02
-                                    : height * 0.01,
-                              ),
-                              child: Opacity(
-                                opacity: _opacity.value,
-                                child: Icon(
-                                  CommunityMaterialIcons.chevron_double_up,
-                                  color: ProjectColors.kPrimaryColor,
-                                  size: 50,
-                                ),
+                            child: Opacity(
+                              opacity: _opacity.value,
+                              child: Icon(
+                                CommunityMaterialIcons.chevron_double_up,
+                                color: ProjectColors.kPrimaryColor,
+                                size: 50,
                               ),
                             ),
-                            RichText(
-                              textAlign: TextAlign.center,
-                              text: const TextSpan(
-                                text: "Get Started",
-                                style: TextStyle(
-                                  color: ProjectColors.kPrimaryColor,
-                                  fontSize: 16,
-                                ),
+                          ),
+                          RichText(
+                            textAlign: TextAlign.center,
+                            text: const TextSpan(
+                              text: "Get Started",
+                              style: TextStyle(
+                                color: ProjectColors.kPrimaryColor,
+                                fontSize: 16,
                               ),
                             ),
-                            const SizedBox(
-                              height: 20,
-                            )
-                          ],
-                        ),
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          )
+                        ],
                       ),
-                    )
-                  ],
-                ),
-              ),
-            )
-          ],
+                    ),
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
