@@ -14,12 +14,17 @@ class LoginBody extends StatelessWidget {
       child: SizedBox(
         width: double.infinity,
         child: Padding(
-          padding:
-              EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
+          padding: EdgeInsets.symmetric(
+            horizontal: getProportionateScreenWidth(20),
+          ),
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(height: SizeConfig.screenHeight * 0.04),
+                SizedBox(
+                  height: SizeConfig.orientation == Orientation.portrait
+                      ? SizeConfig.screenHeight * 0.04
+                      : SizeConfig.screenHeight * 0.03,
+                ),
                 Text(
                   ProjectText.kLoginScreenText,
                   style: TextStyle(
@@ -28,6 +33,7 @@ class LoginBody extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
+                SizedBox(height: SizeConfig.screenHeight * 0.02),
                 Text(
                   "Sign in with your email and password  \nor continue with social media",
                   textAlign: TextAlign.center,
@@ -52,7 +58,7 @@ class LoginBody extends StatelessWidget {
                   //   ),
                   // ],
                 ),
-                SizedBox(height: getProportionateScreenHeight(20)),
+                SizedBox(height: SizeConfig.screenHeight * 0.01),
                 NoAccountText(
                   text: "Don't have an account? ",
                   actionText: "Sign Up",
@@ -60,6 +66,11 @@ class LoginBody extends StatelessWidget {
                     context,
                     SignUpScreen.routeName,
                   ),
+                ),
+                SizedBox(
+                  height: SizeConfig.orientation == Orientation.portrait
+                      ? SizeConfig.screenHeight * 0.00
+                      : SizeConfig.screenHeight * 0.01,
                 ),
               ],
             ),

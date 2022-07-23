@@ -1,9 +1,8 @@
 import 'package:cjays/constants/errors.dart';
 import 'package:cjays/constants/sizes.dart';
-import 'package:cjays/constants/styles.dart';
 import 'package:cjays/helpers/helpers.dart';
 import 'package:cjays/views/auth/forgot_password/forgot_password_screen.dart';
-import 'package:cjays/views/auth/signin/sign_success/login_success_screen.dart';
+import 'package:cjays/views/auth/sign_success/login_success_screen.dart';
 import 'package:cjays/widgets/default_button.dart';
 import 'package:cjays/widgets/form_errors.dart';
 import 'package:flutter/material.dart';
@@ -48,28 +47,16 @@ class _SignFormState extends State<SignForm> {
           SizedBox(height: getProportionateScreenHeight(30)),
           buildPasswordFormField(),
           SizedBox(height: getProportionateScreenHeight(30)),
-          Row(
-            children: [
-              Checkbox(
-                value: remember,
-                activeColor: kPrimaryColor,
-                onChanged: (value) {
-                  setState(() {
-                    remember = value;
-                  });
-                },
+          GestureDetector(
+            onTap: () =>
+                Navigator.pushNamed(context, ForgotPasswordScreen.routeName),
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: Text(
+                "Forgot Password",
+                style: TextStyle(),
               ),
-              Text("Remember me"),
-              Spacer(),
-              GestureDetector(
-                onTap: () => Navigator.pushNamed(
-                    context, ForgotPasswordScreen.routeName),
-                child: Text(
-                  "Forgot Password",
-                  style: TextStyle(),
-                ),
-              )
-            ],
+            ),
           ),
           FormError(errors: errors),
           SizedBox(height: getProportionateScreenHeight(20)),

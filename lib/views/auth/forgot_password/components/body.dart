@@ -28,6 +28,7 @@ class ForgetPasswordBody extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
+              SizedBox(height: SizeConfig.screenHeight * 0.02),
               Text(
                 "Please enter your email and we will send \nyou a link to return to your account",
                 textAlign: TextAlign.center,
@@ -100,9 +101,9 @@ class _ForgotPassFormState extends State<ForgotPassForm> {
               ),
             ),
           ),
-          SizedBox(height: getProportionateScreenHeight(30)),
+          SizedBox(height: SizeConfig.screenHeight * 0.03),
           FormError(errors: errors),
-          SizedBox(height: SizeConfig.screenHeight * 0.1),
+          SizedBox(height: SizeConfig.screenHeight * 0.03),
           DefaultButton(
             text: "Continue",
             press: () {
@@ -111,7 +112,7 @@ class _ForgotPassFormState extends State<ForgotPassForm> {
               }
             },
           ),
-          SizedBox(height: SizeConfig.screenHeight * 0.1),
+          SizedBox(height: SizeConfig.screenHeight * 0.03),
           NoAccountText(
             text: "Remember your password now? ",
             actionText: "Go Back",

@@ -1,3 +1,4 @@
+import 'package:cjays/constants/colors.dart';
 import 'package:cjays/constants/sizes.dart';
 import 'package:cjays/constants/styles.dart';
 import 'package:cjays/views/auth/signin/sign_in.dart';
@@ -22,13 +23,13 @@ class Body extends StatelessWidget {
               children: [
                 SizedBox(height: SizeConfig.screenHeight * 0.04),
                 Text("Register Account", style: headingStyle),
+                SizedBox(height: SizeConfig.screenHeight * 0.02),
                 Text(
                   "Complete your details or continue \nwith social media",
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(height: SizeConfig.screenHeight * 0.08),
                 SignUpForm(),
-                SizedBox(height: SizeConfig.screenHeight * 0.08),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   // children: [
@@ -46,13 +47,54 @@ class Body extends StatelessWidget {
                   //   ),
                   // ],
                 ),
-                SizedBox(height: getProportionateScreenHeight(20)),
-                Text(
-                  'By continuing your confirm that you agree \nwith our Term and Condition',
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.caption,
-                ),
-                SizedBox(height: getProportionateScreenHeight(20)),
+                SizedBox(height: SizeConfig.screenHeight * 0.03),
+                SizeConfig.orientation == Orientation.portrait
+                    ? Center(
+                        child: RichText(
+                          text: TextSpan(
+                            children: [
+                              TextSpan(
+                                text:
+                                    "By continuing, you confirm that you agree \n with our ",
+                                style: TextStyle(
+                                  color: ProjectColors.kBlackColor
+                                      .withOpacity(0.6),
+                                ),
+                              ),
+                              TextSpan(
+                                text: "Terms",
+                                style: TextStyle(
+                                  color: ProjectColors.kPrimaryColor,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              TextSpan(
+                                text: " & ",
+                                style: TextStyle(
+                                  color: ProjectColors.kBlackColor
+                                      .withOpacity(0.6),
+                                ),
+                              ),
+                              TextSpan(
+                                text: "Conditions",
+                                style: TextStyle(
+                                  color: ProjectColors.kPrimaryColor,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      )
+                    : Text(
+                        'By continuing, you confirm that you agree with our Term and Condition',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: ProjectColors.kBlackColor.withOpacity(0.6),
+                          fontSize: SizeConfig.screenHeight * 0.04,
+                        ),
+                      ),
+                SizedBox(height: SizeConfig.screenHeight * 0.03),
                 NoAccountText(
                   text: "Already have an account? ",
                   actionText: "Login",
