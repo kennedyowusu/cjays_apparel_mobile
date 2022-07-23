@@ -1,4 +1,3 @@
-import 'package:cjays/constants/illustrations.dart';
 import 'package:cjays/constants/images.dart';
 import 'package:cjays/constants/sizes.dart';
 import 'package:cjays/views/home/home.dart';

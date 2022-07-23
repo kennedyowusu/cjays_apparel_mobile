@@ -2,6 +2,7 @@ import 'package:cjays/constants/sizes.dart';
 import 'package:cjays/constants/styles.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class NoAccountText extends StatelessWidget {
   NoAccountText({
     Key? key,

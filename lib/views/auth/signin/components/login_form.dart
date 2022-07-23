@@ -1,11 +1,9 @@
 import 'package:cjays/constants/errors.dart';
-import 'package:cjays/constants/icons.dart';
 import 'package:cjays/constants/sizes.dart';
 import 'package:cjays/constants/styles.dart';
 import 'package:cjays/helpers/helpers.dart';
 import 'package:cjays/views/auth/forgot_password/forgot_password_screen.dart';
 import 'package:cjays/views/auth/signin/sign_success/login_success_screen.dart';
-import 'package:cjays/widgets/custom_surfix_icon.dart';
 import 'package:cjays/widgets/default_button.dart';
 import 'package:cjays/widgets/form_errors.dart';
 import 'package:flutter/material.dart';

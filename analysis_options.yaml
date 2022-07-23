@@ -29,6 +29,8 @@ linter:
     library_private_types_in_public_api: false
     curly_braces_in_flow_control_structures: false
     prefer_const_constructors_in_immutables: false
+    override_on_non_overriding_member: false
+    prefer_final_fields: false
 
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options

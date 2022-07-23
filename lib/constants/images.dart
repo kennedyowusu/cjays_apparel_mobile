@@ -5,4 +5,6 @@ class ProjectImages {
   static const String shopping = "assets/images/shopping.png";
   static const String orderConfirmed = "assets/images/order_confirmed.png";
   static const String verified = "assets/images/verified.png";
+  static const String kBannerImage = "assets/images/ImageBanner.png";
+  static const String kProfileImage = "assets/images/ProfileImage.png";
 }
