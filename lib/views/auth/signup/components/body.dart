@@ -54,15 +54,14 @@ class Body extends StatelessWidget {
                           text: TextSpan(
                             children: [
                               TextSpan(
-                                text:
-                                    "By continuing, you confirm that you agree \n with our ",
+                                text: "By continuing, you agree with our \n",
                                 style: TextStyle(
                                   color: ProjectColors.kBlackColor
                                       .withOpacity(0.6),
                                 ),
                               ),
                               TextSpan(
-                                text: "Terms",
+                                text: "  Terms of Use ",
                                 style: TextStyle(
                                   color: ProjectColors.kPrimaryColor,
                                   fontWeight: FontWeight.bold,
@@ -76,7 +75,7 @@ class Body extends StatelessWidget {
                                 ),
                               ),
                               TextSpan(
-                                text: "Conditions",
+                                text: "Privacy Policy",
                                 style: TextStyle(
                                   color: ProjectColors.kPrimaryColor,
                                   fontWeight: FontWeight.bold,

@@ -1,7 +1,7 @@
 import 'package:cjays/views/auth/complete_profile/complete_profile_screen.dart';
 import 'package:cjays/views/auth/forgot_password/forgot_password_screen.dart';
+import 'package:cjays/views/auth/sign_success/login_success_screen.dart';
 import 'package:cjays/views/auth/signin/sign_in.dart';
-import 'package:cjays/views/auth/signin/sign_success/login_success_screen.dart';
 import 'package:cjays/views/auth/signup/sign_up_screen.dart';
 import 'package:cjays/views/cart/cart_screen.dart';
 import 'package:cjays/views/details/details_screen.dart';
