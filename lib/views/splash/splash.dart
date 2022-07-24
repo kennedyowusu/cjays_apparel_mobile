@@ -57,17 +57,17 @@ class _SplashScreenState extends State<SplashScreen>
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Spacer(flex: 5),
-              Text(
-                ProjectText.kAppName,
-                style: TextStyle(
-                  fontSize: SizeConfig.orientation == Orientation.portrait
-                      ? width * .04
-                      : width * .05,
-                  fontWeight: FontWeight.bold,
-                  color: ProjectColors.kPrimaryColor,
-                ),
-              ),
-              Spacer(),
+              // Text(
+              //   ProjectText.kAppName,
+              //   style: TextStyle(
+              //     fontSize: SizeConfig.orientation == Orientation.portrait
+              //         ? width * .04
+              //         : width * .05,
+              //     fontWeight: FontWeight.bold,
+              //     color: ProjectColors.kPrimaryColor,
+              //   ),
+              // ),
+              // Spacer(),
               Container(
                 padding: EdgeInsets.only(
                   top: SizeConfig.orientation == Orientation.portrait
@@ -78,45 +78,80 @@ class _SplashScreenState extends State<SplashScreen>
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Hero(
-                      tag: "logo",
-                      child: ColorFiltered(
-                        colorFilter: ColorFilter.mode(
-                          Colors.black.withOpacity(0.5),
-                          BlendMode.modulate,
+                    Container(
+                      width: SizeConfig.orientation == Orientation.portrait
+                          ? width * 0.2
+                          : width * .3,
+                      height: SizeConfig.orientation == Orientation.portrait
+                          ? height * 0.2
+                          : height * 0.23,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: ProjectColors.kPrimaryColor,
+                          width: SizeConfig.orientation == Orientation.portrait
+                              ? width * 0.01
+                              : width * 0.005,
                         ),
-                        child: Image.asset(
-                          ProjectImages.kCart,
-                          height: size.height / 6.0,
+                      ),
+                      child: Center(
+                        child: Hero(
+                          tag: "logo",
+                          child: ColorFiltered(
+                            colorFilter: ColorFilter.mode(
+                              Colors.black.withOpacity(0.5),
+                              BlendMode.modulate,
+                            ),
+                            child: Image.asset(
+                              ProjectImages.kCart,
+                              height: size.height / 6.0,
+                            ),
+                          ),
                         ),
                       ),
                     ),
                     SizedBox(
                       height: SizeConfig.orientation == Orientation.portrait
-                          ? height * 0.02
-                          : height * 0.07,
+                          ? height * 0.01
+                          : height * 0.02,
                     ),
-                    RichText(
-                      textAlign: TextAlign.center,
-                      text: TextSpan(
-                        text:
-                            "Elegance, gorgeous & fashionable\ncollection makes you cool",
-                        style: TextStyle(
-                          color: ProjectColors.kSecondaryColor,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                        ),
+                    Text(
+                      ProjectText.kAppName,
+                      style: TextStyle(
+                        fontSize: SizeConfig.orientation == Orientation.portrait
+                            ? width * .04
+                            : width * .04,
+                        fontWeight: FontWeight.bold,
+                        color: ProjectColors.kPrimaryColor,
                       ),
                     ),
                     SizedBox(
                       height: SizeConfig.orientation == Orientation.portrait
-                          ? height * 0.02
-                          : height * 0.07,
+                          ? height * 0.01
+                          : height * 0.01,
                     ),
+                    SizeConfig.orientation == Orientation.portrait
+                        ? RichText(
+                            textAlign: TextAlign.center,
+                            text: TextSpan(),
+                          )
+                        : RichText(
+                            textAlign: TextAlign.center,
+                            text: TextSpan(
+                              text:
+                                  "Elegance, gorgeous & fashionable\ncollection makes you cool",
+                              style: TextStyle(
+                                color: ProjectColors.kSecondaryColor,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          )
                   ],
                 ),
               ),
               Spacer(),
+              Spacer(flex: 5),
               Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
