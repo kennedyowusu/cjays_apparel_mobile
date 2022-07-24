@@ -2,14 +2,10 @@ import 'dart:convert';
 
 import 'package:cjays/constants/errors.dart';
 import 'package:cjays/constants/sizes.dart';
-import 'package:cjays/service/auth/auth.dart';
-import 'package:cjays/views/home/home.dart';
+import 'package:cjays/controllers/auth/auth.dart';
 import 'package:cjays/widgets/default_button.dart';
 import 'package:cjays/widgets/form_errors.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
-import 'package:http/http.dart' as http;
 
 class SignUpForm extends StatefulWidget {
   const SignUpForm({Key? key}) : super(key: key);
@@ -20,15 +16,11 @@ class SignUpForm extends StatefulWidget {
 
 class _SignUpFormState extends State<SignUpForm> {
   final _formKey = GlobalKey<FormState>();
-  String name = '';
-  String? email;
-  String? password;
-  String? confirmPassword;
-  String phone = '';
+
+  bool isLoading = false;
 
   final List<String?> errors = [];
-
-  AuthService authService = AuthService();
+  AuthController authController = AuthController();
 
   void addError({String? error}) {
     if (!errors.contains(error))
@@ -42,25 +34,6 @@ class _SignUpFormState extends State<SignUpForm> {
       setState(() {
         errors.remove(error);
       });
-  }
-
-  createUserAccount() async {
-    bool isValid = _formKey.currentState!.validate();
-    if (!isValid) return;
-    _formKey.currentState!.save();
-    http.Response response = await authService.signUpUser(
-      name,
-      email!,
-      phone,
-      password!,
-      confirmPassword!,
-    );
-    Map<String, dynamic> responseData = json.decode(response.body);
-    if (response.statusCode == 200) {
-      Get.offAll(() => HomeScreen());
-    } else {
-      addError(error: responseData['error']);
-    }
   }
 
   @override
@@ -84,7 +57,11 @@ class _SignUpFormState extends State<SignUpForm> {
           DefaultButton(
             text: "Continue",
             press: () {
-              createUserAccount();
+              if (_formKey.currentState!.validate()) {
+                _formKey.currentState!.save();
+                authController.createUserAccount();
+              }
+              return null;
             },
           ),
         ],
@@ -94,7 +71,7 @@ class _SignUpFormState extends State<SignUpForm> {
 
   TextFormField buildNameFormField() {
     return TextFormField(
-      onSaved: (newValue) => name = newValue!,
+      onSaved: (newValue) => authController.name = newValue!,
       onChanged: (value) {
         if (value.isNotEmpty) {
           removeError(error: kNamelNullError);
@@ -125,7 +102,7 @@ class _SignUpFormState extends State<SignUpForm> {
   TextFormField buildPhoneNumberFormField() {
     return TextFormField(
       keyboardType: TextInputType.phone,
-      onSaved: (newValue) => phone = newValue!,
+      onSaved: (newValue) => authController.phone = newValue!,
       onChanged: (value) {
         if (value.isNotEmpty) {
           removeError(error: kPhoneNumberNullError);
@@ -156,20 +133,21 @@ class _SignUpFormState extends State<SignUpForm> {
   TextFormField buildConformPassFormField() {
     return TextFormField(
       obscureText: true,
-      onSaved: (newValue) => confirmPassword = newValue,
+      onSaved: (newValue) => authController.confirmPassword = newValue!,
       onChanged: (value) {
         if (value.isNotEmpty) {
           removeError(error: kPassNullError);
-        } else if (value.isNotEmpty && password == confirmPassword) {
+        } else if (value.isNotEmpty &&
+            authController.password == authController.confirmPassword) {
           removeError(error: kMatchPassError);
         }
-        confirmPassword = value;
+        authController.confirmPassword = value;
       },
       validator: (value) {
         if (value!.isEmpty) {
           addError(error: kPassNullError);
           return "";
-        } else if ((password != value)) {
+        } else if ((authController.password != value)) {
           addError(error: kMatchPassError);
           return "";
         }
@@ -197,14 +175,14 @@ class _SignUpFormState extends State<SignUpForm> {
   TextFormField buildPasswordFormField() {
     return TextFormField(
       obscureText: true,
-      onSaved: (newValue) => password = newValue,
+      onSaved: (newValue) => authController.password = newValue!,
       onChanged: (value) {
         if (value.isNotEmpty) {
           removeError(error: kPassNullError);
         } else if (value.length >= 8) {
           removeError(error: kShortPassError);
         }
-        password = value;
+        authController.password = value;
       },
       validator: (value) {
         if (value!.isEmpty) {
@@ -233,7 +211,7 @@ class _SignUpFormState extends State<SignUpForm> {
   TextFormField buildEmailFormField() {
     return TextFormField(
       keyboardType: TextInputType.emailAddress,
-      onSaved: (newValue) => email = newValue,
+      onSaved: (newValue) => authController.email = newValue!,
       onChanged: (value) {
         if (value.isNotEmpty) {
           removeError(error: kEmailNullError);

@@ -1,18 +1,10 @@
-import 'dart:convert';
-
 import 'package:cjays/constants/errors.dart';
 import 'package:cjays/constants/sizes.dart';
-import 'package:cjays/helpers/helpers.dart';
-import 'package:cjays/service/auth/auth.dart';
+import 'package:cjays/controllers/auth/auth.dart';
 import 'package:cjays/views/auth/forgot_password/forgot_password_screen.dart';
-import 'package:cjays/views/auth/sign_success/login_success_screen.dart';
-import 'package:cjays/views/home/home.dart';
 import 'package:cjays/widgets/default_button.dart';
 import 'package:cjays/widgets/form_errors.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
-import 'package:http/http.dart' as http;
 
 class SignForm extends StatefulWidget {
   const SignForm({Key? key}) : super(key: key);
@@ -23,12 +15,11 @@ class SignForm extends StatefulWidget {
 
 class _SignFormState extends State<SignForm> {
   final _formKey = GlobalKey<FormState>();
-  String? email;
-  String? password;
-  bool? remember = false;
-  final List<String?> errors = [];
 
-  AuthService authService = AuthService();
+  final List<String?> errors = [];
+  bool isLoading = false;
+
+  AuthController authController = AuthController();
 
   void addError({String? error}) {
     if (!errors.contains(error))
@@ -42,22 +33,6 @@ class _SignFormState extends State<SignForm> {
       setState(() {
         errors.remove(error);
       });
-    }
-  }
-
-  loginUser() async {
-    bool isValid = _formKey.currentState!.validate();
-    if (!isValid) return;
-    _formKey.currentState!.save();
-    http.Response response = await authService.signInUser(
-      email!,
-      password!,
-    );
-    Map<String, dynamic> responseData = json.decode(response.body);
-    if (response.statusCode == 200) {
-      Get.offAll(() => HomeScreen());
-    } else {
-      addError(error: responseData['error']);
     }
   }
 
@@ -88,7 +63,10 @@ class _SignFormState extends State<SignForm> {
           DefaultButton(
             text: "Continue",
             press: () {
-              loginUser();
+              if (_formKey.currentState!.validate()) {
+                _formKey.currentState!.save();
+                authController.signInUser();
+              }
             },
           ),
         ],
@@ -99,7 +77,7 @@ class _SignFormState extends State<SignForm> {
   TextFormField buildPasswordFormField() {
     return TextFormField(
       obscureText: true,
-      onSaved: (newValue) => password = newValue,
+      onSaved: (newValue) => authController.password = newValue!,
       onChanged: (value) {
         if (value.isNotEmpty) {
           removeError(error: kPassNullError);
@@ -135,7 +113,7 @@ class _SignFormState extends State<SignForm> {
   TextFormField buildEmailFormField() {
     return TextFormField(
       keyboardType: TextInputType.emailAddress,
-      onSaved: (newValue) => email = newValue,
+      onSaved: (newValue) => authController.email = newValue!,
       onChanged: (value) {
         if (value.isNotEmpty) {
           removeError(error: kEmailNullError);
