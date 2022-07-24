@@ -1,9 +1,15 @@
+import 'dart:convert';
+
 import 'package:cjays/constants/errors.dart';
 import 'package:cjays/constants/sizes.dart';
-import 'package:cjays/views/auth/complete_profile/complete_profile_screen.dart';
+import 'package:cjays/service/auth/auth.dart';
+import 'package:cjays/views/home/home.dart';
 import 'package:cjays/widgets/default_button.dart';
 import 'package:cjays/widgets/form_errors.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'package:http/http.dart' as http;
 
 class SignUpForm extends StatefulWidget {
   const SignUpForm({Key? key}) : super(key: key);
@@ -14,11 +20,15 @@ class SignUpForm extends StatefulWidget {
 
 class _SignUpFormState extends State<SignUpForm> {
   final _formKey = GlobalKey<FormState>();
+  String name = '';
   String? email;
   String? password;
-  String? conform_password;
-  bool remember = false;
+  String? confirmPassword;
+  String phone = '';
+
   final List<String?> errors = [];
+
+  AuthService authService = AuthService();
 
   void addError({String? error}) {
     if (!errors.contains(error))
@@ -34,6 +44,25 @@ class _SignUpFormState extends State<SignUpForm> {
       });
   }
 
+  createUserAccount() async {
+    bool isValid = _formKey.currentState!.validate();
+    if (!isValid) return;
+    _formKey.currentState!.save();
+    http.Response response = await authService.signUpUser(
+      name,
+      email!,
+      phone,
+      password!,
+      confirmPassword!,
+    );
+    Map<String, dynamic> responseData = json.decode(response.body);
+    if (response.statusCode == 200) {
+      Get.offAll(() => HomeScreen());
+    } else {
+      addError(error: responseData['error']);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -41,21 +70,21 @@ class _SignUpFormState extends State<SignUpForm> {
       child: Column(
         children: [
           SizedBox(height: getProportionateScreenHeight(30)),
+          buildNameFormField(),
+          SizedBox(height: getProportionateScreenHeight(30)),
+          buildPhoneNumberFormField(),
+          SizedBox(height: getProportionateScreenHeight(30)),
           buildEmailFormField(),
           SizedBox(height: getProportionateScreenHeight(30)),
           buildPasswordFormField(),
           SizedBox(height: getProportionateScreenHeight(30)),
           buildConformPassFormField(),
-          FormError(errors: errors),
+          FormError(errors: errors as List<String>),
           SizedBox(height: getProportionateScreenHeight(40)),
           DefaultButton(
             text: "Continue",
             press: () {
-              if (_formKey.currentState!.validate()) {
-                _formKey.currentState!.save();
-                // if all are valid then go to success screen
-                Navigator.pushNamed(context, CompleteProfileScreen.routeName);
-              }
+              createUserAccount();
             },
           ),
         ],
@@ -63,17 +92,78 @@ class _SignUpFormState extends State<SignUpForm> {
     );
   }
 
+  TextFormField buildNameFormField() {
+    return TextFormField(
+      onSaved: (newValue) => name = newValue!,
+      onChanged: (value) {
+        if (value.isNotEmpty) {
+          removeError(error: kNamelNullError);
+        }
+        return;
+      },
+      validator: (value) {
+        if (value!.isEmpty) {
+          addError(error: kNamelNullError);
+          return "";
+        }
+        return null;
+      },
+      decoration: InputDecoration(
+        labelText: "Full Name",
+        hintText: "Enter your full name",
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        prefixIcon: Icon(Icons.person),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(
+            getProportionateScreenWidth(10),
+          ),
+        ),
+      ),
+    );
+  }
+
+  TextFormField buildPhoneNumberFormField() {
+    return TextFormField(
+      keyboardType: TextInputType.phone,
+      onSaved: (newValue) => phone = newValue!,
+      onChanged: (value) {
+        if (value.isNotEmpty) {
+          removeError(error: kPhoneNumberNullError);
+        }
+        return;
+      },
+      validator: (value) {
+        if (value!.isEmpty) {
+          addError(error: kPhoneNumberNullError);
+          return "";
+        }
+        return null;
+      },
+      decoration: InputDecoration(
+        labelText: "Phone Number",
+        hintText: "Enter your phone number",
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        prefixIcon: Icon(Icons.phone_android_sharp),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(
+            getProportionateScreenWidth(10),
+          ),
+        ),
+      ),
+    );
+  }
+
   TextFormField buildConformPassFormField() {
     return TextFormField(
       obscureText: true,
-      onSaved: (newValue) => conform_password = newValue,
+      onSaved: (newValue) => confirmPassword = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
           removeError(error: kPassNullError);
-        } else if (value.isNotEmpty && password == conform_password) {
+        } else if (value.isNotEmpty && password == confirmPassword) {
           removeError(error: kMatchPassError);
         }
-        conform_password = value;
+        confirmPassword = value;
       },
       validator: (value) {
         if (value!.isEmpty) {

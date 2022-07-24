@@ -1,9 +1,15 @@
+import 'dart:convert';
+
 import 'package:cjays/constants/errors.dart';
 import 'package:cjays/constants/sizes.dart';
-import 'package:cjays/views/otp/otp_screen.dart';
+import 'package:cjays/service/auth/auth.dart';
+import 'package:cjays/views/home/home.dart';
 import 'package:cjays/widgets/default_button.dart';
 import 'package:cjays/widgets/form_errors.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'package:http/http.dart' as http;
 
 class CompleteProfileForm extends StatefulWidget {
   const CompleteProfileForm({Key? key}) : super(key: key);
@@ -15,10 +21,13 @@ class CompleteProfileForm extends StatefulWidget {
 class _CompleteProfileFormState extends State<CompleteProfileForm> {
   final _formKey = GlobalKey<FormState>();
   final List<String?> errors = [];
-  String? firstName;
-  String? lastName;
-  String? phoneNumber;
-  String? address;
+  String email = '';
+  String password = '';
+  String name = '';
+  String phoneNumber = '';
+  String confirmPassword = '';
+
+  AuthService authService = AuthService();
 
   void addError({String? error}) {
     if (!errors.contains(error))
@@ -34,6 +43,25 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
       });
   }
 
+  createUserAccount() async {
+    bool isValid = _formKey.currentState!.validate();
+    if (!isValid) return;
+    _formKey.currentState!.save();
+    http.Response response = await authService.signUpUser(
+      name,
+      email,
+      phoneNumber,
+      password,
+      confirmPassword,
+    );
+    Map<String, dynamic> responseData = json.decode(response.body);
+    if (response.statusCode == 200) {
+      Get.offAll(HomeScreen());
+    } else {
+      addError(error: responseData['error']);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -41,59 +69,17 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
       child: Column(
         children: [
           SizedBox(height: getProportionateScreenHeight(30)),
-          buildFirstNameFormField(),
-          SizedBox(height: getProportionateScreenHeight(30)),
-          buildLastNameFormField(),
+          buildNameFormField(),
           SizedBox(height: getProportionateScreenHeight(30)),
           buildPhoneNumberFormField(),
           SizedBox(height: getProportionateScreenHeight(30)),
-          buildAddressFormField(),
-          FormError(errors: errors),
+          FormError(errors: errors as List<String>),
           SizedBox(height: getProportionateScreenHeight(40)),
           DefaultButton(
             text: "continue",
-            press: () {
-              if (_formKey.currentState!.validate()) {
-                Navigator.pushNamed(context, OtpScreen.routeName);
-              }
-            },
+            press: () => createUserAccount(),
           ),
         ],
-      ),
-    );
-  }
-
-  TextFormField buildAddressFormField() {
-    return TextFormField(
-      onSaved: (newValue) => address = newValue,
-      onChanged: (value) {
-        if (value.isNotEmpty) {
-          removeError(error: kAddressNullError);
-        }
-        return;
-      },
-      validator: (value) {
-        if (value!.isEmpty) {
-          addError(error: kAddressNullError);
-          return "";
-        }
-        return null;
-      },
-      decoration: InputDecoration(
-        labelText: "GPS Address",
-        hintText: "Enter your gps address",
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-        prefixIcon: Icon(Icons.location_city_sharp),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(
-            getProportionateScreenWidth(10),
-          ),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(
-            getProportionateScreenWidth(10),
-          ),
-        ),
       ),
     );
   }
@@ -101,7 +87,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
   TextFormField buildPhoneNumberFormField() {
     return TextFormField(
       keyboardType: TextInputType.phone,
-      onSaved: (newValue) => phoneNumber = newValue,
+      onSaved: (newValue) => phoneNumber = newValue!,
       onChanged: (value) {
         if (value.isNotEmpty) {
           removeError(error: kPhoneNumberNullError);
@@ -129,9 +115,9 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
     );
   }
 
-  TextFormField buildLastNameFormField() {
+  TextFormField buildNameFormField() {
     return TextFormField(
-      onSaved: (newValue) => lastName = newValue,
+      onSaved: (newValue) => name = newValue!,
       onChanged: (value) {
         if (value.isNotEmpty) {
           removeError(error: kNamelNullError);
@@ -146,38 +132,8 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
         return null;
       },
       decoration: InputDecoration(
-        labelText: "Last Name",
-        hintText: "Enter your last name",
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-        prefixIcon: Icon(Icons.person),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(
-            getProportionateScreenWidth(10),
-          ),
-        ),
-      ),
-    );
-  }
-
-  TextFormField buildFirstNameFormField() {
-    return TextFormField(
-      onSaved: (newValue) => firstName = newValue,
-      onChanged: (value) {
-        if (value.isNotEmpty) {
-          removeError(error: kNamelNullError);
-        }
-        return;
-      },
-      validator: (value) {
-        if (value!.isEmpty) {
-          addError(error: kNamelNullError);
-          return "";
-        }
-        return null;
-      },
-      decoration: InputDecoration(
-        labelText: "First Name",
-        hintText: "Enter your first name",
+        labelText: "Full Name",
+        hintText: "Enter your full name",
         floatingLabelBehavior: FloatingLabelBehavior.always,
         prefixIcon: Icon(Icons.person),
         border: OutlineInputBorder(

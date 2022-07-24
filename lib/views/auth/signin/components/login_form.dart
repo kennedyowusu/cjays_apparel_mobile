@@ -1,11 +1,18 @@
+import 'dart:convert';
+
 import 'package:cjays/constants/errors.dart';
 import 'package:cjays/constants/sizes.dart';
 import 'package:cjays/helpers/helpers.dart';
+import 'package:cjays/service/auth/auth.dart';
 import 'package:cjays/views/auth/forgot_password/forgot_password_screen.dart';
 import 'package:cjays/views/auth/sign_success/login_success_screen.dart';
+import 'package:cjays/views/home/home.dart';
 import 'package:cjays/widgets/default_button.dart';
 import 'package:cjays/widgets/form_errors.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'package:http/http.dart' as http;
 
 class SignForm extends StatefulWidget {
   const SignForm({Key? key}) : super(key: key);
@@ -21,6 +28,8 @@ class _SignFormState extends State<SignForm> {
   bool? remember = false;
   final List<String?> errors = [];
 
+  AuthService authService = AuthService();
+
   void addError({String? error}) {
     if (!errors.contains(error))
       setState(() {
@@ -33,6 +42,22 @@ class _SignFormState extends State<SignForm> {
       setState(() {
         errors.remove(error);
       });
+    }
+  }
+
+  loginUser() async {
+    bool isValid = _formKey.currentState!.validate();
+    if (!isValid) return;
+    _formKey.currentState!.save();
+    http.Response response = await authService.signInUser(
+      email!,
+      password!,
+    );
+    Map<String, dynamic> responseData = json.decode(response.body);
+    if (response.statusCode == 200) {
+      Get.offAll(() => HomeScreen());
+    } else {
+      addError(error: responseData['error']);
     }
   }
 
@@ -58,17 +83,12 @@ class _SignFormState extends State<SignForm> {
               ),
             ),
           ),
-          FormError(errors: errors),
+          FormError(errors: errors as List<String>),
           SizedBox(height: getProportionateScreenHeight(20)),
           DefaultButton(
             text: "Continue",
             press: () {
-              if (_formKey.currentState!.validate()) {
-                _formKey.currentState!.save();
-                // if all are valid then go to success screen
-                KeyboardUtil.hideKeyboard(context);
-                Navigator.pushNamed(context, LoginSuccessScreen.routeName);
-              }
+              loginUser();
             },
           ),
         ],
