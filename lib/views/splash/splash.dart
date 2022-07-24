@@ -2,6 +2,8 @@ import 'package:cjays/constants/colors.dart';
 import 'package:cjays/constants/images.dart';
 import 'package:cjays/constants/sizes.dart';
 import 'package:cjays/constants/text.dart';
+import 'package:cjays/utils/secure_storage.dart';
+import 'package:cjays/views/home/home.dart';
 import 'package:cjays/views/onboarding/onboarding.dart';
 import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +23,10 @@ class _SplashScreenState extends State<SplashScreen>
   late AnimationController _controller;
   late Animation<double> _position;
   late Animation<double> _opacity;
+
+  final UserSecureStorage userSecureStorage = UserSecureStorage();
+
+  String emailAddress = "";
 
   @override
   void initState() {
@@ -42,7 +48,18 @@ class _SplashScreenState extends State<SplashScreen>
       });
     // Always repeat animation
     _controller.repeat();
+
+    userSecureStorage.readSecureData('email').then((value) {
+      emailAddress = value!;
+    });
+
     super.initState();
+  }
+
+  @override
+  dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -57,17 +74,6 @@ class _SplashScreenState extends State<SplashScreen>
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Spacer(flex: 5),
-              // Text(
-              //   ProjectText.kAppName,
-              //   style: TextStyle(
-              //     fontSize: SizeConfig.orientation == Orientation.portrait
-              //         ? width * .04
-              //         : width * .05,
-              //     fontWeight: FontWeight.bold,
-              //     color: ProjectColors.kPrimaryColor,
-              //   ),
-              // ),
-              // Spacer(),
               Container(
                 padding: EdgeInsets.only(
                   top: SizeConfig.orientation == Orientation.portrait
@@ -162,7 +168,9 @@ class _SplashScreenState extends State<SplashScreen>
                         context,
                         PageTransition(
                           type: PageTransitionType.rightToLeft,
-                          child: OnboardingScreen(),
+                          child: emailAddress == " "
+                              ? OnboardingScreen()
+                              : HomeScreen(),
                         ),
                       );
                     },

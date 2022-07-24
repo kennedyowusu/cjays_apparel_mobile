@@ -33,10 +33,6 @@ class AuthService {
     return response;
   }
 
-  Future<void> signOutUser() async {
-    // await authService.signOut();
-  }
-
   Future<http.Response> signInUser(
     String email,
     String password,
@@ -54,6 +50,15 @@ class AuthService {
       headers: projectApis.headers,
     );
     debugPrint(response.body);
+    return response;
+  }
+
+  Future<http.Response> signOutUser() async {
+    var url = Uri.parse(projectApis.logoutUrl);
+    var response = await http.get(
+      url,
+      headers: projectApis.headers,
+    );
     return response;
   }
 }
