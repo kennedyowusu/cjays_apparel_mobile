@@ -86,6 +86,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
 
   TextFormField buildPhoneNumberFormField() {
     return TextFormField(
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       keyboardType: TextInputType.phone,
       onSaved: (newValue) => phoneNumber = newValue!,
       onChanged: (value) {
@@ -117,6 +118,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
 
   TextFormField buildNameFormField() {
     return TextFormField(
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       onSaved: (newValue) => name = newValue!,
       onChanged: (value) {
         if (value.isNotEmpty) {
