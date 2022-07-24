@@ -71,6 +71,7 @@ class _SignUpFormState extends State<SignUpForm> {
 
   TextFormField buildNameFormField() {
     return TextFormField(
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       onSaved: (newValue) => authController.name = newValue!,
       onChanged: (value) {
         if (value.isNotEmpty) {
@@ -102,6 +103,7 @@ class _SignUpFormState extends State<SignUpForm> {
   TextFormField buildPhoneNumberFormField() {
     return TextFormField(
       keyboardType: TextInputType.phone,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       onSaved: (newValue) => authController.phone = newValue!,
       onChanged: (value) {
         if (value.isNotEmpty) {
@@ -133,6 +135,7 @@ class _SignUpFormState extends State<SignUpForm> {
   TextFormField buildConformPassFormField() {
     return TextFormField(
       obscureText: true,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       onSaved: (newValue) => authController.confirmPassword = newValue!,
       onChanged: (value) {
         if (value.isNotEmpty) {

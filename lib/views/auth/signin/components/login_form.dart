@@ -77,6 +77,7 @@ class _SignFormState extends State<SignForm> {
   TextFormField buildPasswordFormField() {
     return TextFormField(
       obscureText: true,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       onSaved: (newValue) => authController.password = newValue!,
       onChanged: (value) {
         if (value.isNotEmpty) {
@@ -113,6 +114,7 @@ class _SignFormState extends State<SignForm> {
   TextFormField buildEmailFormField() {
     return TextFormField(
       keyboardType: TextInputType.emailAddress,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       onSaved: (newValue) => authController.email = newValue!,
       onChanged: (value) {
         if (value.isNotEmpty) {
