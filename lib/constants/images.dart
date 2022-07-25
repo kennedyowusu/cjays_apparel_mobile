@@ -8,4 +8,15 @@ class ProjectImages {
   static const String kBannerImage = "assets/images/ImageBanner.png";
   static const String kProfileImage = "assets/images/ProfileImage.png";
   static const String kCart = "assets/images/cart.png";
+  static const String kDiscountSale = "assets/images/discount-sale.jpg";
+  static const String kCelebrate = "assets/images/happy.png";
+  static const String kDress = "assets/images/dresses.png";
+  static const String kShirt = "assets/images/T-shirt.png";
+  static const String kBags = "assets/images/bags.png";
+  static const String kSleeve = "assets/images/sleeve.png";
+  static const String kSuits = "assets/images/suits.png";
+  static const String kShoes = "assets/images/shoes.png";
+  static const String kHeels = "assets/images/heels.png";
+  static const String kJeans = "assets/images/jeans.png";
+  static const String kPajamas = "assets/images/pajamas.png";
 }

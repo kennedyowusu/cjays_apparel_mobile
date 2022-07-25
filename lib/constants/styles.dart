@@ -1,5 +1,6 @@
 import 'package:cjays/constants/sizes.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 const kPrimaryColor = Color(0xFFFF7643);
 const kPrimaryLightColor = Color(0xFFFFECDF);
@@ -36,3 +37,16 @@ OutlineInputBorder outlineInputBorder() {
     borderSide: BorderSide(color: kTextColor),
   );
 }
+
+const kMultiplier = 0.0012;
+const kMultiplierHalf = 0.0006;
+const kFS10 = 10.0 * kMultiplier;
+
+var kTabBarItemFontStyle = GoogleFonts.poppins();
+
+const kBigTitleFontStyle = TextStyle(
+  color: Color(0xFF1B1B1B),
+  fontSize: 18.0,
+  fontWeight: FontWeight.w600,
+  fontStyle: FontStyle.normal,
+);

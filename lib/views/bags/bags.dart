@@ -1,15 +1,14 @@
 import 'package:cjays/constants/colors.dart';
 import 'package:cjays/constants/styles.dart';
-import 'package:cjays/constants/text.dart';
 import 'package:cjays/enums.dart';
-import 'package:cjays/views/home/components/home_body.dart';
 import 'package:cjays/widgets/coustom_bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
-  static String routeName = "/home";
+class BagScreen extends StatelessWidget {
+  const BagScreen({Key? key}) : super(key: key);
 
-  HomeScreen({Key? key}) : super(key: key);
+  static const routeName = '/bag';
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -52,11 +51,10 @@ class HomeScreen extends StatelessWidget {
             elevation: 0.0,
           ),
         ),
-        body: Padding(
-          padding: EdgeInsets.only(left: height * 0.0, right: 0),
-          child: HomeBody(),
+        body: Center(
+          child: Text('Bags Screen... Will be added soon'),
         ),
-        bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.home),
+        bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.bag),
       ),
     );
   }

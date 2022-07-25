@@ -5,4 +5,6 @@ class ProjectColors {
   static const kSecondaryColor = Color(0xFFF7D488);
   static const kBlackColor = Color(0xFF2A2D34);
   static const kWhiteColor = Color(0xFFFFFFFF);
+  static const kGreyColor = Color(0xFFE5E5E5);
+  static const kDiscountColor = Color(0xFFf64e4c);
 }
