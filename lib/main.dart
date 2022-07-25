@@ -1,7 +1,6 @@
 import 'package:cjays/constants/routes.dart';
 import 'package:cjays/constants/text.dart';
 import 'package:cjays/views/home/home.dart';
-import 'package:cjays/views/splash/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

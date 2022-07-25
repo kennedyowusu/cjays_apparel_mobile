@@ -2,7 +2,6 @@ import 'package:cjays/constants/colors.dart';
 import 'package:cjays/constants/images.dart';
 import 'package:cjays/constants/sizes.dart';
 import 'package:cjays/constants/styles.dart';
-import 'package:cjays/controllers/auth/auth.dart';
 import 'package:cjays/utils/secure_storage.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +17,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    TabController tabController = TabController(length: 1, vsync: this);
+    TabController tabController = TabController(length: 3, vsync: this);
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
@@ -49,8 +48,20 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                       style: kTabBarItemFontStyle.copyWith(
                         fontSize: 18.0 * kMultiplier * height,
                         letterSpacing: 1.2,
-                        fontWeight: FontWeight.bold,
-                        color: ProjectColors.kBlackColor,
+                      ),
+                    ),
+                    Text(
+                      "Curve & Plus".toUpperCase(),
+                      style: kTabBarItemFontStyle.copyWith(
+                        fontSize: 18.0 * kMultiplier * height,
+                        letterSpacing: 1.2,
+                      ),
+                    ),
+                    Text(
+                      "Grandmas".toUpperCase(),
+                      style: kTabBarItemFontStyle.copyWith(
+                        fontSize: 18.0 * kMultiplier * height,
+                        letterSpacing: 1.2,
                       ),
                     ),
                   ],
@@ -66,20 +77,6 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
               child: Column(
                 children: [
                   Container(
-                    height: height * 0.060,
-                    width: width * 0.94,
-                    color: Colors.black,
-                    child: Center(
-                      child: Text(
-                        "Free Delivery Over GHS500",
-                        style: TextStyle(
-                          fontSize: height * 0.02,
-                          color: ProjectColors.kWhiteColor,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Container(
                     padding: EdgeInsets.only(
                       left: height * 0.012,
                     ),
@@ -89,11 +86,24 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                       controller: tabController,
                       children: [
                         ListView.builder(
-                          scrollDirection: Axis.horizontal,
                           itemCount: 1,
                           itemBuilder: (_, i) {
                             return Column(
                               children: [
+                                Container(
+                                  height: height * 0.060,
+                                  width: width * 0.94,
+                                  color: Colors.black,
+                                  child: Center(
+                                    child: Text(
+                                      "Free Delivery Over GHS500",
+                                      style: TextStyle(
+                                        fontSize: height * 0.02,
+                                        color: ProjectColors.kWhiteColor,
+                                      ),
+                                    ),
+                                  ),
+                                ),
                                 Container(
                                   height: height * 0.085,
                                   width: width * 0.94,
@@ -362,10 +372,90 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                       width: width,
                                     ),
                                   ],
-                                )
+                                ),
                               ],
                             );
                           },
+                        ),
+                        // CURVES AND PLUS STARTS HERE
+
+                        ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: 1,
+                          itemBuilder: (context, index) {
+                            return Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                SizedBox(
+                                  height: height * 0.007,
+                                ),
+                                Row(
+                                  children: [
+                                    CurveAndPlusCard(
+                                      height: height,
+                                      width: width,
+                                      title: "Daily Flash Sale",
+                                      text: "Up To",
+                                      subtitle: "50% Off",
+                                      buttonText: "Buy Most liked",
+                                      image: ProjectImages.kBeach,
+                                    ),
+                                    SizedBox(
+                                      width: width * 0.020,
+                                    ),
+                                    CurveAndPlusCard(
+                                      height: height,
+                                      width: width,
+                                      title: "Super Deals",
+                                      text: "Starts at",
+                                      subtitle: "GHS30",
+                                      buttonText: "Shop Now",
+                                      image: ProjectImages.kSea,
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: height * 0.004,
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    CurvesAndPlusIMenu(
+                                      height: height,
+                                      pressed: () {},
+                                      text: "Tops",
+                                    ),
+                                    CurvesAndPlusIMenu(
+                                      height: height,
+                                      text: "Dresses",
+                                      pressed: () {},
+                                    ),
+                                    CurvesAndPlusIMenu(
+                                      height: height,
+                                      text: "Bottoms",
+                                      pressed: () {},
+                                    ),
+                                    CurvesAndPlusIMenu(
+                                      height: height,
+                                      text: "Jumpsuits & Rompers",
+                                      pressed: () {},
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            );
+                          },
+                        ),
+
+                        Text(
+                          "Grandmas".toUpperCase(),
+                          style: kTabBarItemFontStyle.copyWith(
+                            fontSize: 18.0 * kMultiplier * height,
+                            letterSpacing: 1.2,
+                            fontWeight: FontWeight.bold,
+                            color: ProjectColors.kBlackColor,
+                          ),
                         ),
                       ],
                     ),
@@ -379,6 +469,144 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
           ],
         ),
       ),
+    );
+  }
+}
+
+class CurvesAndPlusIMenu extends StatelessWidget {
+  const CurvesAndPlusIMenu({
+    Key? key,
+    required this.height,
+    required this.text,
+    required this.pressed,
+  }) : super(key: key);
+
+  final double height;
+  final String text;
+  final Function pressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => pressed,
+      child: Text(
+        text,
+        style: kTabBarItemFontStyle.copyWith(
+          fontSize: 16.0 * kMultiplier * height,
+          fontWeight: FontWeight.bold,
+          color: ProjectColors.kBlackColor.withOpacity(0.5),
+        ),
+      ),
+    );
+  }
+}
+
+class CurveAndPlusCard extends StatelessWidget {
+  const CurveAndPlusCard({
+    Key? key,
+    required this.height,
+    required this.width,
+    required this.image,
+    required this.title,
+    required this.subtitle,
+    required this.text,
+    required this.buttonText,
+  }) : super(key: key);
+
+  final double height;
+  final double width;
+  final String image, title, subtitle, text, buttonText;
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Container(
+          height: height * 0.4,
+          width: width * 0.43,
+          decoration: BoxDecoration(
+            color: ProjectColors.kGreyColor,
+          ),
+          child: Image.asset(
+            image,
+            height: height * 0.4,
+            width: width * 0.4,
+            fit: BoxFit.cover,
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: width * 0.06,
+            vertical: height * 0.10,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                title,
+                style: kTabBarItemFontStyle.copyWith(
+                  fontSize: height * 0.02,
+                  color: ProjectColors.kWhiteColor,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text(
+                subtitle,
+                style: kTabBarItemFontStyle.copyWith(
+                  fontSize: height * 0.03,
+                  color: ProjectColors.kWhiteColor,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text(
+                text,
+                style: kTabBarItemFontStyle.copyWith(
+                  fontSize: height * 0.04,
+                  color: ProjectColors.kWhiteColor,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(
+                height: height * 0.028,
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: ProjectColors.kPrimaryColor,
+                  minimumSize: Size(
+                    width * 0.2,
+                    height * 0.05,
+                  ),
+                  padding: EdgeInsets.all(
+                    height * 0.01,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(
+                      height * 0.01,
+                    ),
+                  ),
+                ),
+                onPressed: () {},
+                child: Row(
+                  children: [
+                    Text(
+                      buttonText.toUpperCase(),
+                      style: kTabBarItemFontStyle.copyWith(
+                        fontSize: height * 0.018,
+                        color: ProjectColors.kWhiteColor,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Icon(
+                      Icons.chevron_right,
+                      color: ProjectColors.kWhiteColor,
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

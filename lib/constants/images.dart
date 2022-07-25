@@ -1,5 +1,4 @@
 class ProjectImages {
-  static const String kCloth = "assets/images/dress.png";
   static const String kGreenCupNeck = "assets/images/dress_1.png";
   static const String shoppingApp = "assets/images/shopping_app.png";
   static const String shopping = "assets/images/shopping.png";
@@ -19,4 +18,6 @@ class ProjectImages {
   static const String kHeels = "assets/images/heels.png";
   static const String kJeans = "assets/images/jeans.png";
   static const String kPajamas = "assets/images/pajamas.png";
+  static const String kSea = "assets/images/sea.jpg";
+  static const String kBeach = "assets/images/sea-2.jpg";
 }
