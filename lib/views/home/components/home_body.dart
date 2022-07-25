@@ -387,7 +387,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 SizedBox(
-                                  height: height * 0.007,
+                                  height: height * 0.005,
                                 ),
                                 Row(
                                   children: [
@@ -401,7 +401,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                       image: ProjectImages.kBeach,
                                     ),
                                     SizedBox(
-                                      width: width * 0.020,
+                                      width: width * 0.055,
                                     ),
                                     CurveAndPlusCard(
                                       height: height,
@@ -443,18 +443,74 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                     ),
                                   ],
                                 ),
+                                Row(
+                                  children: [
+                                    CurveAndProductCard(
+                                      height: height,
+                                      width: width,
+                                      percentage: '-21%',
+                                      title: 'Curves + Plus',
+                                      image: ProjectImages.kCurvy,
+                                      newPrice: 'GHS75.00',
+                                      oldPrice: ' GHS100.00',
+                                    ),
+                                    SizedBox(
+                                      width: width * 0.055,
+                                    ),
+                                    CurveAndProductCard(
+                                      height: height,
+                                      width: width,
+                                      percentage: '-21%',
+                                      title: 'Curves + Plus',
+                                      image: ProjectImages.kCurvyPlus,
+                                      newPrice: 'GHS80.00 ',
+                                      oldPrice: 'GHS110.00',
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: height * 0.004,
+                                ),
+                                Row(
+                                  children: [
+                                    CurveAndProductCard(
+                                      height: height,
+                                      width: width,
+                                      percentage: '-21%',
+                                      title: 'Curves + Plus',
+                                      image: ProjectImages.kCurvy,
+                                      newPrice: 'GHS110.00',
+                                      oldPrice: ' GHS140.00',
+                                    ),
+                                    SizedBox(
+                                      width: width * 0.055,
+                                    ),
+                                    CurveAndProductCard(
+                                      height: height,
+                                      width: width,
+                                      percentage: '-21%',
+                                      title: 'Curves + Plus',
+                                      image: ProjectImages.kCurvyPlus,
+                                      newPrice: 'GHS90.00 ',
+                                      oldPrice: 'GHS120.00',
+                                    ),
+                                  ],
+                                ),
                               ],
                             );
                           },
                         ),
 
-                        Text(
-                          "Grandmas".toUpperCase(),
-                          style: kTabBarItemFontStyle.copyWith(
-                            fontSize: 18.0 * kMultiplier * height,
-                            letterSpacing: 1.2,
-                            fontWeight: FontWeight.bold,
-                            color: ProjectColors.kBlackColor,
+                        Center(
+                          child: Text(
+                            "I will figure out what to put here soon"
+                                .toUpperCase(),
+                            style: kTabBarItemFontStyle.copyWith(
+                              fontSize: 18.0 * kMultiplier * height,
+                              letterSpacing: 1.2,
+                              fontWeight: FontWeight.bold,
+                              color: ProjectColors.kBlackColor,
+                            ),
                           ),
                         ),
                       ],
@@ -469,6 +525,132 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
           ],
         ),
       ),
+    );
+  }
+}
+
+class CurveAndProductCard extends StatelessWidget {
+  const CurveAndProductCard({
+    Key? key,
+    required this.height,
+    required this.width,
+    required this.percentage,
+    required this.title,
+    required this.oldPrice,
+    required this.newPrice,
+    required this.image,
+  }) : super(key: key);
+
+  final double height;
+  final double width;
+  final String percentage, title, oldPrice, newPrice, image;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        SizedBox(
+          height: height * 0.025,
+        ),
+        Stack(
+          children: [
+            Container(
+              height: height * 0.40,
+              width: width * 0.43,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(
+                    image,
+                  ),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            Positioned(
+              bottom: height * 0.02,
+              left: width * 0.02,
+              top: height * 0.02,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: height * 0.02,
+                  ),
+                  Container(
+                    height: height * 0.04,
+                    width: width * 0.11,
+                    color: Colors.red,
+                    child: Center(
+                      child: Text(
+                        percentage,
+                        style: kTabBarItemFontStyle.copyWith(
+                          color: ProjectColors.kWhiteColor,
+                          fontSize: height * 0.02,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: width * 0.2,
+                  ),
+                  CircleAvatar(
+                    radius: height * 0.022,
+                    backgroundColor: ProjectColors.kWhiteColor,
+                    child: Icon(
+                      Icons.favorite_border_outlined,
+                      color: ProjectColors.kBlackColor,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Positioned(
+              top: height * 0.36,
+              child: Container(
+                height: height * 0.04,
+                width: width * 0.43,
+                color: ProjectColors.kWhiteColor.withOpacity(0.7),
+                child: Center(
+                  child: Text(
+                    title.toUpperCase(),
+                    style: kTabBarItemFontStyle.copyWith(
+                      color: ProjectColors.kBlackColor,
+                      fontSize: height * 0.02,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+        Padding(
+          padding: EdgeInsets.only(top: 5.0),
+          child: RichText(
+            textScaleFactor: 1.1,
+            text: TextSpan(
+              text: newPrice,
+              style: kTabBarItemFontStyle.copyWith(
+                color: ProjectColors.kPrimaryColor,
+                fontSize: height * 0.02,
+                fontWeight: FontWeight.bold,
+              ),
+              children: [
+                TextSpan(
+                  text: oldPrice,
+                  style: kTabBarItemFontStyle.copyWith(
+                    decoration: TextDecoration.lineThrough,
+                    color: ProjectColors.kBlackColor,
+                    fontSize: height * 0.02,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
