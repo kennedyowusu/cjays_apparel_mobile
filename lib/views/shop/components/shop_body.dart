@@ -25,6 +25,9 @@ class ShopBody extends StatelessWidget {
       itemBuilder: (c, i) {
         return Column(
           children: [
+            SizedBox(
+              height: height * 0.007,
+            ),
             Container(
               height: height * 0.05,
               width: double.infinity,
@@ -61,7 +64,7 @@ class ShopBody extends StatelessWidget {
                         ),
                         Icon(
                           Icons.approval_outlined,
-                          size: height * 0.020,
+                          size: height * 0.022,
                           color: ProjectColors.kBlackColor.withOpacity(0.5),
                         ),
                       ],
@@ -88,7 +91,7 @@ class ShopBody extends StatelessWidget {
                         ),
                         Icon(
                           Icons.filter_alt_outlined,
-                          size: height * 0.020,
+                          size: height * 0.022,
                           color: ProjectColors.kBlackColor.withOpacity(0.5),
                         ),
                       ],
@@ -147,7 +150,6 @@ class ShopBody extends StatelessWidget {
                     ColorsAllDresses(
                       height: height,
                       width: width,
-                      // color: ProjectColors.kBlackColor,
                     ),
                   ],
                 ),

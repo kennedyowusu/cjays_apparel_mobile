@@ -98,9 +98,20 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                           itemBuilder: (_, i) {
                             return Column(
                               children: [
+                                SizedBox(
+                                  height: height * 0.007,
+                                ),
                                 Container(
                                   height: height * 0.060,
                                   width: width * 0.94,
+                                  padding: EdgeInsets.only(
+                                    left: height * 0.012,
+                                  ),
+                                  margin: EdgeInsets.only(
+                                    right: 10,
+                                    top: height * 0.007,
+                                    bottom: 0,
+                                  ),
                                   color: Colors.black,
                                   child: Center(
                                     child: Text(
@@ -395,10 +406,13 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 SizedBox(
-                                  height: height * 0.005,
+                                  height: height * 0.015,
                                 ),
                                 Row(
                                   children: [
+                                    SizedBox(
+                                      height: height * 0.007,
+                                    ),
                                     CurveAndPlusCard(
                                       height: height,
                                       width: width,
@@ -409,7 +423,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                       image: ProjectImages.kBeach,
                                     ),
                                     SizedBox(
-                                      width: width * 0.055,
+                                      width: width * 0.020,
                                     ),
                                     CurveAndPlusCard(
                                       height: height,
@@ -469,7 +483,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                           : Icons.favorite_border,
                                     ),
                                     SizedBox(
-                                      width: width * 0.055,
+                                      width: width * 0.030,
                                     ),
                                     CurveAndPlusProductCard(
                                       height: height,
@@ -509,7 +523,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                           : Icons.favorite_border,
                                     ),
                                     SizedBox(
-                                      width: width * 0.055,
+                                      width: width * 0.030,
                                     ),
                                     CurveAndPlusProductCard(
                                       height: height,
@@ -533,18 +547,27 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                           },
                         ),
 
-                        Center(
-                          child: Text(
-                            "I will figure out what to put here soon"
-                                .toUpperCase(),
-                            style: kTabBarItemFontStyle.copyWith(
-                              fontSize: 18.0 * kMultiplier * height,
-                              letterSpacing: 1.2,
-                              fontWeight: FontWeight.bold,
-                              color: ProjectColors.kBlackColor,
-                            ),
-                          ),
-                        ),
+                        // Grand Mother Starts Here
+                        ListView.builder(
+                          itemCount: 1,
+                          itemBuilder: (c, i) {
+                            return Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "I will figure out what to put here soon"
+                                      .toUpperCase(),
+                                  style: kTabBarItemFontStyle.copyWith(
+                                    fontSize: 18.0 * kMultiplier * height,
+                                    letterSpacing: 1.2,
+                                    fontWeight: FontWeight.bold,
+                                    color: ProjectColors.kBlackColor,
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
+                        )
                       ],
                     ),
                   ),
