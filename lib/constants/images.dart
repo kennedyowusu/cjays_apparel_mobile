@@ -22,4 +22,7 @@ class ProjectImages {
   static const String kBeach = "assets/images/sea-2.jpg";
   static const String kCurvy = "assets/images/curvy-plus.jpeg";
   static const String kCurvyPlus = "assets/images/curvy-plus-2.jpeg";
+  static const String kCurvyPlus3 = "assets/images/curvy-woman.jpg";
+  static const String kCurvyPlus4 = "assets/images/curvywoman-1.jpg";
+  static const String kCurvyPlus5 = "assets/images/curvywoman.jpeg";
 }

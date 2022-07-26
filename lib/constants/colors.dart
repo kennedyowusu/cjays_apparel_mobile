@@ -6,5 +6,6 @@ class ProjectColors {
   static const kBlackColor = Color(0xFF2A2D34);
   static const kWhiteColor = Color(0xFFFFFFFF);
   static const kGreyColor = Color(0xFFE5E5E5);
-  static const kDiscountColor = Color(0xFFf64e4c);
+  static const kVenetianRedColor = Color(0xFFC80815);
+  static const kForestGreenColor = Color(0xFF1B9A56);
 }
