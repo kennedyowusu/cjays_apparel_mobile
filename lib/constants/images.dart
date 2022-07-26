@@ -25,4 +25,5 @@ class ProjectImages {
   static const String kCurvyPlus3 = "assets/images/curvy-woman.jpg";
   static const String kCurvyPlus4 = "assets/images/curvywoman-1.jpg";
   static const String kCurvyPlus5 = "assets/images/curvywoman.jpeg";
+  static const String kPlaceholder = "assets/images/placeholder.png";
 }
