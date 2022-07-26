@@ -26,4 +26,11 @@ class ProjectImages {
   static const String kCurvyPlus4 = "assets/images/curvywoman-1.jpg";
   static const String kCurvyPlus5 = "assets/images/curvywoman.jpeg";
   static const String kPlaceholder = "assets/images/placeholder.png";
+  static const String kClothe = "assets/images/clothe.jpg";
+  static const String kSleeveClothe = "assets/images/sleeveless.jpg";
+  static const String kRoundNeck = "assets/images/round-neck.jpg";
+  static const String kOutfit = "assets/images/outfit.jpg";
+  static const String kOutfit_1 = "assets/images/outfit-1.jpg";
+  static const String kOutfit_2 = "assets/images/outfit-2.jpg";
+  static const String kOutfit_3 = "assets/images/outfit-3.jpeg";
 }

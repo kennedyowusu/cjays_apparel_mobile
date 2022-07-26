@@ -1,6 +1,7 @@
 import 'package:cjays/constants/colors.dart';
 import 'package:cjays/constants/styles.dart';
 import 'package:cjays/enums.dart';
+import 'package:cjays/views/shop/components/shop_body.dart';
 import 'package:cjays/widgets/coustom_bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -21,27 +22,32 @@ class ShopScreen extends StatelessWidget {
             60.0 * kMultiplier * height,
           ),
           child: AppBar(
-            title: Text(
-              "Cjays Apparel".toUpperCase(),
-              style: kTabBarItemFontStyle.copyWith(
-                fontSize: 20.0 * kMultiplier * height,
-                fontWeight: FontWeight.bold,
-                color: ProjectColors.kBlackColor,
-              ),
+            title: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "All Dresses".toUpperCase(),
+                  style: kTabBarItemFontStyle.copyWith(
+                    fontSize: 20.0 * kMultiplier * height,
+                    fontWeight: FontWeight.bold,
+                    color: ProjectColors.kBlackColor,
+                  ),
+                ),
+                Text(
+                  "3456 Items",
+                  style: kTabBarItemFontStyle.copyWith(
+                    fontSize: 12.0 * kMultiplier * height,
+                    color: ProjectColors.kBlackColor,
+                  ),
+                ),
+              ],
             ),
             automaticallyImplyLeading: false,
             backgroundColor: ProjectColors.kWhiteColor,
             actions: [
               IconButton(
                 icon: Icon(
-                  Icons.monetization_on,
-                  color: ProjectColors.kPrimaryColor,
-                ),
-                onPressed: () {},
-              ),
-              IconButton(
-                icon: Icon(
-                  Icons.notifications_none,
+                  Icons.favorite_border_sharp,
                   color: ProjectColors.kBlackColor,
                 ),
                 onPressed: () {},
@@ -51,8 +57,11 @@ class ShopScreen extends StatelessWidget {
             elevation: 0.0,
           ),
         ),
-        body: Center(
-          child: Text('Shop... Will be added soon'),
+        body: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: height * 0.02,
+          ),
+          child: ShopBody(),
         ),
         bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.shop),
       ),

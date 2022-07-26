@@ -1,6 +1,5 @@
 import 'package:cjays/constants/colors.dart';
 import 'package:cjays/constants/styles.dart';
-import 'package:cjays/constants/text.dart';
 import 'package:cjays/enums.dart';
 import 'package:cjays/views/home/components/home_body.dart';
 import 'package:cjays/widgets/coustom_bottom_nav_bar.dart';

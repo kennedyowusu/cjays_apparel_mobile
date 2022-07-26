@@ -20,7 +20,8 @@ class CurveAndPlusProductCard extends StatelessWidget {
 
   final double height;
   final double width;
-  final String percentage, title, oldPrice, newPrice, image;
+  final String percentage, oldPrice, newPrice, image;
+  String title = "";
   final Color color;
   final IconData icon;
 
@@ -100,7 +101,7 @@ class CurveAndPlusProductCard extends StatelessWidget {
                 color: ProjectColors.kWhiteColor.withOpacity(0.7),
                 child: Center(
                   child: Text(
-                    title.toUpperCase(),
+                    title,
                     style: kTabBarItemFontStyle.copyWith(
                       color: ProjectColors.kBlackColor,
                       fontSize: height * 0.02,
@@ -128,7 +129,7 @@ class CurveAndPlusProductCard extends StatelessWidget {
                   text: oldPrice,
                   style: kTabBarItemFontStyle.copyWith(
                     decoration: TextDecoration.lineThrough,
-                    color: ProjectColors.kVenetianRedColor,
+                    color: ProjectColors.kVenetianRedColor.withOpacity(0.3),
                     fontSize: height * 0.02,
                   ),
                 ),
