@@ -33,4 +33,10 @@ class ProjectImages {
   static const String kOutfit_1 = "assets/images/outfit-1.jpg";
   static const String kOutfit_2 = "assets/images/outfit-2.jpg";
   static const String kOutfit_3 = "assets/images/outfit-3.jpeg";
+  static const String kNewArrival = "assets/images/new-arrivals.jpg";
+  static const String kDress1 = "assets/images/dress-1.jpg";
+  static const String kDress2 = "assets/images/dress-2.jpg";
+  static const String kDress3 = "assets/images/dress-3.jpg";
+  static const String kDress4 = "assets/images/dress-4.jpg";
+  static const String kDress5 = "assets/images/dress-5.jpg";
 }

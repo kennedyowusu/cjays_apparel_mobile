@@ -1,6 +1,7 @@
 import 'package:cjays/constants/colors.dart';
 import 'package:cjays/constants/styles.dart';
 import 'package:cjays/enums.dart';
+import 'package:cjays/views/new/components/new_arrival_body.dart';
 import 'package:cjays/widgets/coustom_bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +13,7 @@ class NewArrivalScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
         backgroundColor: ProjectColors.kWhiteColor,
@@ -22,7 +24,7 @@ class NewArrivalScreen extends StatelessWidget {
           ),
           child: AppBar(
             title: Text(
-              "Cjays Apparel New".toUpperCase(),
+              "CJAYS APPAREL NEW".toUpperCase(),
               style: kTabBarItemFontStyle.copyWith(
                 fontSize: 20.0 * kMultiplier * height,
                 fontWeight: FontWeight.bold,
@@ -34,14 +36,7 @@ class NewArrivalScreen extends StatelessWidget {
             actions: [
               IconButton(
                 icon: Icon(
-                  Icons.monetization_on,
-                  color: ProjectColors.kPrimaryColor,
-                ),
-                onPressed: () {},
-              ),
-              IconButton(
-                icon: Icon(
-                  Icons.notifications_none,
+                  Icons.favorite_border_sharp,
                   color: ProjectColors.kBlackColor,
                 ),
                 onPressed: () {},
@@ -51,8 +46,9 @@ class NewArrivalScreen extends StatelessWidget {
             elevation: 0.0,
           ),
         ),
-        body: Center(
-          child: Text('New Arrival... will be added soon'),
+        body: Padding(
+          padding: EdgeInsets.symmetric(horizontal: width * 0.020),
+          child: SingleChildScrollView(child: NewArrivalBody()),
         ),
         bottomNavigationBar:
             CustomBottomNavBar(selectedMenu: MenuState.arrival),
