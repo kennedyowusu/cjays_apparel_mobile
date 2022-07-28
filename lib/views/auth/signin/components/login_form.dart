@@ -36,6 +36,50 @@ class _SignFormState extends State<SignForm> {
     }
   }
 
+  // void addError({String? error}) {
+  //   if (!errors.contains(error)) {
+  //     Future.delayed(Duration(milliseconds: 100), () {
+  //       setState(() {
+  //         errors.add(error);
+  //       });
+  //     });
+  //   }
+  // }
+
+  // Future<void> _submit() async {
+  //   if (_formKey.currentState!.validate()) {
+  //     _formKey.currentState.save();
+  //     setState(() {
+  //       isLoading = true;
+  //     });
+  //     try {
+  //       await authController.signInUser(
+  //         email: email,
+  //         password: password,
+  //       );
+  //     } on AuthError catch (error) {
+  //       addError(error: error.message);
+  //     } finally {
+  //       setState(() {
+  //         isLoading = false;
+  //       });
+  //     }
+  //   }
+  // }
+
+  // void removeError({String? error}) {
+  //   if (errors.contains(error)) {
+  //     Future.delayed(Duration(milliseconds: 100), () {
+  //       setState(() {
+  //         errors.remove(error);
+  //       });
+  //     });
+  //     setState(() {
+  //       errors.remove(error);
+  //     });
+  //   }
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Form(
