@@ -181,7 +181,9 @@ class _SplashScreenState extends State<SplashScreen>
                           context,
                           PageTransition(
                             type: PageTransitionType.rightToLeft,
-                            child: OnboardingScreen(),
+                            child: emailAddress == " "
+                                ? OnboardingScreen()
+                                : HomeScreen(),
                           ),
                         );
                       }
