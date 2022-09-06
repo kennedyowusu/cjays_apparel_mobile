@@ -100,7 +100,7 @@ class CurveAndPlusCard extends StatelessWidget {
               ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  primary: ProjectColors.kPrimaryColor,
+                  backgroundColor: ProjectColors.kPrimaryColor,
                   minimumSize: Size(
                     width * 0.2,
                     height * 0.05,
@@ -159,7 +159,7 @@ class ProductAndText extends StatelessWidget {
         Row(
           children: [
             CircleAvatar(
-              radius: height * 0.05,
+              radius: height * 0.04,
               backgroundColor: ProjectColors.kGreyColor.withOpacity(0.5),
               child: Image.asset(
                 image,
@@ -177,7 +177,7 @@ class ProductAndText extends StatelessWidget {
             child: Text(
               name,
               style: TextStyle(
-                fontSize: height * 0.02,
+                fontSize: height * 0.016,
                 color: ProjectColors.kBlackColor,
               ),
             ),

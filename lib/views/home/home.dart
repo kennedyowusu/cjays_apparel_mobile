@@ -25,7 +25,7 @@ class HomeScreen extends StatelessWidget {
             title: Text(
               "Cjays Apparel".toUpperCase(),
               style: kTabBarItemFontStyle.copyWith(
-                fontSize: 20.0 * kMultiplier * height,
+                fontSize: 18.0 * kMultiplier * height,
                 fontWeight: FontWeight.bold,
                 color: ProjectColors.kBlackColor,
               ),
@@ -53,7 +53,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: width * 0.020),
+          padding: EdgeInsets.symmetric(horizontal: width * 0.00),
           child: HomeBody(),
         ),
         bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.home),

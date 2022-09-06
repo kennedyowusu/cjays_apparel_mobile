@@ -28,7 +28,7 @@ class SecondHeaderContent extends StatelessWidget {
           Text(
             day,
             style: kTabBarItemFontStyle.copyWith(
-              fontSize: 16.0 * kMultiplier * height,
+              fontSize: 12.0 * kMultiplier * height,
               fontWeight: FontWeight.bold,
               color: color,
             ),
@@ -36,14 +36,14 @@ class SecondHeaderContent extends StatelessWidget {
           Text(
             total,
             style: kTabBarItemFontStyle.copyWith(
-              fontSize: 16.0 * kMultiplier * height,
+              fontSize: 12.0 * kMultiplier * height,
               color: color,
             ),
           ),
           Text(
             text,
             style: kTabBarItemFontStyle.copyWith(
-              fontSize: 16.0 * kMultiplier * height,
+              fontSize: 12.0 * kMultiplier * height,
               color: color,
             ),
           ),

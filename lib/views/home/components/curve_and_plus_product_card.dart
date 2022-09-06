@@ -37,8 +37,8 @@ class CurveAndPlusProductCard extends StatelessWidget {
         Stack(
           children: [
             Container(
-              height: height * 0.40,
-              width: width * 0.43,
+              height: height * 0.35,
+              width: double.infinity,
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(
@@ -104,7 +104,7 @@ class CurveAndPlusProductCard extends StatelessWidget {
                     title,
                     style: kTabBarItemFontStyle.copyWith(
                       color: ProjectColors.kBlackColor,
-                      fontSize: height * 0.02,
+                      fontSize: height * 0.016,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -121,7 +121,7 @@ class CurveAndPlusProductCard extends StatelessWidget {
               text: newPrice,
               style: kTabBarItemFontStyle.copyWith(
                 color: ProjectColors.kForestGreenColor,
-                fontSize: height * 0.02,
+                fontSize: height * 0.016,
                 fontWeight: FontWeight.bold,
               ),
               children: [
@@ -130,7 +130,7 @@ class CurveAndPlusProductCard extends StatelessWidget {
                   style: kTabBarItemFontStyle.copyWith(
                     decoration: TextDecoration.lineThrough,
                     color: ProjectColors.kVenetianRedColor.withOpacity(0.3),
-                    fontSize: height * 0.02,
+                    fontSize: height * 0.016,
                   ),
                 ),
               ],

@@ -54,21 +54,21 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                     Text(
                       "Women".toUpperCase(),
                       style: kTabBarItemFontStyle.copyWith(
-                        fontSize: 18.0 * kMultiplier * height,
+                        fontSize: 14.0 * kMultiplier * height,
                         letterSpacing: 1.2,
                       ),
                     ),
                     Text(
-                      "Curve & Plus".toUpperCase(),
+                      "Fashion".toUpperCase(),
                       style: kTabBarItemFontStyle.copyWith(
-                        fontSize: 18.0 * kMultiplier * height,
+                        fontSize: 14.0 * kMultiplier * height,
                         letterSpacing: 1.2,
                       ),
                     ),
                     Text(
-                      "Grandmas".toUpperCase(),
+                      "LIfestyle".toUpperCase(),
                       style: kTabBarItemFontStyle.copyWith(
-                        fontSize: 18.0 * kMultiplier * height,
+                        fontSize: 14.0 * kMultiplier * height,
                         letterSpacing: 1.2,
                       ),
                     ),
@@ -115,9 +115,9 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                   color: Colors.black,
                                   child: Center(
                                     child: Text(
-                                      "Free Delivery Over GHS500",
+                                      "Free Delivery Over GHS 500",
                                       style: TextStyle(
-                                        fontSize: height * 0.02,
+                                        fontSize: height * 0.016,
                                         color: ProjectColors.kWhiteColor,
                                       ),
                                     ),
@@ -142,18 +142,18 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                     children: [
                                       SecondHeader(
                                         height: height,
-                                        title: 'Monthly Discounts',
+                                        title: 'Discounts',
                                         icon: Icons.percent_outlined,
                                       ),
                                       SecondHeader(
                                         height: height,
-                                        title: 'Free Returns',
+                                        title: ' Returns',
                                         icon: Icons.calendar_today_outlined,
-                                        subtitle: '30d',
+                                        // subtitle: '30d',
                                       ),
                                       SecondHeader(
                                         height: height,
-                                        title: 'Delivery Service',
+                                        title: 'Delivery ',
                                         icon: Icons.local_shipping_outlined,
                                       ),
                                       SecondHeader(
@@ -191,7 +191,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                               "new arrivals ".toUpperCase(),
                                               style:
                                                   kTabBarItemFontStyle.copyWith(
-                                                fontSize: height * 0.02,
+                                                fontSize: height * 0.016,
                                                 color:
                                                     ProjectColors.kWhiteColor,
                                                 fontWeight: FontWeight.bold,
@@ -207,7 +207,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                                 text: 'down to '.toUpperCase(),
                                                 style: kTabBarItemFontStyle
                                                     .copyWith(
-                                                  fontSize: height * 0.02,
+                                                  fontSize: height * 0.016,
                                                   color:
                                                       ProjectColors.kWhiteColor,
                                                   fontWeight: FontWeight.bold,
@@ -217,7 +217,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                                     text: 'GHS50.00',
                                                     style: kTabBarItemFontStyle
                                                         .copyWith(
-                                                      fontSize: height * 0.02,
+                                                      fontSize: height * 0.018,
                                                       color: ProjectColors
                                                           .kWhiteColor,
                                                       fontWeight:
@@ -234,6 +234,9 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                         height: height * 0.032,
                                         width: width * 0.22,
                                         decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(
+                                            height * 0.003,
+                                          ),
                                           border: Border.all(
                                             color: ProjectColors.kWhiteColor,
                                             width: 1.2,
@@ -243,7 +246,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                           child: Text(
                                             "Shop Now".toUpperCase(),
                                             style: TextStyle(
-                                              fontSize: height * 0.015,
+                                              fontSize: height * 0.011,
                                               color: ProjectColors.kWhiteColor,
                                             ),
                                           ),
@@ -272,7 +275,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                     children: [
                                       Image.asset(
                                         ProjectImages.kCelebrate,
-                                        height: height * 0.20,
+                                        height: height * 0.16,
                                         width: width * 0.40,
                                       ),
                                       Column(
@@ -283,17 +286,17 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                             height: height,
                                             text: "Celebrate Black Friday",
                                             fontWeight: FontWeight.w600,
-                                            size: height * 0.02,
+                                            size: height * 0.018,
                                           ),
                                           DiscountText(
                                             height: height,
                                             text: "with",
                                             fontWeight: FontWeight.w600,
-                                            size: height * 0.02,
+                                            size: height * 0.018,
                                           ),
                                           DiscountText(
                                             height: height,
-                                            text: "50% off",
+                                            text: "75% off",
                                             fontWeight: FontWeight.bold,
                                             size: height * 0.04,
                                           ),
@@ -301,7 +304,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                             height: height,
                                             text: "All Products",
                                             fontWeight: FontWeight.bold,
-                                            size: height * 0.02,
+                                            size: height * 0.018,
                                           )
                                         ],
                                       ),
@@ -309,7 +312,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                   ),
                                 ),
                                 SizedBox(
-                                  height: height * 0.007,
+                                  height: height * 0.012,
                                 ),
                                 Row(
                                   mainAxisAlignment:
@@ -322,7 +325,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                       width: width,
                                     ),
                                     SizedBox(
-                                      width: width * 0.075,
+                                      width: width * 0.065,
                                     ),
                                     ProductAndText(
                                       height: height,
@@ -331,7 +334,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                       width: width,
                                     ),
                                     SizedBox(
-                                      width: width * 0.075,
+                                      width: width * 0.065,
                                     ),
                                     ProductAndText(
                                       height: height,
@@ -340,7 +343,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                       width: width,
                                     ),
                                     SizedBox(
-                                      width: width * 0.075,
+                                      width: width * 0.065,
                                     ),
                                     ProductAndText(
                                       height: height,
@@ -364,7 +367,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                       width: width,
                                     ),
                                     SizedBox(
-                                      width: width * 0.075,
+                                      width: width * 0.065,
                                     ),
                                     ProductAndText(
                                       height: height,
@@ -373,7 +376,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                       width: width,
                                     ),
                                     SizedBox(
-                                      width: width * 0.075,
+                                      width: width * 0.065,
                                     ),
                                     ProductAndText(
                                       height: height,
@@ -382,7 +385,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                       width: width,
                                     ),
                                     SizedBox(
-                                      width: width * 0.075,
+                                      width: width * 0.065,
                                     ),
                                     ProductAndText(
                                       height: height,

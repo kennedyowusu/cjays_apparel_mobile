@@ -1,8 +1,6 @@
 import 'package:cjays/constants/routes.dart';
 import 'package:cjays/constants/text.dart';
 import 'package:cjays/controllers/binding/all_controller_binding.dart';
-import 'package:cjays/views/auth/signin/sign_in.dart';
-import 'package:cjays/views/home/home.dart';
 import 'package:cjays/views/onboarding/onboarding.dart';
 import 'package:cjays/views/splash/splash.dart';
 import 'package:flutter/material.dart';

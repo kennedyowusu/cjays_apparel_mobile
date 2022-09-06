@@ -16,28 +16,28 @@ class ColorsAllDresses extends StatelessWidget {
     return Row(
       children: [
         CircleAvatar(
-          radius: height * 0.020,
+          radius: height * 0.015,
           backgroundColor: ProjectColors.kPrimaryColor,
         ),
         SizedBox(
-          width: width * 0.020,
+          width: width * 0.015,
         ),
         CircleAvatar(
-          radius: height * 0.020,
+          radius: height * 0.015,
           backgroundColor: ProjectColors.kBlackColor,
         ),
         SizedBox(
-          width: width * 0.020,
+          width: width * 0.015,
         ),
         CircleAvatar(
-          radius: height * 0.020,
+          radius: height * 0.015,
           backgroundColor: ProjectColors.kSecondaryColor,
         ),
         SizedBox(
-          width: width * 0.020,
+          width: width * 0.015,
         ),
         CircleAvatar(
-          radius: height * 0.020,
+          radius: height * 0.015,
           backgroundColor: ProjectColors.kGreyColor,
         ),
       ],

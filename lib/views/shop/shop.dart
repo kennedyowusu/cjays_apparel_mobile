@@ -54,7 +54,7 @@ class _ShopScreenState extends State<ShopScreen> {
                 Text(
                   "All Dresses".toUpperCase(),
                   style: kTabBarItemFontStyle.copyWith(
-                    fontSize: 20.0 * kMultiplier * height,
+                    fontSize: 18.0 * kMultiplier * height,
                     fontWeight: FontWeight.bold,
                     color: ProjectColors.kBlackColor,
                   ),
@@ -62,7 +62,7 @@ class _ShopScreenState extends State<ShopScreen> {
                 Text(
                   "3456 Items",
                   style: kTabBarItemFontStyle.copyWith(
-                    fontSize: 12.0 * kMultiplier * height,
+                    fontSize: 11.0 * kMultiplier * height,
                     color: ProjectColors.kBlackColor,
                   ),
                 ),

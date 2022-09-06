@@ -50,7 +50,7 @@ class _SplashScreenState extends State<SplashScreen>
     _controller.repeat();
 
     userSecureStorage.readSecureData('email').then((value) {
-      emailAddress = value!;
+      emailAddress = value ?? "";
     });
 
     super.initState();
@@ -147,7 +147,8 @@ class _SplashScreenState extends State<SplashScreen>
                               text:
                                   "Elegance, gorgeous & fashionable\ncollection makes you cool",
                               style: TextStyle(
-                                color: ProjectColors.kSecondaryColor,
+                                color:
+                                    ProjectColors.kBlackColor.withOpacity(0.5),
                                 fontSize: 14,
                                 fontWeight: FontWeight.w500,
                               ),

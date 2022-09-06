@@ -46,7 +46,7 @@ class SecondHeader extends StatelessWidget {
             Text(
               title.toUpperCase(),
               style: TextStyle(
-                fontSize: height * 0.015,
+                fontSize: height * 0.012,
                 color: ProjectColors.kBlackColor,
               ),
             ),
