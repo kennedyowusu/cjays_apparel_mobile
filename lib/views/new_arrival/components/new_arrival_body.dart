@@ -1,8 +1,8 @@
 import 'package:cjays/constants/colors.dart';
 import 'package:cjays/constants/images.dart';
 import 'package:cjays/constants/styles.dart';
-import 'package:cjays/views/new/components/items_model.dart';
-import 'package:cjays/views/new/components/second_header_content.dart';
+import 'package:cjays/views/new_arrival/components/items_model.dart';
+import 'package:cjays/views/new_arrival/components/second_header_content.dart';
 import 'package:flutter/material.dart';
 
 class NewArrivalBody extends StatelessWidget {
@@ -43,7 +43,7 @@ class NewArrivalBody extends StatelessWidget {
                   Text(
                     "New".toUpperCase(),
                     style: kTabBarItemFontStyle.copyWith(
-                      fontSize: 30.0 * kMultiplier * height,
+                      fontSize: 20.0 * kMultiplier * height,
                       fontWeight: FontWeight.bold,
                       color: ProjectColors.kWhiteColor,
                     ),
@@ -51,7 +51,7 @@ class NewArrivalBody extends StatelessWidget {
                   Text(
                     "Arrivals".toUpperCase(),
                     style: kTabBarItemFontStyle.copyWith(
-                      fontSize: 30.0 * kMultiplier * height,
+                      fontSize: 20.0 * kMultiplier * height,
                       fontWeight: FontWeight.bold,
                       color: ProjectColors.kWhiteColor,
                     ),

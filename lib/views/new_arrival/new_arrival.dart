@@ -1,7 +1,7 @@
 import 'package:cjays/constants/colors.dart';
 import 'package:cjays/constants/styles.dart';
 import 'package:cjays/enums.dart';
-import 'package:cjays/views/new/components/new_arrival_body.dart';
+import 'package:cjays/views/new_arrival/components/new_arrival_body.dart';
 import 'package:cjays/widgets/coustom_bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -26,7 +26,7 @@ class NewArrivalScreen extends StatelessWidget {
             title: Text(
               "CJAYS APPAREL NEW".toUpperCase(),
               style: kTabBarItemFontStyle.copyWith(
-                fontSize: 20.0 * kMultiplier * height,
+                fontSize: 18.0 * kMultiplier * height,
                 fontWeight: FontWeight.bold,
                 color: ProjectColors.kBlackColor,
               ),
