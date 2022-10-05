@@ -2,6 +2,7 @@ import 'package:cjays/constants/colors.dart';
 import 'package:cjays/constants/images.dart';
 import 'package:cjays/constants/sizes.dart';
 import 'package:cjays/constants/styles.dart';
+import 'package:cjays/controllers/category_controller.dart';
 import 'package:cjays/controllers/home.dart/home.dart';
 import 'package:cjays/utils/secure_storage.dart';
 import 'package:cjays/views/home/components/curve_and_plus_menu.dart';
@@ -314,86 +315,101 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                 SizedBox(
                                   height: height * 0.012,
                                 ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    ProductAndText(
-                                      height: height,
-                                      name: "Dresses",
-                                      image: ProjectImages.kDress,
-                                      width: width,
-                                    ),
-                                    SizedBox(
-                                      width: width * 0.065,
-                                    ),
-                                    ProductAndText(
-                                      height: height,
-                                      name: "Shirts",
-                                      image: ProjectImages.kShirt,
-                                      width: width,
-                                    ),
-                                    SizedBox(
-                                      width: width * 0.065,
-                                    ),
-                                    ProductAndText(
-                                      height: height,
-                                      name: "Shoes",
-                                      image: ProjectImages.kShoes,
-                                      width: width,
-                                    ),
-                                    SizedBox(
-                                      width: width * 0.065,
-                                    ),
-                                    ProductAndText(
-                                      height: height,
-                                      name: "Suits",
-                                      image: ProjectImages.kSuits,
-                                      width: width,
-                                    ),
-                                  ],
+                                GetBuilder<CategoryController>(
+                                  builder: (categoryController) {
+                                    return Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        ProductAndText(
+                                          height: height,
+                                          name: categoryController
+                                              .categoryList[4].name,
+                                          image: ProjectImages.kDress,
+                                          width: width,
+                                        ),
+                                        SizedBox(
+                                          width: width * 0.065,
+                                        ),
+                                        ProductAndText(
+                                          height: height,
+                                          name: categoryController
+                                              .categoryList[5].name,
+                                          image: ProjectImages.kShirt,
+                                          width: width,
+                                        ),
+                                        SizedBox(
+                                          width: width * 0.065,
+                                        ),
+                                        ProductAndText(
+                                          height: height,
+                                          name: categoryController
+                                              .categoryList[6].name,
+                                          image: ProjectImages.kShoes,
+                                          width: width,
+                                        ),
+                                        SizedBox(
+                                          width: width * 0.065,
+                                        ),
+                                        ProductAndText(
+                                          height: height,
+                                          name: "Suits",
+                                          image: ProjectImages.kSuits,
+                                          width: width,
+                                        ),
+                                      ],
+                                    );
+                                  },
                                 ),
                                 SizedBox(
                                   height: height * 0.02,
                                 ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    ProductAndText(
-                                      height: height,
-                                      name: "Pajamas",
-                                      image: ProjectImages.kPajamas,
-                                      width: width,
-                                    ),
-                                    SizedBox(
-                                      width: width * 0.065,
-                                    ),
-                                    ProductAndText(
-                                      height: height,
-                                      name: "Jeans",
-                                      image: ProjectImages.kJeans,
-                                      width: width,
-                                    ),
-                                    SizedBox(
-                                      width: width * 0.065,
-                                    ),
-                                    ProductAndText(
-                                      height: height,
-                                      name: "Heels",
-                                      image: ProjectImages.kHeels,
-                                      width: width,
-                                    ),
-                                    SizedBox(
-                                      width: width * 0.065,
-                                    ),
-                                    ProductAndText(
-                                      height: height,
-                                      name: "Bags",
-                                      image: ProjectImages.kBags,
-                                      width: width,
-                                    ),
-                                  ],
+                                GetBuilder<CategoryController>(
+                                  builder: (categoryController) {
+                                    return Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        ProductAndText(
+                                          height: height,
+                                          name: categoryController
+                                              .categoryList[0].name,
+                                          image: ProjectImages.kPajamas,
+                                          width: width,
+                                        ),
+                                        SizedBox(
+                                          width: width * 0.065,
+                                        ),
+                                        ProductAndText(
+                                          height: height,
+                                          name: categoryController
+                                              .categoryList[1].name,
+                                          image: ProjectImages.kJeans,
+                                          width: width,
+                                        ),
+                                        SizedBox(
+                                          width: width * 0.065,
+                                        ),
+                                        ProductAndText(
+                                          height: height,
+                                          name: categoryController
+                                              .categoryList[2].name,
+                                          image: ProjectImages.kHeels,
+                                          width: width,
+                                        ),
+                                        SizedBox(
+                                          width: width * 0.065,
+                                        ),
+                                        ProductAndText(
+                                          height: height,
+                                          name: categoryController
+                                              .categoryList[3].name,
+                                          image: ProjectImages.kBags,
+                                          width: width,
+                                        ),
+                                      ],
+                                    );
+                                  },
                                 ),
                               ],
                             );
