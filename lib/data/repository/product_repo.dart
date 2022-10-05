@@ -1,4 +1,5 @@
 import 'package:cjays/data/api/api_client.dart';
+import 'package:cjays/utils/app_constants.dart';
 import 'package:get/get.dart';
 
 class ProductRepository extends GetxService {
@@ -7,6 +8,6 @@ class ProductRepository extends GetxService {
   ProductRepository({required this.apiClient});
 
   Future<Response> getProductList() async {
-    return await apiClient.getData('end point uri');
+    return await apiClient.getData(ProjectConstants.PRODUCT_URI);
   }
 }

@@ -59,7 +59,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                       ),
                     ),
                     Text(
-                      "Fashion".toUpperCase(),
+                      "Trends".toUpperCase(),
                       style: kTabBarItemFontStyle.copyWith(
                         fontSize: 14.0 * kMultiplier * height,
                         letterSpacing: 1.2,

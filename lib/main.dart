@@ -1,5 +1,8 @@
 import 'package:cjays/constants/text.dart';
 import 'package:cjays/controllers/binding/all_controller_binding.dart';
+import 'package:cjays/controllers/category_controller.dart';
+import 'package:cjays/controllers/product_controller.dart';
+import 'package:cjays/views/home/home.dart';
 import 'package:cjays/views/recommended/recommended.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -27,6 +30,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    Get.find<CategoryController>().getCategoryList();
     return GetMaterialApp(
       initialBinding: AllControllerBinding(),
       title: ProjectText.kAppName,
@@ -38,7 +42,7 @@ class MyApp extends StatelessWidget {
       // initialRoute:
       //     initScreen == 0 ? OnboardingScreen.routeName : SplashScreen.routeName,
       // routes: routes,
-      home: RecommendationsScreen(),
+      home: HomeScreen(),
     );
   }
 }
