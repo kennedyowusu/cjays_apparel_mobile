@@ -98,38 +98,40 @@ class CurveAndPlusCard extends StatelessWidget {
               SizedBox(
                 height: height * 0.028,
               ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: ProjectColors.kPrimaryColor,
-                  minimumSize: Size(
-                    width * 0.2,
-                    height * 0.05,
-                  ),
-                  padding: EdgeInsets.all(
-                    height * 0.01,
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(
+              Center(
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: ProjectColors.kPrimaryColor,
+                    minimumSize: Size(
+                      width * 0.1,
+                      height * 0.05,
+                    ),
+                    padding: EdgeInsets.all(
                       height * 0.01,
                     ),
-                  ),
-                ),
-                onPressed: () {},
-                child: Row(
-                  children: [
-                    Text(
-                      buttonText.toUpperCase(),
-                      style: kTabBarItemFontStyle.copyWith(
-                        fontSize: height * 0.018,
-                        color: ProjectColors.kWhiteColor,
-                        fontWeight: FontWeight.bold,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(
+                        height * 0.01,
                       ),
                     ),
-                    Icon(
-                      Icons.chevron_right,
-                      color: ProjectColors.kWhiteColor,
-                    ),
-                  ],
+                  ),
+                  onPressed: () {},
+                  child: Row(
+                    children: [
+                      Text(
+                        buttonText.toUpperCase(),
+                        style: kTabBarItemFontStyle.copyWith(
+                          fontSize: height * 0.018,
+                          color: ProjectColors.kWhiteColor,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Icon(
+                        Icons.chevron_right,
+                        color: ProjectColors.kWhiteColor,
+                      ),
+                    ],
+                  ),
                 ),
               )
             ],

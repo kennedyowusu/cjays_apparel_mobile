@@ -25,7 +25,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    TabController tabController = TabController(length: 3, vsync: this);
+    TabController tabController = TabController(length: 2, vsync: this);
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
@@ -65,13 +65,13 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                         letterSpacing: 1.2,
                       ),
                     ),
-                    Text(
-                      "LIfestyle".toUpperCase(),
-                      style: kTabBarItemFontStyle.copyWith(
-                        fontSize: 14.0 * kMultiplier * height,
-                        letterSpacing: 1.2,
-                      ),
-                    ),
+                    // Text(
+                    //   "LIfestyle".toUpperCase(),
+                    //   style: kTabBarItemFontStyle.copyWith(
+                    //     fontSize: 14.0 * kMultiplier * height,
+                    //     letterSpacing: 1.2,
+                    //   ),
+                    // ),
                   ],
                 ),
               ),
@@ -399,7 +399,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                             );
                           },
                         ),
-                        // CURVES AND PLUS STARTS HERE
+                        // FASHIONABLE CLOTHES STARTS HERE
 
                         ListView.builder(
                           shrinkWrap: true,
@@ -422,11 +422,11 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                       title: "Daily Flash Sale",
                                       text: "Up To",
                                       subtitle: "50% Off",
-                                      buttonText: "Buy Most liked",
+                                      buttonText: "Most liked",
                                       image: ProjectImages.kBeach,
                                     ),
                                     SizedBox(
-                                      width: width * 0.020,
+                                      width: width * 0.05,
                                     ),
                                     CurveAndPlusCard(
                                       height: height,
@@ -550,27 +550,27 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                           },
                         ),
 
-                        // Grand Mother Starts Here
-                        ListView.builder(
-                          itemCount: 1,
-                          itemBuilder: (c, i) {
-                            return Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  "I will figure out what to put here soon"
-                                      .toUpperCase(),
-                                  style: kTabBarItemFontStyle.copyWith(
-                                    fontSize: 18.0 * kMultiplier * height,
-                                    letterSpacing: 1.2,
-                                    fontWeight: FontWeight.bold,
-                                    color: ProjectColors.kBlackColor,
-                                  ),
-                                ),
-                              ],
-                            );
-                          },
-                        )
+                        // LIFESTYLE Starts Here
+                        // ListView.builder(
+                        //   itemCount: 1,
+                        //   itemBuilder: (c, i) {
+                        //     return Column(
+                        //       mainAxisAlignment: MainAxisAlignment.center,
+                        //       children: [
+                        //         Text(
+                        //           "I will figure out what to put here soon"
+                        //               .toUpperCase(),
+                        //           style: kTabBarItemFontStyle.copyWith(
+                        //             fontSize: 18.0 * kMultiplier * height,
+                        //             letterSpacing: 1.2,
+                        //             fontWeight: FontWeight.bold,
+                        //             color: ProjectColors.kBlackColor,
+                        //           ),
+                        //         ),
+                        //       ],
+                        //     );
+                        //   },
+                        // )
                       ],
                     ),
                   ),
