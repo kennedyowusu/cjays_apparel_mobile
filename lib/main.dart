@@ -8,6 +8,7 @@ import 'package:cjays/views/auth/signup/sign_up_screen.dart';
 import 'package:cjays/views/home/home.dart';
 import 'package:cjays/views/new_arrival/new_arrival.dart';
 import 'package:cjays/views/onboarding/onboarding.dart';
+import 'package:cjays/views/product_details/product_details.dart';
 import 'package:cjays/views/shop/shop.dart';
 import 'package:cjays/views/splash/splash.dart';
 import 'package:flutter/material.dart';
@@ -45,7 +46,7 @@ class MyApp extends StatelessWidget {
       // initialRoute:
       //     initScreen == 0 ? OnboardingScreen.routeName : SplashScreen.routeName,
       // routes: routes,
-      home: NewArrivalScreen(),
+      home: ProductDetailsScreen(),
     );
   }
 }
