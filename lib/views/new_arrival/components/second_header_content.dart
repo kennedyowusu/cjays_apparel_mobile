@@ -21,7 +21,7 @@ class SecondHeaderContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: height * 0.12,
-      width: width * 0.25,
+      width: double.maxFinite,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

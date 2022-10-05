@@ -1,7 +1,14 @@
 import 'package:cjays/constants/routes.dart';
 import 'package:cjays/constants/text.dart';
 import 'package:cjays/controllers/binding/all_controller_binding.dart';
+import 'package:cjays/views/auth/complete_profile/components/body.dart';
+import 'package:cjays/views/auth/forgot_password/forgot_password_screen.dart';
+import 'package:cjays/views/auth/signin/sign_in.dart';
+import 'package:cjays/views/auth/signup/sign_up_screen.dart';
+import 'package:cjays/views/home/home.dart';
+import 'package:cjays/views/new_arrival/new_arrival.dart';
 import 'package:cjays/views/onboarding/onboarding.dart';
+import 'package:cjays/views/shop/shop.dart';
 import 'package:cjays/views/splash/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -35,9 +42,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute:
-          initScreen == 0 ? OnboardingScreen.routeName : SplashScreen.routeName,
-      routes: routes,
+      // initialRoute:
+      //     initScreen == 0 ? OnboardingScreen.routeName : SplashScreen.routeName,
+      // routes: routes,
+      home: NewArrivalScreen(),
     );
   }
 }

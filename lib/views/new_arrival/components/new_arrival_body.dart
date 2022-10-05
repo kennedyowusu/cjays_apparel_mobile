@@ -68,68 +68,68 @@ class NewArrivalBody extends StatelessWidget {
           ],
         ),
         SizedBox(height: height * 0.007),
-        Row(
-          children: [
-            Container(
-              height: height * 0.10,
-              width: width * 0.96,
-              decoration: BoxDecoration(
-                color: ProjectColors.kBlackColor,
-                border: Border.all(
-                  color: ProjectColors.kBlackColor.withOpacity(0.5),
-                  width: 0.1,
-                ),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    height: height * 0.10,
-                    decoration: BoxDecoration(
-                      color: ProjectColors.kWhiteColor,
-                      border: Border.all(
-                        color: ProjectColors.kWhiteColor,
-                        width: 0.1,
-                      ),
-                    ),
-                    child: SecondHeaderContent(
-                      height: height,
-                      width: width,
-                      day: 'Today',
-                      total: '35',
-                      text: 'New Arrivals',
-                      color: ProjectColors.kBlackColor,
-                    ),
-                  ),
-                  SecondHeaderContent(
-                    height: height,
-                    width: width,
-                    day: '07/06',
-                    total: '35',
-                    text: 'New Arrivals',
-                    color: ProjectColors.kWhiteColor.withOpacity(0.7),
-                  ),
-                  SecondHeaderContent(
-                    height: height,
-                    width: width,
-                    day: '14/08',
-                    total: '35',
-                    text: 'New Arrivals',
-                    color: ProjectColors.kWhiteColor.withOpacity(0.7),
-                  ),
-                  SecondHeaderContent(
-                    height: height,
-                    width: width,
-                    day: '04/11',
-                    total: '35',
-                    text: 'New Arrivals',
-                    color: ProjectColors.kWhiteColor.withOpacity(0.7),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
+        // Row(
+        //   children: [
+        //     Container(
+        //       height: height * 0.10,
+        //       width: width * 0.96,
+        //       decoration: BoxDecoration(
+        //         color: ProjectColors.kBlackColor,
+        //         border: Border.all(
+        //           color: ProjectColors.kBlackColor.withOpacity(0.5),
+        //           width: 0.1,
+        //         ),
+        //       ),
+        //       child: Row(
+        //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //         children: [
+        //           // Container(
+        //           //   height: height * 0.10,
+        //           //   decoration: BoxDecoration(
+        //           //     color: ProjectColors.kWhiteColor,
+        //           //     border: Border.all(
+        //           //       color: ProjectColors.kWhiteColor,
+        //           //       width: 0.1,
+        //           //     ),
+        //           //   ),
+        //           //   child: SecondHeaderContent(
+        //           //     height: height,
+        //           //     width: width,
+        //           //     day: 'Today',
+        //           //     total: '35',
+        //           //     text: 'New Arrivals',
+        //           //     color: ProjectColors.kBlackColor,
+        //           //   ),
+        //           // ),
+        //           SecondHeaderContent(
+        //             height: height,
+        //             width: width,
+        //             day: '07/06',
+        //             total: '35',
+        //             text: 'New Arrivals',
+        //             color: ProjectColors.kWhiteColor.withOpacity(0.7),
+        //           ),
+        //           SecondHeaderContent(
+        //             height: height,
+        //             width: width,
+        //             day: '14/08',
+        //             total: '35',
+        //             text: 'New Arrivals',
+        //             color: ProjectColors.kWhiteColor.withOpacity(0.7),
+        //           ),
+        //           // SecondHeaderContent(
+        //           //   height: height,
+        //           //   width: width,
+        //           //   day: '04/11',
+        //           //   total: '35',
+        //           //   text: 'New Arrivals',
+        //           //   color: ProjectColors.kWhiteColor.withOpacity(0.7),
+        //           // ),
+        //         ],
+        //       ),
+        //     ),
+        //   ],
+        // ),
         SizedBox(height: height * 0.007),
         SizedBox(
           height: height * 0.68,

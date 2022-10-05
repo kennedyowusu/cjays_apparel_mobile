@@ -1,7 +1,7 @@
 import 'package:cjays/constants/colors.dart';
 import 'package:cjays/constants/styles.dart';
 import 'package:cjays/enums.dart';
-import 'package:cjays/widgets/coustom_bottom_nav_bar.dart';
+import 'package:cjays/widgets/custom_bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 
 class BagScreen extends StatelessWidget {
