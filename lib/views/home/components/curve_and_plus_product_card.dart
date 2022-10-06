@@ -1,6 +1,7 @@
 import 'package:cjays/constants/colors.dart';
 import 'package:cjays/constants/styles.dart';
 import 'package:cjays/controllers/home.dart/home.dart';
+import 'package:cjays/utils/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -42,7 +43,11 @@ class CurveAndPlusProductCard extends StatelessWidget {
                 width: double.infinity,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage(
+                    // image: AssetImage(
+                    //   image,
+                    // ),
+                    image: NetworkImage(
+                      // "${ProjectConstants.BASE_URL}/products/$image",
                       image,
                     ),
                     fit: BoxFit.cover,

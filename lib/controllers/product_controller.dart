@@ -10,6 +10,9 @@ class ProductController extends GetxController {
 
   List<dynamic> _productList = [];
 
+  bool _isLoaded = false;
+  bool get isLoaded => _isLoaded;
+
   List<dynamic> get productList => _productList;
 
   Future<void> getProductList() async {
@@ -23,6 +26,7 @@ class ProductController extends GetxController {
         response.body.map((e) => Product.fromJson(e)).toList(),
       );
       debugPrint('Product List: ${_productList.length}');
+      _isLoaded = true;
       update();
     } else {
       Get.snackbar(

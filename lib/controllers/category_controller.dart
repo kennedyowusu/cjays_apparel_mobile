@@ -12,6 +12,9 @@ class CategoryController extends GetxController {
 
   List<dynamic> get categoryList => _categoryList;
 
+  bool _isLoaded = false;
+  bool get isLoaded => _isLoaded;
+
   Future<void> getCategoryList() async {
     Response response = await categoryRepository.getCategoryList();
 
@@ -23,6 +26,8 @@ class CategoryController extends GetxController {
       );
 
       debugPrint('Category List: ${_categoryList.length}');
+
+      _isLoaded = true;
       update();
     } else {
       Get.snackbar(

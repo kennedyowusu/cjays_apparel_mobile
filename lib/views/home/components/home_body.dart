@@ -4,11 +4,14 @@ import 'package:cjays/constants/sizes.dart';
 import 'package:cjays/constants/styles.dart';
 import 'package:cjays/controllers/category_controller.dart';
 import 'package:cjays/controllers/home.dart/home.dart';
+import 'package:cjays/controllers/product_controller.dart';
+import 'package:cjays/utils/app_constants.dart';
 import 'package:cjays/utils/secure_storage.dart';
 import 'package:cjays/views/home/components/curve_and_plus_menu.dart';
 import 'package:cjays/views/home/components/curve_and_plus_product_card.dart';
 import 'package:cjays/views/home/components/discount_text.dart';
 import 'package:cjays/views/home/components/second_header.dart';
+import 'package:cjays/widgets/loader.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -317,48 +320,55 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                 ),
                                 GetBuilder<CategoryController>(
                                   builder: (categoryController) {
-                                    return Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        ProductAndText(
-                                          height: height,
-                                          name: categoryController
-                                              .categoryList[4].name,
-                                          image: ProjectImages.kDress,
-                                          width: width,
-                                        ),
-                                        SizedBox(
-                                          width: width * 0.065,
-                                        ),
-                                        ProductAndText(
-                                          height: height,
-                                          name: categoryController
-                                              .categoryList[5].name,
-                                          image: ProjectImages.kShirt,
-                                          width: width,
-                                        ),
-                                        SizedBox(
-                                          width: width * 0.065,
-                                        ),
-                                        ProductAndText(
-                                          height: height,
-                                          name: categoryController
-                                              .categoryList[6].name,
-                                          image: ProjectImages.kShoes,
-                                          width: width,
-                                        ),
-                                        SizedBox(
-                                          width: width * 0.065,
-                                        ),
-                                        ProductAndText(
-                                          height: height,
-                                          name: "Suits",
-                                          image: ProjectImages.kSuits,
-                                          width: width,
-                                        ),
-                                      ],
-                                    );
+                                    return categoryController.isLoaded
+                                        ? Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              ProductAndText(
+                                                height: height,
+                                                name: categoryController
+                                                    .categoryList[4].name,
+                                                image: ProjectImages.kDress,
+                                                width: width,
+                                              ),
+                                              SizedBox(
+                                                width: width * 0.065,
+                                              ),
+                                              ProductAndText(
+                                                height: height,
+                                                name: categoryController
+                                                    .categoryList[5].name,
+                                                image: ProjectImages.kShirt,
+                                                width: width,
+                                              ),
+                                              SizedBox(
+                                                width: width * 0.065,
+                                              ),
+                                              ProductAndText(
+                                                height: height,
+                                                name: categoryController
+                                                    .categoryList[6].name,
+                                                image: ProjectImages.kShoes,
+                                                width: width,
+                                              ),
+                                              SizedBox(
+                                                width: width * 0.065,
+                                              ),
+                                              ProductAndText(
+                                                height: height,
+                                                name: "Suitszz",
+                                                image: ProjectImages.kSuits,
+                                                width: width,
+                                              ),
+                                            ],
+                                          )
+                                        : Center(
+                                            child: CircularProgressIndicator(
+                                              color:
+                                                  ProjectColors.kPrimaryColor,
+                                            ),
+                                          );
                                   },
                                 ),
                                 SizedBox(
@@ -366,56 +376,60 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                 ),
                                 GetBuilder<CategoryController>(
                                   builder: (categoryController) {
-                                    return Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        ProductAndText(
-                                          height: height,
-                                          name: categoryController
-                                              .categoryList[0].name,
-                                          image: ProjectImages.kPajamas,
-                                          width: width,
-                                        ),
-                                        SizedBox(
-                                          width: width * 0.065,
-                                        ),
-                                        ProductAndText(
-                                          height: height,
-                                          name: categoryController
-                                              .categoryList[1].name,
-                                          image: ProjectImages.kJeans,
-                                          width: width,
-                                        ),
-                                        SizedBox(
-                                          width: width * 0.065,
-                                        ),
-                                        ProductAndText(
-                                          height: height,
-                                          name: categoryController
-                                              .categoryList[2].name,
-                                          image: ProjectImages.kHeels,
-                                          width: width,
-                                        ),
-                                        SizedBox(
-                                          width: width * 0.065,
-                                        ),
-                                        ProductAndText(
-                                          height: height,
-                                          name: categoryController
-                                              .categoryList[3].name,
-                                          image: ProjectImages.kBags,
-                                          width: width,
-                                        ),
-                                      ],
-                                    );
+                                    return categoryController.isLoaded
+                                        ? Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              ProductAndText(
+                                                height: height,
+                                                name: categoryController
+                                                    .categoryList[0].name,
+                                                image: ProjectImages.kPajamas,
+                                                width: width,
+                                              ),
+                                              SizedBox(
+                                                width: width * 0.065,
+                                              ),
+                                              ProductAndText(
+                                                height: height,
+                                                name: categoryController
+                                                    .categoryList[1].name,
+                                                image: ProjectImages.kJeans,
+                                                width: width,
+                                              ),
+                                              SizedBox(
+                                                width: width * 0.065,
+                                              ),
+                                              ProductAndText(
+                                                height: height,
+                                                name: categoryController
+                                                    .categoryList[2].name,
+                                                image: ProjectImages.kHeels,
+                                                width: width,
+                                              ),
+                                              SizedBox(
+                                                width: width * 0.065,
+                                              ),
+                                              ProductAndText(
+                                                height: height,
+                                                name: categoryController
+                                                    .categoryList[3].name,
+                                                image: ProjectImages.kBags,
+                                                width: width,
+                                              ),
+                                            ],
+                                          )
+                                        : Center(
+                                            child: Loader(),
+                                          );
                                   },
                                 ),
                               ],
                             );
                           },
                         ),
-                        // FASHIONABLE CLOTHES STARTS HERE
+                        // TRENDS CLOTHES STARTS HERE
 
                         ListView.builder(
                           shrinkWrap: true,
@@ -484,82 +498,255 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                     ),
                                   ],
                                 ),
-                                Row(
-                                  children: [
-                                    CurveAndPlusProductCard(
-                                      height: height,
-                                      width: width,
-                                      percentage: '-21%',
-                                      title: 'Curves + Plus'.toUpperCase(),
-                                      image: ProjectImages.kCurvy,
-                                      newPrice: 'GHS75.00',
-                                      oldPrice: ' GHS100.00',
-                                      color: homeController.isFavorite.value
-                                          ? ProjectColors.kVenetianRedColor
-                                          : ProjectColors.kBlackColor,
-                                      icon: homeController.isFavorite.value
-                                          ? Icons.favorite
-                                          : Icons.favorite_border,
-                                    ),
-                                    SizedBox(
-                                      width: width * 0.030,
-                                    ),
-                                    CurveAndPlusProductCard(
-                                      height: height,
-                                      width: width,
-                                      percentage: '-21%',
-                                      title: 'Curves + Plus'.toUpperCase(),
-                                      image: ProjectImages.kCurvyPlus,
-                                      newPrice: 'GHS80.00 ',
-                                      oldPrice: 'GHS110.00',
-                                      color: homeController.isFavorite.value
-                                          ? ProjectColors.kVenetianRedColor
-                                          : ProjectColors.kBlackColor,
-                                      icon: homeController.isFavorite.value
-                                          ? Icons.favorite
-                                          : Icons.favorite_border,
-                                    ),
-                                  ],
+                                GetBuilder<ProductController>(
+                                  builder: (productController) {
+                                    return Row(
+                                      children: [
+                                        CurveAndPlusProductCard(
+                                          height: height,
+                                          width: width,
+                                          percentage: '-21%',
+                                          title: productController
+                                              .productList[0].name,
+                                          image: ProjectConstants.BASE_URL +
+                                              ProjectConstants.UPLOAD_URL +
+                                              productController
+                                                  .productList[0].image,
+                                          newPrice: productController
+                                              .productList[0].price,
+                                          oldPrice: ' GHS100.00',
+                                          color: homeController.isFavorite.value
+                                              ? ProjectColors.kVenetianRedColor
+                                              : ProjectColors.kBlackColor,
+                                          icon: homeController.isFavorite.value
+                                              ? Icons.favorite
+                                              : Icons.favorite_border,
+                                        ),
+                                        SizedBox(
+                                          width: width * 0.030,
+                                        ),
+                                        CurveAndPlusProductCard(
+                                          height: height,
+                                          width: width,
+                                          percentage: '-21%',
+                                          title: productController
+                                              .productList[1].name,
+                                          image: ProjectConstants.BASE_URL +
+                                              ProjectConstants.UPLOAD_URL +
+                                              productController
+                                                  .productList[1].image,
+                                          newPrice: productController
+                                              .productList[1].price,
+                                          oldPrice: ' GHS110.00',
+                                          color: homeController.isFavorite.value
+                                              ? ProjectColors.kVenetianRedColor
+                                              : ProjectColors.kBlackColor,
+                                          icon: homeController.isFavorite.value
+                                              ? Icons.favorite
+                                              : Icons.favorite_border,
+                                        ),
+                                      ],
+                                    );
+                                  },
                                 ),
                                 SizedBox(
                                   height: height * 0.004,
                                 ),
-                                Row(
-                                  children: [
-                                    CurveAndPlusProductCard(
-                                      height: height,
-                                      width: width,
-                                      percentage: '-21%',
-                                      title: 'Curves + Plus'.toUpperCase(),
-                                      image: ProjectImages.kCurvyPlus4,
-                                      newPrice: 'GHS110.00',
-                                      oldPrice: ' GHS140.00',
-                                      color: homeController.isFavorite.value
-                                          ? ProjectColors.kVenetianRedColor
-                                          : ProjectColors.kBlackColor,
-                                      icon: homeController.isFavorite.value
-                                          ? Icons.favorite
-                                          : Icons.favorite_border,
-                                    ),
-                                    SizedBox(
-                                      width: width * 0.030,
-                                    ),
-                                    CurveAndPlusProductCard(
-                                      height: height,
-                                      width: width,
-                                      percentage: '-21%',
-                                      title: 'Curves + Plus'.toUpperCase(),
-                                      image: ProjectImages.kCurvyPlus3,
-                                      newPrice: 'GHS90.00 ',
-                                      oldPrice: 'GHS120.00',
-                                      color: homeController.isFavorite.value
-                                          ? ProjectColors.kVenetianRedColor
-                                          : ProjectColors.kBlackColor,
-                                      icon: homeController.isFavorite.value
-                                          ? Icons.favorite
-                                          : Icons.favorite_border,
-                                    ),
-                                  ],
+                                GetBuilder<ProductController>(
+                                  builder: (productController) {
+                                    return Row(
+                                      children: [
+                                        CurveAndPlusProductCard(
+                                          height: height,
+                                          width: width,
+                                          percentage: '-21%',
+                                          title: productController
+                                              .productList[2].name,
+                                          image: ProjectConstants.BASE_URL +
+                                              ProjectConstants.UPLOAD_URL +
+                                              productController
+                                                  .productList[2].image,
+                                          newPrice: productController
+                                              .productList[2].price,
+                                          oldPrice: ' GHS140.00',
+                                          color: homeController.isFavorite.value
+                                              ? ProjectColors.kVenetianRedColor
+                                              : ProjectColors.kBlackColor,
+                                          icon: homeController.isFavorite.value
+                                              ? Icons.favorite
+                                              : Icons.favorite_border,
+                                        ),
+                                        SizedBox(
+                                          width: width * 0.030,
+                                        ),
+                                        CurveAndPlusProductCard(
+                                          height: height,
+                                          width: width,
+                                          percentage: '-21%',
+                                          title: productController
+                                              .productList[3].name,
+                                          image: ProjectConstants.BASE_URL +
+                                              ProjectConstants.UPLOAD_URL +
+                                              productController
+                                                  .productList[3].image,
+                                          newPrice: productController
+                                              .productList[3].price,
+                                          oldPrice: ' GHS120.00',
+                                          color: homeController.isFavorite.value
+                                              ? ProjectColors.kVenetianRedColor
+                                              : ProjectColors.kBlackColor,
+                                          icon: homeController.isFavorite.value
+                                              ? Icons.favorite
+                                              : Icons.favorite_border,
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                ),
+
+                                SizedBox(
+                                  height: height * 0.004,
+                                ),
+
+                                // GetBuilder<ProductController>(
+                                //   builder: (productController) {
+                                //     return Row(
+                                //       children: List.generate(
+                                //         2,
+                                //         (index) => CurveAndPlusProductCard(
+                                //           height: height,
+                                //           width: width,
+                                //           percentage: '-21%',
+                                //           title: 'Curves + Plus'.toUpperCase(),
+                                //           image: ProjectImages.kCurvyPlus3,
+                                //           newPrice: productController
+                                //               .productList[index].price,
+                                //           oldPrice: 'GHS120.00',
+                                //           color: homeController.isFavorite.value
+                                //               ? ProjectColors.kVenetianRedColor
+                                //               : ProjectColors.kBlackColor,
+                                //           icon: homeController.isFavorite.value
+                                //               ? Icons.favorite
+                                //               : Icons.favorite_border,
+                                //         ),
+                                //       ),
+                                //     );
+                                //   },
+                                // ),
+                                SizedBox(
+                                  height: height * 0.004,
+                                ),
+                                GetBuilder<ProductController>(
+                                  builder: (productController) {
+                                    return Row(
+                                      children: [
+                                        CurveAndPlusProductCard(
+                                          height: height,
+                                          width: width,
+                                          percentage: '-21%',
+                                          title: productController
+                                              .productList[4].name,
+                                          image:
+                                              // ignore: prefer_interpolation_to_compose_strings
+                                              ProjectConstants.BASE_URL +
+                                                  ProjectConstants.UPLOAD_URL +
+                                                  productController
+                                                      .productList[4].image,
+                                          newPrice: productController
+                                              .productList[4].price,
+                                          oldPrice: ' GHS140.00',
+                                          color: homeController.isFavorite.value
+                                              ? ProjectColors.kVenetianRedColor
+                                              : ProjectColors.kBlackColor,
+                                          icon: homeController.isFavorite.value
+                                              ? Icons.favorite
+                                              : Icons.favorite_border,
+                                        ),
+                                        SizedBox(
+                                          width: width * 0.030,
+                                        ),
+                                        CurveAndPlusProductCard(
+                                          height: height,
+                                          width: width,
+                                          percentage: '-21%',
+                                          title: productController
+                                              .productList[5].name,
+                                          image:
+                                              // ignore: prefer_interpolation_to_compose_strings
+                                              ProjectConstants.BASE_URL +
+                                                  ProjectConstants.UPLOAD_URL +
+                                                  productController
+                                                      .productList[5].image,
+                                          newPrice: productController
+                                              .productList[5].price,
+                                          oldPrice: ' GHS120.00',
+                                          color: homeController.isFavorite.value
+                                              ? ProjectColors.kVenetianRedColor
+                                              : ProjectColors.kBlackColor,
+                                          icon: homeController.isFavorite.value
+                                              ? Icons.favorite
+                                              : Icons.favorite_border,
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                ),
+
+                                SizedBox(
+                                  height: height * 0.004,
+                                ),
+                                GetBuilder<ProductController>(
+                                  builder: (productController) {
+                                    return Row(
+                                      children: [
+                                        CurveAndPlusProductCard(
+                                          height: height,
+                                          width: width,
+                                          percentage: '-21%',
+                                          title: productController
+                                              .productList[6].name,
+                                          image:
+                                              // ignore: prefer_interpolation_to_compose_strings
+                                              ProjectConstants.BASE_URL +
+                                                  ProjectConstants.UPLOAD_URL +
+                                                  productController
+                                                      .productList[6].image,
+                                          newPrice: productController
+                                              .productList[6].price,
+                                          oldPrice: ' GHS140.00',
+                                          color: homeController.isFavorite.value
+                                              ? ProjectColors.kVenetianRedColor
+                                              : ProjectColors.kBlackColor,
+                                          icon: homeController.isFavorite.value
+                                              ? Icons.favorite
+                                              : Icons.favorite_border,
+                                        ),
+                                        SizedBox(
+                                          width: width * 0.030,
+                                        ),
+                                        CurveAndPlusProductCard(
+                                          height: height,
+                                          width: width,
+                                          percentage: '-21%',
+                                          title: productController
+                                              .productList[7].name,
+                                          image: ProjectConstants.BASE_URL +
+                                              ProjectConstants.UPLOAD_URL +
+                                              productController
+                                                  .productList[7].image,
+                                          newPrice: productController
+                                              .productList[7].price,
+                                          oldPrice: ' GHS120.00',
+                                          color: homeController.isFavorite.value
+                                              ? ProjectColors.kVenetianRedColor
+                                              : ProjectColors.kBlackColor,
+                                          icon: homeController.isFavorite.value
+                                              ? Icons.favorite
+                                              : Icons.favorite_border,
+                                        ),
+                                      ],
+                                    );
+                                  },
                                 ),
                               ],
                             );

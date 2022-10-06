@@ -31,6 +31,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.find<CategoryController>().getCategoryList();
+    Get.find<ProductController>().getProductList();
     return GetMaterialApp(
       initialBinding: AllControllerBinding(),
       title: ProjectText.kAppName,

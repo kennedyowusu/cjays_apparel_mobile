@@ -5,6 +5,7 @@ class ProjectConstants {
   static const String PRODUCT_URI = "/api/products";
   static const String RECOMMENDED_PRODUCT_URI = "/api/recommended";
   static const String CATEGORY_URI = "/api/categories";
+  static const String UPLOAD_URL = "/products/";
 
   static const String TOKEN = "BDtoken";
 }
