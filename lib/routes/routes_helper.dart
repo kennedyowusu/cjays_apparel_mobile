@@ -14,8 +14,8 @@ class RouteHelper {
 
   static getInitialRoute() => home;
   static getRecommendedRoute() => recommended;
-  static getProductDetailsScreenRoute(String productId) =>
-      '$productDetailsScreen/$productId';
+  static getProductDetailsScreenRoute(int productId) =>
+      '$productDetailsScreen?productId=$productId';
 
   static List<GetPage> routes = [
     GetPage(
@@ -29,7 +29,10 @@ class RouteHelper {
     ),
     GetPage(
       name: productDetailsScreen,
-      page: () => ProductDetailsScreen(),
+      page: () {
+        var productId = Get.parameters['productId'];
+        return ProductDetailsScreen(productId: int.parse(productId!));
+      },
       transition: Transition.fadeIn,
     ),
   ];

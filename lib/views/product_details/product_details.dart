@@ -1,3 +1,9 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:cjays/controllers/product_controller.dart';
+import 'package:cjays/utils/app_constants.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
 import 'package:cjays/constants/colors.dart';
 import 'package:cjays/constants/images.dart';
 import 'package:cjays/views/home/home.dart';
@@ -5,18 +11,24 @@ import 'package:cjays/widgets/expanded_text.dart';
 import 'package:cjays/widgets/medium_text.dart';
 import 'package:cjays/widgets/project_icons.dart';
 import 'package:cjays/widgets/small_text.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
+  int productId;
+
   ProductDetailsScreen({
-    super.key,
-  });
+    Key? key,
+    required this.productId,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
+
+    var product = Get.find<ProductController>().productList[productId];
+
+    debugPrint('ProductDetailsScreen: productId: $productId');
+    debugPrint('Product Name: ${product.name}');
 
     return SafeArea(
       child: Scaffold(
@@ -31,7 +43,10 @@ class ProductDetailsScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: ProjectColors.kPrimaryColor,
                   image: DecorationImage(
-                    image: AssetImage(ProjectImages.kDress),
+                    // image: AssetImage(ProjectImages.kDress),
+                    image: NetworkImage(ProjectConstants.BASE_URL +
+                        ProjectConstants.UPLOAD_URL +
+                        product.image!),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -107,7 +122,7 @@ class ProductDetailsScreen extends StatelessWidget {
                       height: 20,
                     ),
                     MediumText(
-                      text: 'Dress Name',
+                      text: product.name!,
                       color: ProjectColors.kBlackColor,
                       size: 20.0,
                     ),
@@ -124,8 +139,7 @@ class ProductDetailsScreen extends StatelessWidget {
                     Expanded(
                       child: SingleChildScrollView(
                         child: ExpandableText(
-                          text:
-                              "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit, tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit, quia. Quo neque error repudiandae fuga? Ipsa laudantium molestias eos  sapiente officiis modi at sunt excepturi expedita sint? Sed quibusdam recusandae alias error harum maxime adipisci amet laborum. Perspiciatis  minima nesciunt dolorem! Officiis iure rerum voluptates a cumque velit  quibusdam sed amet tempora. Sit laborum ab, eius fugit doloribus tenetur  fugiat, temporibus enim commodi iusto libero magni deleniti quod quam  consequuntur! Commodi minima excepturi repudiandae velit hic maxime doloremque. Quaerat provident commodi consectetur veniam similique ad  earum omnis ipsum saepe, voluptas, hic voluptates pariatur est explicabo  fugiat, dolorum eligendi quam cupiditate excepturi mollitia maiores labore  suscipit quas? Nulla, placeat. Voluptatem quaerat non architecto ab laudantium modi minima sunt esse temporibus sint culpa, recusandae aliquam numquam  totam ratione voluptas quod exercitationem fuga. Possimus quis earum veniam  quasi aliquam eligendi, placeat qui corporis!",
+                          text: product.description!,
                         ),
                       ),
                     ),
@@ -219,7 +233,7 @@ class ProductDetailsScreen extends StatelessWidget {
                     ),
                     child: Center(
                       child: MediumText(
-                        text: 'GH¢ 50.00 | Add to Cart',
+                        text: "GH₵ ${product.price} | Add to Cart",
                         color: ProjectColors.kWhiteColor,
                         size: 15,
                       ),

@@ -507,15 +507,14 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                         CurveAndPlusProductCard(
                                           height: height,
                                           width: width,
-                                          percentage: '-21%',
-                                          title: productController
-                                              .productList[0].name,
+                                          percentage: '-19%',
+                                          title: "",
                                           image: ProjectConstants.BASE_URL +
                                               ProjectConstants.UPLOAD_URL +
                                               productController
-                                                  .productList[0].image,
+                                                  .productList[0].image!,
                                           newPrice: productController
-                                              .productList[0].price,
+                                              .productList[0].price!,
                                           oldPrice: ' GHS100.00',
                                           color: homeController.isFavorite.value
                                               ? ProjectColors.kVenetianRedColor
@@ -524,17 +523,24 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                               ? Icons.favorite
                                               : Icons.favorite_border,
                                           onTap: () {
-                                            debugPrint(productController
-                                                    .productList[0].name +
-                                                'zero');
+                                            debugPrint(
+                                              productController
+                                                  .productList[0].name!,
+                                            );
 
                                             Get.toNamed(
                                               RouteHelper
                                                   .getProductDetailsScreenRoute(
-                                                      productController
-                                                          .productList[0].id
-                                                          .toString()),
+                                                0,
+                                              ),
                                             );
+
+                                            // Get.toNamed(
+                                            //   RouteHelper
+                                            //       .getProductDetailsScreenRoute(
+                                            //           productController
+                                            //               .productList[0].id!),
+                                            // );
                                           },
                                         ),
                                         SizedBox(
@@ -544,14 +550,13 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                           height: height,
                                           width: width,
                                           percentage: '-21%',
-                                          title: productController
-                                              .productList[1].name,
+                                          title: "",
                                           image: ProjectConstants.BASE_URL +
                                               ProjectConstants.UPLOAD_URL +
                                               productController
-                                                  .productList[1].image,
+                                                  .productList[1].image!,
                                           newPrice: productController
-                                              .productList[1].price,
+                                              .productList[1].price!,
                                           oldPrice: ' GHS110.00',
                                           color: homeController.isFavorite.value
                                               ? ProjectColors.kVenetianRedColor
@@ -564,13 +569,19 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                               productController
                                                   .productList[1].name,
                                             );
+
                                             Get.toNamed(
                                               RouteHelper
                                                   .getProductDetailsScreenRoute(
-                                                      productController
-                                                          .productList[1].id
-                                                          .toString()),
+                                                1,
+                                              ),
                                             );
+                                            //   Get.toNamed(
+                                            //     RouteHelper
+                                            //         .getProductDetailsScreenRoute(
+                                            //             productController
+                                            //                 .productList[1].id!),
+                                            //   );
                                           },
                                         ),
                                       ],
@@ -588,14 +599,13 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                           height: height,
                                           width: width,
                                           percentage: '-21%',
-                                          title: productController
-                                              .productList[2].name,
+                                          title: "",
                                           image: ProjectConstants.BASE_URL +
                                               ProjectConstants.UPLOAD_URL +
                                               productController
-                                                  .productList[2].image,
+                                                  .productList[2].image!,
                                           newPrice: productController
-                                              .productList[2].price,
+                                              .productList[2].price!,
                                           oldPrice: ' GHS140.00',
                                           color: homeController.isFavorite.value
                                               ? ProjectColors.kVenetianRedColor
@@ -612,10 +622,16 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                             Get.toNamed(
                                               RouteHelper
                                                   .getProductDetailsScreenRoute(
-                                                      productController
-                                                          .productList[2].id
-                                                          .toString()),
+                                                2,
+                                              ),
                                             );
+
+                                            // Get.toNamed(
+                                            //   RouteHelper
+                                            //       .getProductDetailsScreenRoute(
+                                            //           productController
+                                            //               .productList[2].id!),
+                                            // );
                                           },
                                         ),
                                         SizedBox(
@@ -625,14 +641,13 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                           height: height,
                                           width: width,
                                           percentage: '-21%',
-                                          title: productController
-                                              .productList[3].name,
+                                          title: "",
                                           image: ProjectConstants.BASE_URL +
                                               ProjectConstants.UPLOAD_URL +
                                               productController
-                                                  .productList[3].image,
+                                                  .productList[3].image!,
                                           newPrice: productController
-                                              .productList[3].price,
+                                              .productList[3].price!,
                                           oldPrice: ' GHS120.00',
                                           color: homeController.isFavorite.value
                                               ? ProjectColors.kVenetianRedColor
@@ -649,10 +664,16 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                             Get.toNamed(
                                               RouteHelper
                                                   .getProductDetailsScreenRoute(
-                                                      productController
-                                                          .productList[3].id
-                                                          .toString()),
+                                                3,
+                                              ),
                                             );
+
+                                            // Get.toNamed(
+                                            //   RouteHelper
+                                            //       .getProductDetailsScreenRoute(
+                                            //           productController
+                                            //               .productList[3].id!),
+                                            // );
                                           },
                                         ),
                                       ],
@@ -700,16 +721,13 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                           height: height,
                                           width: width,
                                           percentage: '-21%',
-                                          title: productController
-                                              .productList[4].name,
-                                          image:
-                                              // ignore: prefer_interpolation_to_compose_strings
-                                              ProjectConstants.BASE_URL +
-                                                  ProjectConstants.UPLOAD_URL +
-                                                  productController
-                                                      .productList[4].image,
+                                          title: "",
+                                          image: ProjectConstants.BASE_URL +
+                                              ProjectConstants.UPLOAD_URL +
+                                              productController
+                                                  .productList[4].image!,
                                           newPrice: productController
-                                              .productList[4].price,
+                                              .productList[4].price!,
                                           oldPrice: ' GHS140.00',
                                           color: homeController.isFavorite.value
                                               ? ProjectColors.kVenetianRedColor
@@ -726,10 +744,16 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                             Get.toNamed(
                                               RouteHelper
                                                   .getProductDetailsScreenRoute(
-                                                      productController
-                                                          .productList[4].id
-                                                          .toString()),
+                                                4,
+                                              ),
                                             );
+
+                                            // Get.toNamed(
+                                            //   RouteHelper
+                                            //       .getProductDetailsScreenRoute(
+                                            //           productController
+                                            //               .productList[4].id!),
+                                            // );
                                           },
                                         ),
                                         SizedBox(
@@ -739,16 +763,13 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                           height: height,
                                           width: width,
                                           percentage: '-21%',
-                                          title: productController
-                                              .productList[5].name,
-                                          image:
-                                              // ignore: prefer_interpolation_to_compose_strings
-                                              ProjectConstants.BASE_URL +
-                                                  ProjectConstants.UPLOAD_URL +
-                                                  productController
-                                                      .productList[5].image,
+                                          title: "",
+                                          image: ProjectConstants.BASE_URL +
+                                              ProjectConstants.UPLOAD_URL +
+                                              productController
+                                                  .productList[5].image!,
                                           newPrice: productController
-                                              .productList[5].price,
+                                              .productList[5].price!,
                                           oldPrice: ' GHS120.00',
                                           color: homeController.isFavorite.value
                                               ? ProjectColors.kVenetianRedColor
@@ -765,10 +786,16 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                             Get.toNamed(
                                               RouteHelper
                                                   .getProductDetailsScreenRoute(
-                                                      productController
-                                                          .productList[5].id
-                                                          .toString()),
+                                                5,
+                                              ),
                                             );
+
+                                            //   Get.toNamed(
+                                            //     RouteHelper
+                                            //         .getProductDetailsScreenRoute(
+                                            //             productController
+                                            //                 .productList[5].id!),
+                                            //   );
                                           },
                                         ),
                                       ],
@@ -787,16 +814,13 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                           height: height,
                                           width: width,
                                           percentage: '-21%',
-                                          title: productController
-                                              .productList[6].name,
-                                          image:
-                                              // ignore: prefer_interpolation_to_compose_strings
-                                              ProjectConstants.BASE_URL +
-                                                  ProjectConstants.UPLOAD_URL +
-                                                  productController
-                                                      .productList[6].image,
+                                          title: "",
+                                          image: ProjectConstants.BASE_URL +
+                                              ProjectConstants.UPLOAD_URL +
+                                              productController
+                                                  .productList[6].image!,
                                           newPrice: productController
-                                              .productList[6].price,
+                                              .productList[6].price!,
                                           oldPrice: ' GHS140.00',
                                           color: homeController.isFavorite.value
                                               ? ProjectColors.kVenetianRedColor
@@ -813,10 +837,16 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                             Get.toNamed(
                                               RouteHelper
                                                   .getProductDetailsScreenRoute(
-                                                      productController
-                                                          .productList[6].id
-                                                          .toString()),
+                                                6,
+                                              ),
                                             );
+
+                                            // Get.toNamed(
+                                            //   RouteHelper
+                                            //       .getProductDetailsScreenRoute(
+                                            //           productController
+                                            //               .productList[6].id!),
+                                            // );
                                           },
                                         ),
                                         SizedBox(
@@ -826,14 +856,13 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                           height: height,
                                           width: width,
                                           percentage: '-21%',
-                                          title: productController
-                                              .productList[7].name,
+                                          title: "",
                                           image: ProjectConstants.BASE_URL +
                                               ProjectConstants.UPLOAD_URL +
                                               productController
-                                                  .productList[7].image,
+                                                  .productList[7].image!,
                                           newPrice: productController
-                                              .productList[7].price,
+                                              .productList[7].price!,
                                           oldPrice: ' GHS120.00',
                                           color: homeController.isFavorite.value
                                               ? ProjectColors.kVenetianRedColor
@@ -850,10 +879,17 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                             Get.toNamed(
                                               RouteHelper
                                                   .getProductDetailsScreenRoute(
-                                                      productController
-                                                          .productList[7].id
-                                                          .toString()),
+                                                7,
+                                              ),
                                             );
+
+                                            // Get.toNamed(
+                                            //   RouteHelper
+                                            //       .getProductDetailsScreenRoute(
+                                            //           productController
+                                            //               .productList[7].id
+                                            //               ),
+                                            // );
                                           },
                                         ),
                                       ],
