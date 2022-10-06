@@ -330,7 +330,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                               ProductAndText(
                                                 height: height,
                                                 name: categoryController
-                                                    .categoryList[4].name,
+                                                    .categoryList[4].name!,
                                                 image: ProjectImages.kDress,
                                                 width: width,
                                               ),
@@ -340,7 +340,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                               ProductAndText(
                                                 height: height,
                                                 name: categoryController
-                                                    .categoryList[5].name,
+                                                    .categoryList[5].name!,
                                                 image: ProjectImages.kShirt,
                                                 width: width,
                                               ),
@@ -350,7 +350,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                               ProductAndText(
                                                 height: height,
                                                 name: categoryController
-                                                    .categoryList[6].name,
+                                                    .categoryList[6].name!,
                                                 image: ProjectImages.kShoes,
                                                 width: width,
                                               ),
@@ -386,7 +386,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                               ProductAndText(
                                                 height: height,
                                                 name: categoryController
-                                                    .categoryList[0].name,
+                                                    .categoryList[0].name!,
                                                 image: ProjectImages.kPajamas,
                                                 width: width,
                                               ),
@@ -396,7 +396,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                               ProductAndText(
                                                 height: height,
                                                 name: categoryController
-                                                    .categoryList[1].name,
+                                                    .categoryList[1].name!,
                                                 image: ProjectImages.kJeans,
                                                 width: width,
                                               ),
@@ -406,7 +406,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                               ProductAndText(
                                                 height: height,
                                                 name: categoryController
-                                                    .categoryList[2].name,
+                                                    .categoryList[2].name!,
                                                 image: ProjectImages.kHeels,
                                                 width: width,
                                               ),
@@ -416,7 +416,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                               ProductAndText(
                                                 height: height,
                                                 name: categoryController
-                                                    .categoryList[3].name,
+                                                    .categoryList[3].name!,
                                                 image: ProjectImages.kBags,
                                                 width: width,
                                               ),

@@ -8,9 +8,9 @@ class CategoryController extends GetxController {
 
   CategoryController({required this.categoryRepository});
 
-  List<dynamic> _categoryList = [];
+  List<Category> _categoryList = [];
 
-  List<dynamic> get categoryList => _categoryList;
+  List<Category> get categoryList => _categoryList;
 
   bool _isLoaded = false;
   bool get isLoaded => _isLoaded;
@@ -21,9 +21,13 @@ class CategoryController extends GetxController {
     if (response.statusCode == 200) {
       _categoryList = [];
 
-      _categoryList.addAll(
-        response.body.map((e) => Category.fromJson(e)).toList(),
-      );
+      for (var item in response.body) {
+        _categoryList.add(Category.fromJson(item));
+      }
+
+      // _categoryList.addAll(
+      //   response.body.map((e) => Category.fromJson(e)).toList(),
+      // );
 
       debugPrint('Category List: ${_categoryList.length}');
 

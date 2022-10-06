@@ -1,3 +1,4 @@
+import 'package:cjays/views/all_category/all_categories.dart';
 import 'package:cjays/views/home/home.dart';
 import 'package:cjays/views/product_details/product_details.dart';
 import 'package:cjays/views/recommended/recommended.dart';
@@ -7,6 +8,7 @@ class RouteHelper {
   static const String home = '/';
   static const String recommended = '/recommended';
   static const String productDetailsScreen = '/product-details-screen';
+  static const String allCategoryScreen = '/all-category-screen';
 
   // static getProductDetailsScreenRoute(String productId) {
   //   return Get.toNamed(productDetailsScreen, arguments: productId);
@@ -16,6 +18,9 @@ class RouteHelper {
   static getRecommendedRoute() => recommended;
   static getProductDetailsScreenRoute(int productId) =>
       '$productDetailsScreen?productId=$productId';
+
+  static getAllCategoryScreen(int categoryId) =>
+      "$allCategoryScreen?categoryId=$categoryId";
 
   static List<GetPage> routes = [
     GetPage(
@@ -30,10 +35,18 @@ class RouteHelper {
     GetPage(
       name: productDetailsScreen,
       page: () {
-        var productId = Get.parameters['productId'];
+        String? productId = Get.parameters['productId'];
         return ProductDetailsScreen(productId: int.parse(productId!));
       },
       transition: Transition.fadeIn,
     ),
+    // GetPage(
+    //   name: allCategoryScreen,
+    //   page: () {
+    //     String? categoryId = Get.parameters['categoryId'];
+    //     return AllCategoryScreen(categoryId: int.parse(categoryId ?? ''));
+    //   },
+    //   transition: Transition.fadeIn,
+    // ),
   ];
 }
