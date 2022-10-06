@@ -1,10 +1,12 @@
 import 'package:cjays/constants/colors.dart';
 import 'package:cjays/constants/images.dart';
+import 'package:cjays/views/home/home.dart';
 import 'package:cjays/widgets/expanded_text.dart';
 import 'package:cjays/widgets/medium_text.dart';
 import 'package:cjays/widgets/project_icons.dart';
 import 'package:cjays/widgets/small_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
   ProductDetailsScreen({
@@ -43,7 +45,9 @@ class ProductDetailsScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(() => HomeScreen());
+                    },
                     child: ProjectIcon(
                       icon: Icons.arrow_back_ios,
                       color: ProjectColors.kWhiteColor,

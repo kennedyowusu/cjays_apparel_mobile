@@ -2,6 +2,7 @@ import 'package:cjays/constants/text.dart';
 import 'package:cjays/controllers/binding/all_controller_binding.dart';
 import 'package:cjays/controllers/category_controller.dart';
 import 'package:cjays/controllers/product_controller.dart';
+import 'package:cjays/routes/routes_helper.dart';
 import 'package:cjays/views/home/home.dart';
 import 'package:cjays/views/recommended/recommended.dart';
 import 'package:flutter/material.dart';
@@ -37,13 +38,12 @@ class MyApp extends StatelessWidget {
       title: ProjectText.kAppName,
       debugShowCheckedModeBanner: false,
       defaultTransition: Transition.rightToLeft,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
       // initialRoute:
       //     initScreen == 0 ? OnboardingScreen.routeName : SplashScreen.routeName,
       // routes: routes,
       home: HomeScreen(),
+      initialRoute: RouteHelper.home,
+      getPages: RouteHelper.routes,
     );
   }
 }

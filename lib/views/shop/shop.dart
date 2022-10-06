@@ -87,7 +87,7 @@ class _ShopScreenState extends State<ShopScreen> {
           padding: EdgeInsets.symmetric(
             horizontal: height * 0.02,
           ),
-          child: ShopBody(),
+          // child: ShopBody(),
         ),
         bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.shop),
       ),

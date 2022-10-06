@@ -17,6 +17,7 @@ class CurveAndPlusProductCard extends StatelessWidget {
     required this.image,
     required this.color,
     required this.icon,
+    required this.onTap,
   }) : super(key: key);
 
   final double height;
@@ -25,6 +26,7 @@ class CurveAndPlusProductCard extends StatelessWidget {
   String title = "";
   final Color color;
   final IconData icon;
+  final Function() onTap;
 
   final HomeController homeController = Get.put(HomeController());
 
@@ -38,19 +40,24 @@ class CurveAndPlusProductCard extends StatelessWidget {
           ),
           Stack(
             children: [
-              Container(
-                height: height * 0.35,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    // image: AssetImage(
-                    //   image,
-                    // ),
-                    image: NetworkImage(
-                      // "${ProjectConstants.BASE_URL}/products/$image",
-                      image,
+              InkWell(
+                onTap: () {
+                  onTap();
+                },
+                child: Container(
+                  height: height * 0.35,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      // image: AssetImage(
+                      //   image,
+                      // ),
+                      image: NetworkImage(
+                        // "${ProjectConstants.BASE_URL}/products/$image",
+                        image,
+                      ),
+                      fit: BoxFit.cover,
                     ),
-                    fit: BoxFit.cover,
                   ),
                 ),
               ),

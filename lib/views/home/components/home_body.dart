@@ -5,12 +5,14 @@ import 'package:cjays/constants/styles.dart';
 import 'package:cjays/controllers/category_controller.dart';
 import 'package:cjays/controllers/home.dart/home.dart';
 import 'package:cjays/controllers/product_controller.dart';
+import 'package:cjays/routes/routes_helper.dart';
 import 'package:cjays/utils/app_constants.dart';
 import 'package:cjays/utils/secure_storage.dart';
 import 'package:cjays/views/home/components/curve_and_plus_menu.dart';
 import 'package:cjays/views/home/components/curve_and_plus_product_card.dart';
 import 'package:cjays/views/home/components/discount_text.dart';
 import 'package:cjays/views/home/components/second_header.dart';
+import 'package:cjays/views/product_details/product_details.dart';
 import 'package:cjays/widgets/loader.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -521,6 +523,19 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                           icon: homeController.isFavorite.value
                                               ? Icons.favorite
                                               : Icons.favorite_border,
+                                          onTap: () {
+                                            debugPrint(productController
+                                                    .productList[0].name +
+                                                'zero');
+
+                                            Get.toNamed(
+                                              RouteHelper
+                                                  .getProductDetailsScreenRoute(
+                                                      productController
+                                                          .productList[0].id
+                                                          .toString()),
+                                            );
+                                          },
                                         ),
                                         SizedBox(
                                           width: width * 0.030,
@@ -544,6 +559,19 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                           icon: homeController.isFavorite.value
                                               ? Icons.favorite
                                               : Icons.favorite_border,
+                                          onTap: () {
+                                            debugPrint(
+                                              productController
+                                                  .productList[1].name,
+                                            );
+                                            Get.toNamed(
+                                              RouteHelper
+                                                  .getProductDetailsScreenRoute(
+                                                      productController
+                                                          .productList[1].id
+                                                          .toString()),
+                                            );
+                                          },
                                         ),
                                       ],
                                     );
@@ -575,6 +603,20 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                           icon: homeController.isFavorite.value
                                               ? Icons.favorite
                                               : Icons.favorite_border,
+                                          onTap: () {
+                                            debugPrint(
+                                              productController
+                                                  .productList[2].name,
+                                            );
+
+                                            Get.toNamed(
+                                              RouteHelper
+                                                  .getProductDetailsScreenRoute(
+                                                      productController
+                                                          .productList[2].id
+                                                          .toString()),
+                                            );
+                                          },
                                         ),
                                         SizedBox(
                                           width: width * 0.030,
@@ -598,6 +640,20 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                           icon: homeController.isFavorite.value
                                               ? Icons.favorite
                                               : Icons.favorite_border,
+                                          onTap: () {
+                                            debugPrint(
+                                              productController
+                                                  .productList[3].name,
+                                            );
+
+                                            Get.toNamed(
+                                              RouteHelper
+                                                  .getProductDetailsScreenRoute(
+                                                      productController
+                                                          .productList[3].id
+                                                          .toString()),
+                                            );
+                                          },
                                         ),
                                       ],
                                     );
@@ -661,6 +717,20 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                           icon: homeController.isFavorite.value
                                               ? Icons.favorite
                                               : Icons.favorite_border,
+                                          onTap: () {
+                                            debugPrint(
+                                              productController
+                                                  .productList[4].name,
+                                            );
+
+                                            Get.toNamed(
+                                              RouteHelper
+                                                  .getProductDetailsScreenRoute(
+                                                      productController
+                                                          .productList[4].id
+                                                          .toString()),
+                                            );
+                                          },
                                         ),
                                         SizedBox(
                                           width: width * 0.030,
@@ -686,6 +756,20 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                           icon: homeController.isFavorite.value
                                               ? Icons.favorite
                                               : Icons.favorite_border,
+                                          onTap: () {
+                                            debugPrint(
+                                              productController
+                                                  .productList[5].name,
+                                            );
+
+                                            Get.toNamed(
+                                              RouteHelper
+                                                  .getProductDetailsScreenRoute(
+                                                      productController
+                                                          .productList[5].id
+                                                          .toString()),
+                                            );
+                                          },
                                         ),
                                       ],
                                     );
@@ -720,6 +804,20 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                           icon: homeController.isFavorite.value
                                               ? Icons.favorite
                                               : Icons.favorite_border,
+                                          onTap: () {
+                                            debugPrint(
+                                              productController
+                                                  .productList[6].name,
+                                            );
+
+                                            Get.toNamed(
+                                              RouteHelper
+                                                  .getProductDetailsScreenRoute(
+                                                      productController
+                                                          .productList[6].id
+                                                          .toString()),
+                                            );
+                                          },
                                         ),
                                         SizedBox(
                                           width: width * 0.030,
@@ -743,6 +841,20 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                           icon: homeController.isFavorite.value
                                               ? Icons.favorite
                                               : Icons.favorite_border,
+                                          onTap: () {
+                                            debugPrint(
+                                              productController
+                                                  .productList[7].name,
+                                            );
+
+                                            Get.toNamed(
+                                              RouteHelper
+                                                  .getProductDetailsScreenRoute(
+                                                      productController
+                                                          .productList[7].id
+                                                          .toString()),
+                                            );
+                                          },
                                         ),
                                       ],
                                     );
