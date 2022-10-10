@@ -152,97 +152,105 @@ class ProductDetailsScreen extends StatelessWidget {
             ),
           ],
         ),
-        bottomNavigationBar: Container(
-          height: height * 0.125,
-          padding: EdgeInsets.only(
-            left: 20.0,
-            right: 20.0,
-            top: 20.0,
-            bottom: 30.0,
-          ),
-          decoration: BoxDecoration(
-            color: ProjectColors.kBlackColor,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(10.0),
-              topRight: Radius.circular(10.0),
-            ),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                height: height * 0.08,
-                width: width * 0.26,
-                decoration: BoxDecoration(
-                  color: ProjectColors.kWhiteColor,
-                  borderRadius: BorderRadius.circular(10),
+        bottomNavigationBar: GetBuilder<ProductController>(
+          builder: (productController) {
+            return Container(
+              height: height * 0.125,
+              padding: EdgeInsets.only(
+                left: 20.0,
+                right: 20.0,
+                top: 20.0,
+                bottom: 30.0,
+              ),
+              decoration: BoxDecoration(
+                color: ProjectColors.kBlackColor,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(10.0),
+                  topRight: Radius.circular(10.0),
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    CircleAvatar(
-                      backgroundColor: ProjectColors.kPrimaryColor,
-                      radius: 10.0,
-                      child: GestureDetector(
-                        onTap: () {},
-                        child: Icon(
-                          Icons.remove,
-                          color: ProjectColors.kWhiteColor,
-                          size: 15.0,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    height: height * 0.08,
+                    width: width * 0.26,
+                    decoration: BoxDecoration(
+                      color: ProjectColors.kWhiteColor,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CircleAvatar(
+                          backgroundColor: ProjectColors.kPrimaryColor,
+                          radius: 10.0,
+                          child: GestureDetector(
+                            onTap: () {
+                              productController.setQuantity(false);
+                            },
+                            child: Icon(
+                              Icons.remove,
+                              color: ProjectColors.kWhiteColor,
+                              size: 15.0,
+                            ),
+                          ),
                         ),
-                      ),
+                        SizedBox(
+                          width: 20.0,
+                        ),
+                        MediumText(
+                          text: productController.quantity.toString(),
+                          size: 15,
+                        ),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        CircleAvatar(
+                          backgroundColor: ProjectColors.kPrimaryColor,
+                          radius: 10.0,
+                          child: Center(
+                            child: GestureDetector(
+                              onTap: () {
+                                productController.setQuantity(true);
+                              },
+                              child: Icon(
+                                Icons.add,
+                                color: ProjectColors.kWhiteColor,
+                                size: 15.0,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                    SizedBox(
-                      width: 20.0,
-                    ),
-                    MediumText(
-                      text: "1",
-                      size: 15,
-                    ),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    CircleAvatar(
-                      backgroundColor: ProjectColors.kPrimaryColor,
-                      radius: 10.0,
-                      child: Center(
-                        child: GestureDetector(
-                          onTap: () {},
-                          child: Icon(
-                            Icons.add,
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () {},
+                      child: Container(
+                        height: height * 0.08,
+                        decoration: BoxDecoration(
+                          color: ProjectColors.kPrimaryColor,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Center(
+                          child: MediumText(
+                            text: "GH₵ ${product.price} | Add to Cart",
                             color: ProjectColors.kWhiteColor,
-                            size: 15.0,
+                            size: 15,
                           ),
                         ),
                       ),
                     ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                width: 20,
-              ),
-              Expanded(
-                child: GestureDetector(
-                  onTap: () {},
-                  child: Container(
-                    height: height * 0.08,
-                    decoration: BoxDecoration(
-                      color: ProjectColors.kPrimaryColor,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Center(
-                      child: MediumText(
-                        text: "GH₵ ${product.price} | Add to Cart",
-                        color: ProjectColors.kWhiteColor,
-                        size: 15,
-                      ),
-                    ),
                   ),
-                ),
+                ],
               ),
-            ],
-          ),
+            );
+          },
         ),
       ),
     );

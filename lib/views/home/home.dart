@@ -53,7 +53,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: width * 0.00),
+          padding: EdgeInsets.symmetric(horizontal: width * 0.001),
           child: HomeBody(),
         ),
         bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.home),

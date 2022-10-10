@@ -13,6 +13,9 @@ class ProductController extends GetxController {
   bool _isLoaded = false;
   bool get isLoaded => _isLoaded;
 
+  int _quantity = 0;
+  int get quantity => _quantity;
+
   List<Product> get productList => _productList;
 
   Future<void> getProductList() async {
@@ -37,5 +40,36 @@ class ProductController extends GetxController {
         backgroundColor: Colors.red,
       );
     }
+  }
+
+  void setQuantity(bool isIncrement) {
+    if (isIncrement) {
+      _quantity = checkQuantity(_quantity + 1);
+    } else {
+      _quantity = checkQuantity(_quantity - 1);
+    }
+    update();
+  }
+
+  int checkQuantity(int quantity) {
+    if (quantity < 0) {
+      showSnackBar("Sorry", "Quantity can't be less than 0");
+      return 0;
+    } else if (quantity > 10) {
+      showSnackBar("Oops", "Quantity can't be more than 10");
+      return 10;
+    } else {
+      return quantity;
+    }
+  }
+
+  SnackbarController showSnackBar(String title, String message) {
+    return Get.snackbar(
+      title,
+      message,
+      snackPosition: SnackPosition.BOTTOM,
+      colorText: Colors.white,
+      backgroundColor: Colors.red,
+    );
   }
 }

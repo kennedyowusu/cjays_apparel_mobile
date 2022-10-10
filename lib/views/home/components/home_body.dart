@@ -31,7 +31,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    TabController tabController = TabController(length: 2, vsync: this);
+    TabController tabController = TabController(length: 3, vsync: this);
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
@@ -71,13 +71,13 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                         letterSpacing: 1.2,
                       ),
                     ),
-                    // Text(
-                    //   "LIfestyle".toUpperCase(),
-                    //   style: kTabBarItemFontStyle.copyWith(
-                    //     fontSize: 14.0 * kMultiplier * height,
-                    //     letterSpacing: 1.2,
-                    //   ),
-                    // ),
+                    Text(
+                      "Trends".toUpperCase(),
+                      style: kTabBarItemFontStyle.copyWith(
+                        fontSize: 14.0 * kMultiplier * height,
+                        letterSpacing: 1.2,
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -103,6 +103,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                           itemCount: 1,
                           itemBuilder: (_, i) {
                             return Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 SizedBox(
                                   height: height * 0.007,
@@ -320,6 +321,86 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                 SizedBox(
                                   height: height * 0.012,
                                 ),
+                                Text(
+                                  "Categories",
+                                  style: kTabBarItemFontStyle.copyWith(
+                                    fontSize: height * 0.018,
+                                    color: ProjectColors.kBlackColor,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: height * 0.012,
+                                ),
+                                SizedBox(
+                                  height: 20.0,
+                                  child: ListView(
+                                    scrollDirection: Axis.horizontal,
+                                    children: [
+                                      GetBuilder<CategoryController>(
+                                        builder: (categoryController) {
+                                          return Row(
+                                            children: List.generate(
+                                              categoryController
+                                                  .categoryList.length,
+                                              (index) {
+                                                return Padding(
+                                                  padding: EdgeInsets.only(
+                                                    left: 8.0,
+                                                  ),
+                                                  child: OutlinedButton(
+                                                    style: OutlinedButton
+                                                        .styleFrom(
+                                                      side: BorderSide(
+                                                        color: ProjectColors
+                                                            .kGreyColor,
+                                                        width: 1.2,
+                                                      ),
+                                                      shape:
+                                                          RoundedRectangleBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(
+                                                          height * 0.003,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    onPressed: () {
+                                                      // print the number of items in a category
+                                                      // print(categoryController
+                                                      //     .categoryList[index]
+                                                      //     .items
+                                                      //     .length);
+                                                      debugPrint(
+                                                        "Category Content is: ${categoryController.categoryList[index].name}",
+                                                      );
+                                                    },
+                                                    child: Text(
+                                                      categoryController
+                                                          .categoryList[index]
+                                                          .name
+                                                          .toString(),
+                                                      style:
+                                                          kTabBarItemFontStyle
+                                                              .copyWith(
+                                                        fontSize:
+                                                            height * 0.018,
+                                                        color: ProjectColors
+                                                            .kBlackColor,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: height * 0.020,
+                                ),
                                 GetBuilder<CategoryController>(
                                   builder: (categoryController) {
                                     return categoryController.isLoaded
@@ -340,7 +421,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                               ProductAndText(
                                                 height: height,
                                                 name: categoryController
-                                                    .categoryList[5].name!,
+                                                    .categoryList[4].name!,
                                                 image: ProjectImages.kShirt,
                                                 width: width,
                                               ),
@@ -350,7 +431,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                               ProductAndText(
                                                 height: height,
                                                 name: categoryController
-                                                    .categoryList[6].name!,
+                                                    .categoryList[4].name!,
                                                 image: ProjectImages.kShoes,
                                                 width: width,
                                               ),
@@ -902,26 +983,26 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                         ),
 
                         // LIFESTYLE Starts Here
-                        // ListView.builder(
-                        //   itemCount: 1,
-                        //   itemBuilder: (c, i) {
-                        //     return Column(
-                        //       mainAxisAlignment: MainAxisAlignment.center,
-                        //       children: [
-                        //         Text(
-                        //           "I will figure out what to put here soon"
-                        //               .toUpperCase(),
-                        //           style: kTabBarItemFontStyle.copyWith(
-                        //             fontSize: 18.0 * kMultiplier * height,
-                        //             letterSpacing: 1.2,
-                        //             fontWeight: FontWeight.bold,
-                        //             color: ProjectColors.kBlackColor,
-                        //           ),
-                        //         ),
-                        //       ],
-                        //     );
-                        //   },
-                        // )
+                        ListView.builder(
+                          itemCount: 1,
+                          itemBuilder: (c, i) {
+                            return Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "I will figure out what to put here soon"
+                                      .toUpperCase(),
+                                  style: kTabBarItemFontStyle.copyWith(
+                                    fontSize: 18.0 * kMultiplier * height,
+                                    letterSpacing: 1.2,
+                                    fontWeight: FontWeight.bold,
+                                    color: ProjectColors.kBlackColor,
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
+                        )
                       ],
                     ),
                   ),
