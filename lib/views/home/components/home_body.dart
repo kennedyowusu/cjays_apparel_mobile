@@ -8,6 +8,7 @@ import 'package:cjays/controllers/product_controller.dart';
 import 'package:cjays/routes/routes_helper.dart';
 import 'package:cjays/utils/app_constants.dart';
 import 'package:cjays/utils/secure_storage.dart';
+import 'package:cjays/views/each_category/each_category.dart';
 import 'package:cjays/views/home/components/curve_and_plus_menu.dart';
 import 'package:cjays/views/home/components/curve_and_plus_product_card.dart';
 import 'package:cjays/views/home/components/discount_text.dart';
@@ -372,6 +373,30 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                                       //     .length);
                                                       debugPrint(
                                                         "Category Content is: ${categoryController.categoryList[index].name}",
+                                                      );
+
+                                                      // navigate to the category page
+                                                      // Navigator.push(
+                                                      //   context,
+                                                      //   MaterialPageRoute(
+                                                      //     builder: (context) =>
+                                                      //         EachCategoryScreen(
+                                                      //       category:
+                                                      //           categoryController
+                                                      //                   .categoryList[
+                                                      //               index],
+                                                      //     ),
+                                                      //   ),
+                                                      // );
+
+                                                      Get.to(
+                                                        () =>
+                                                            EachCategoryScreen(
+                                                          category:
+                                                              categoryController
+                                                                      .categoryList[
+                                                                  index],
+                                                        ),
                                                       );
                                                     },
                                                     child: Text(
