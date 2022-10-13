@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:cjays/constants/colors.dart';
-import 'package:cjays/constants/images.dart';
 import 'package:cjays/views/home/home.dart';
 import 'package:cjays/widgets/expanded_text.dart';
 import 'package:cjays/widgets/medium_text.dart';

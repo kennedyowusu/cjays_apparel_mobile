@@ -13,7 +13,7 @@ import 'package:cjays/views/home/components/curve_and_plus_menu.dart';
 import 'package:cjays/views/home/components/curve_and_plus_product_card.dart';
 import 'package:cjays/views/home/components/discount_text.dart';
 import 'package:cjays/views/home/components/second_header.dart';
-import 'package:cjays/views/product_details/product_details.dart';
+import 'package:cjays/views/owner_recommend.dart/owner_recommend.dart';
 import 'package:cjays/widgets/loader.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -73,7 +73,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                       ),
                     ),
                     Text(
-                      "Trends".toUpperCase(),
+                      "Recommended".toUpperCase(),
                       style: kTabBarItemFontStyle.copyWith(
                         fontSize: 14.0 * kMultiplier * height,
                         letterSpacing: 1.2,
@@ -371,6 +371,11 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                                       //     .categoryList[index]
                                                       //     .items
                                                       //     .length);
+                                                      debugPrint(
+                                                        "Category Content is: ${categoryController.categoryList[index].id}",
+                                                      );
+
+                                                      // print the content of each category
                                                       debugPrint(
                                                         "Category Content is: ${categoryController.categoryList[index].name}",
                                                       );
@@ -1007,27 +1012,28 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                           },
                         ),
 
-                        // LIFESTYLE Starts Here
-                        ListView.builder(
-                          itemCount: 1,
-                          itemBuilder: (c, i) {
-                            return Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  "I will figure out what to put here soon"
-                                      .toUpperCase(),
-                                  style: kTabBarItemFontStyle.copyWith(
-                                    fontSize: 18.0 * kMultiplier * height,
-                                    letterSpacing: 1.2,
-                                    fontWeight: FontWeight.bold,
-                                    color: ProjectColors.kBlackColor,
-                                  ),
-                                ),
-                              ],
-                            );
-                          },
-                        )
+                        // Recommended Starts Here
+                        OwnerRecommendedProducts(),
+                        // ListView.builder(
+                        //   itemCount: 1,
+                        //   itemBuilder: (c, i) {
+                        //     return Column(
+                        //       mainAxisAlignment: MainAxisAlignment.center,
+                        //       children: [
+                        //         Text(
+                        //           "I will figure out what to put here soon"
+                        //               .toUpperCase(),
+                        //           style: kTabBarItemFontStyle.copyWith(
+                        //             fontSize: 18.0 * kMultiplier * height,
+                        //             letterSpacing: 1.2,
+                        //             fontWeight: FontWeight.bold,
+                        //             color: ProjectColors.kBlackColor,
+                        //           ),
+                        //         ),
+                        //       ],
+                        //     );
+                        //   },
+                        // )
                       ],
                     ),
                   ),

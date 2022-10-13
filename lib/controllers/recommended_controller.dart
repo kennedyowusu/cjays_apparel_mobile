@@ -20,9 +20,9 @@ class RecommendedController extends GetxController {
     if (response.statusCode == 200) {
       _recommendedList = [];
 
-      // _recommendedList.addAll(
-      //   response.body.map((e) => Recommended.fromJson(e)).toList(),
-      // );
+      for (var item in response.body) {
+        _recommendedList.add(item);
+      }
 
       debugPrint('Recommended List: ${_recommendedList.length}');
 

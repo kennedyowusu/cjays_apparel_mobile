@@ -96,9 +96,6 @@ class EachCategoryScreen extends StatelessWidget {
                                 overflow: TextOverflow.ellipsis,
                               ),
                             ),
-                            SizedBox(
-                              width: 0,
-                            ),
                           ],
                         ),
                       ),

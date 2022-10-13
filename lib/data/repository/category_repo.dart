@@ -9,5 +9,7 @@ class CategoryRepository {
 
   Future<Response> getCategoryList() async {
     return await apiClient.getData(ProjectConstants.CATEGORY_URI);
+    // return await apiClient
+    //     .getData(ProjectConstants.PRODUCTS_IN_EACH_CATEGORY_URI);
   }
 }
