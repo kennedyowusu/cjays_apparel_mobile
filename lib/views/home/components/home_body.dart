@@ -374,12 +374,25 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                                       //     .items
                                                       //     .length);
                                                       debugPrint(
-                                                        "Category Content is: ${categoryController.categoryList[index].id}",
-                                                      );
+                                                          // "Category Content is: ${categoryController.categoryList[index].id}",
+                                                          // "this category contains ${categoryController.categoryList[index].items.length} items",
+                                                          "");
 
                                                       // print the content of each category
                                                       debugPrint(
                                                         "Category Content is: ${categoryController.categoryList[index].name}",
+                                                      );
+
+                                                      // print all product that belongs to a category
+                                                      // categoryController
+                                                      //     .categoryList[index]
+                                                      //     .items
+                                                      //     .forEach((element) {
+                                                      //   print(element.name);
+                                                      // });
+
+                                                      debugPrint(
+                                                        "Category Content is: ${categoryController.categoryList[index].id}",
                                                       );
 
                                                       // navigate to the category page
