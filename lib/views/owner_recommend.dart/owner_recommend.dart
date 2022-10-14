@@ -30,36 +30,37 @@ class OwnerRecommendedProducts extends StatelessWidget {
                 padding: EdgeInsets.symmetric(
                   horizontal: width * 0.0,
                 ),
-                child: Stack(
-                  children: [
-                    Column(
-                      children: [
-                        SizedBox(
-                          child: Image.network(
-                            ProjectConstants.BASE_URL +
-                                ProjectConstants.UPLOAD_URL +
-                                productController.productList[index].image!,
-                            height: height * 0.2,
-                            width: width * 0.4,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        Container(
-                          alignment: Alignment.bottomCenter,
-                          child: Text(
-                            productController.productList[index].name!,
-                            style: kTabBarItemFontStyle.copyWith(
-                              fontSize: 12.0 * kMultiplier * height,
-                              fontWeight: FontWeight.bold,
-                              color: ProjectColors.kBlackColor,
-                              overflow: TextOverflow.ellipsis,
+                child: productController.productList[index].isRecommended ==
+                        true
+                    ? Column(
+                        children: [
+                          SizedBox(
+                            child: Image.network(
+                              ProjectConstants.BASE_URL +
+                                  ProjectConstants.UPLOAD_URL +
+                                  productController.productList[index].image!,
+                              height: height * 0.2,
+                              width: width * 0.4,
+                              fit: BoxFit.cover,
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+                          Container(
+                            alignment: Alignment.bottomCenter,
+                            child: Text(
+                              productController.productList[index].name!,
+                              style: kTabBarItemFontStyle.copyWith(
+                                fontSize: 12.0 * kMultiplier * height,
+                                fontWeight: FontWeight.bold,
+                                color: ProjectColors.kBlackColor,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ),
+                        ],
+                      )
+                    : Text(
+                        "",
+                      ),
               );
             },
           );
@@ -68,3 +69,7 @@ class OwnerRecommendedProducts extends StatelessWidget {
     );
   }
 }
+
+
+// if (productController
+//                             .productList[index].isRecommended!) {}

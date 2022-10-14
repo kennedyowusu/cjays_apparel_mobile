@@ -84,9 +84,9 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
               ),
             ),
             Container(
-              padding: EdgeInsets.only(
-                left: height * 0.012,
-                top: height * 0.002,
+              padding: EdgeInsets.symmetric(
+                horizontal: width * 0.002,
+                vertical: height * 0.002,
               ),
               width: double.infinity,
               child: Column(
@@ -95,7 +95,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                     padding: EdgeInsets.only(
                       left: height * 0.012,
                     ),
-                    height: height * 0.75,
+                    height: height * 0.78,
                     width: double.infinity,
                     child: TabBarView(
                       controller: tabController,
@@ -136,8 +136,8 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                   width: width * 0.94,
                                   color:
                                       ProjectColors.kGreyColor.withOpacity(0.4),
-                                  padding: EdgeInsets.only(
-                                    left: height * 0.012,
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: width * 0.012,
                                   ),
                                   margin: EdgeInsets.only(
                                     right: 10,
@@ -146,7 +146,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                   ),
                                   child: Row(
                                     mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
                                       SecondHeader(
                                         height: height,
@@ -166,8 +166,8 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                       ),
                                       SecondHeader(
                                         height: height,
-                                        title: 'Stripe Pay',
-                                        icon: Icons.money_outlined,
+                                        title: 'E-Pay',
+                                        icon: Icons.credit_card_outlined,
                                       ),
                                     ],
                                   ),
@@ -325,17 +325,19 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                 Text(
                                   "Categories",
                                   style: kTabBarItemFontStyle.copyWith(
-                                    fontSize: height * 0.018,
-                                    color: ProjectColors.kBlackColor,
+                                    fontSize: 14.0 * kMultiplier * height,
+                                    letterSpacing: 1.2,
                                   ),
                                 ),
                                 SizedBox(
                                   height: height * 0.012,
                                 ),
                                 SizedBox(
-                                  height: 20.0,
+                                  height: height * 0.040,
+                                  width: width * 0.94,
                                   child: ListView(
                                     scrollDirection: Axis.horizontal,
+                                    shrinkWrap: true,
                                     children: [
                                       GetBuilder<CategoryController>(
                                         builder: (categoryController) {
@@ -345,8 +347,8 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                                   .categoryList.length,
                                               (index) {
                                                 return Padding(
-                                                  padding: EdgeInsets.only(
-                                                    left: 8.0,
+                                                  padding: EdgeInsets.symmetric(
+                                                    horizontal: width * 0.01,
                                                   ),
                                                   child: OutlinedButton(
                                                     style: OutlinedButton
@@ -412,8 +414,9 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                                       style:
                                                           kTabBarItemFontStyle
                                                               .copyWith(
-                                                        fontSize:
-                                                            height * 0.018,
+                                                        fontSize: 14.0 *
+                                                            kMultiplier *
+                                                            height,
                                                         color: ProjectColors
                                                             .kBlackColor,
                                                       ),
@@ -431,107 +434,198 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                 SizedBox(
                                   height: height * 0.020,
                                 ),
-                                GetBuilder<CategoryController>(
-                                  builder: (categoryController) {
-                                    return categoryController.isLoaded
-                                        ? Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              ProductAndText(
-                                                height: height,
-                                                name: categoryController
-                                                    .categoryList[4].name!,
-                                                image: ProjectImages.kDress,
-                                                width: width,
-                                              ),
-                                              SizedBox(
-                                                width: width * 0.065,
-                                              ),
-                                              ProductAndText(
-                                                height: height,
-                                                name: categoryController
-                                                    .categoryList[4].name!,
-                                                image: ProjectImages.kShirt,
-                                                width: width,
-                                              ),
-                                              SizedBox(
-                                                width: width * 0.065,
-                                              ),
-                                              ProductAndText(
-                                                height: height,
-                                                name: categoryController
-                                                    .categoryList[4].name!,
-                                                image: ProjectImages.kShoes,
-                                                width: width,
-                                              ),
-                                              SizedBox(
-                                                width: width * 0.065,
-                                              ),
-                                              ProductAndText(
-                                                height: height,
-                                                name: "Suitszz",
-                                                image: ProjectImages.kSuits,
-                                                width: width,
-                                              ),
-                                            ],
-                                          )
-                                        : Center(
-                                            child: CircularProgressIndicator(
-                                              color:
-                                                  ProjectColors.kPrimaryColor,
-                                            ),
-                                          );
-                                  },
+                                Text(
+                                  "Featured Products",
+                                  style: kTabBarItemFontStyle.copyWith(
+                                    fontSize: 14.0 * kMultiplier * height,
+                                    letterSpacing: 1.2,
+                                  ),
                                 ),
-                                SizedBox(
-                                  height: height * 0.02,
-                                ),
-                                GetBuilder<CategoryController>(
-                                  builder: (categoryController) {
-                                    return categoryController.isLoaded
-                                        ? Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              ProductAndText(
-                                                height: height,
-                                                name: categoryController
-                                                    .categoryList[0].name!,
-                                                image: ProjectImages.kPajamas,
-                                                width: width,
-                                              ),
-                                              SizedBox(
-                                                width: width * 0.065,
-                                              ),
-                                              ProductAndText(
-                                                height: height,
-                                                name: categoryController
-                                                    .categoryList[1].name!,
-                                                image: ProjectImages.kJeans,
-                                                width: width,
-                                              ),
-                                              SizedBox(
-                                                width: width * 0.065,
-                                              ),
-                                              ProductAndText(
-                                                height: height,
-                                                name: categoryController
-                                                    .categoryList[2].name!,
-                                                image: ProjectImages.kHeels,
-                                                width: width,
-                                              ),
-                                              SizedBox(
-                                                width: width * 0.065,
-                                              ),
-                                              ProductAndText(
-                                                height: height,
-                                                name: categoryController
-                                                    .categoryList[3].name!,
-                                                image: ProjectImages.kBags,
-                                                width: width,
-                                              ),
-                                            ],
+                                // GetBuilder<ProductController>(
+                                //   builder: (productController) {
+                                //     return productController.isLoaded
+                                //         ? Column(
+                                //             children: [
+                                //               ListView(
+                                //                 scrollDirection:
+                                //                     Axis.horizontal,
+                                //                 shrinkWrap: true,
+                                //                 children: List.generate(
+                                //                   5,
+                                //                   (index) {
+                                //                     return Container(
+                                //                       margin: EdgeInsets.only(
+                                //                         left: height * 0.020,
+                                //                       ),
+                                //                       height: height * 0.20,
+                                //                       width: width * 0.15,
+                                //                       color: Colors.red,
+                                //                     );
+                                //                   },
+                                //                 ),
+                                //               ),
+                                //             ],
+                                //           )
+                                //         : Center(
+                                //             child: Loader(),
+                                //           );
+                                // },
+                                // ),
+
+                                GetBuilder<ProductController>(
+                                  builder: (productController) {
+                                    return productController.isLoaded
+                                        ? ListView.builder(
+                                            itemCount: productController
+                                                .productList.length,
+                                            shrinkWrap: true,
+                                            physics:
+                                                NeverScrollableScrollPhysics(),
+                                            itemBuilder: (BuildContext context,
+                                                int index) {
+                                              if (productController
+                                                      .productList[index]
+                                                      .isPopular ==
+                                                  true) {
+                                                return Padding(
+                                                  padding: EdgeInsets.only(
+                                                    bottom: height * 0.010,
+                                                    top: height * 0.010,
+                                                  ),
+                                                  child: Container(
+                                                    margin: EdgeInsets.only(
+                                                      right: height * 0.020,
+                                                    ),
+                                                    height: height * 0.12,
+                                                    decoration: BoxDecoration(
+                                                      color: ProjectColors
+                                                          .kGreyColor
+                                                          .withOpacity(0.4),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                        height * 0.003,
+                                                      ),
+                                                    ),
+                                                    child: Row(
+                                                      children: [
+                                                        Container(
+                                                          width: width * 0.30,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            image:
+                                                                DecorationImage(
+                                                              image: AssetImage(
+                                                                ProjectImages
+                                                                    .kDress,
+                                                              ),
+                                                              fit: BoxFit
+                                                                  .contain,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Column(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .center,
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Text(
+                                                              productController
+                                                                  .productList[
+                                                                      index]
+                                                                  .name!,
+                                                              style:
+                                                                  kTabBarItemFontStyle
+                                                                      .copyWith(
+                                                                fontSize:
+                                                                    height *
+                                                                        0.018,
+                                                                color: ProjectColors
+                                                                    .kBlackColor,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w700,
+                                                              ),
+                                                            ),
+                                                            Text(
+                                                              "GHS ${productController.productList[index].price!}",
+                                                              style:
+                                                                  kTabBarItemFontStyle
+                                                                      .copyWith(
+                                                                fontSize:
+                                                                    height *
+                                                                        0.018,
+                                                                color: ProjectColors
+                                                                    .kForestGreenColor,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w700,
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                        SizedBox(
+                                                          width: width * 0.10,
+                                                        ),
+                                                        ElevatedButton(
+                                                          style: ElevatedButton
+                                                              .styleFrom(
+                                                            backgroundColor:
+                                                                ProjectColors
+                                                                    .kWhiteColor,
+                                                            padding: EdgeInsets
+                                                                .symmetric(
+                                                              horizontal:
+                                                                  height *
+                                                                      0.015,
+                                                            ),
+                                                            side: BorderSide(
+                                                              color: ProjectColors
+                                                                  .kBlackColor,
+                                                            ),
+                                                            elevation: 0,
+                                                            shape:
+                                                                RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                height * 0.002,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          onPressed: () {
+                                                            debugPrint(
+                                                              productController
+                                                                  .productList[
+                                                                      index]
+                                                                  .name!,
+                                                            );
+                                                          },
+                                                          child: Text(
+                                                            "Read More",
+                                                            style:
+                                                                kTabBarItemFontStyle
+                                                                    .copyWith(
+                                                              fontSize: height *
+                                                                  0.017,
+                                                              color: ProjectColors
+                                                                  .kBlackColor,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .normal,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                );
+                                              } else {
+                                                return SizedBox();
+                                              }
+                                            },
                                           )
                                         : Center(
                                             child: Loader(),
@@ -542,6 +636,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                             );
                           },
                         ),
+
                         // TRENDS CLOTHES STARTS HERE
 
                         ListView.builder(
