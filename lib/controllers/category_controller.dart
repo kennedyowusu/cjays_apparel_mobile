@@ -24,7 +24,6 @@ class CategoryController extends GetxController {
       for (var item in response.body) {
         _categoryList.add(Category.fromJson(item));
       }
-      ;
 
       debugPrint('Category List: ${_categoryList.length}');
 

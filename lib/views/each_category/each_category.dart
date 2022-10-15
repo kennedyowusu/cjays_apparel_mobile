@@ -1,11 +1,18 @@
 import 'package:cjays/constants/colors.dart';
 import 'package:cjays/constants/styles.dart';
+import 'package:cjays/controllers/product_category_controller.dart';
+import 'package:cjays/data/api/api_client.dart';
 import 'package:cjays/models/category.dart';
+import 'package:cjays/models/product_category.dart';
+import 'package:cjays/utils/app_constants.dart';
+import 'package:cjays/utils/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../data/repository/product_category_repo.dart';
+
 class EachCategoryScreen extends StatelessWidget {
-  const EachCategoryScreen({super.key, required this.category});
+  EachCategoryScreen({super.key, required this.category});
 
   final Category category;
 
@@ -13,6 +20,10 @@ class EachCategoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
+
+    final productCategoryController = Get.put(ProductCategoryController(
+      category: category,
+    ));
 
     return SafeArea(
       child: Scaffold(
@@ -63,48 +74,62 @@ class EachCategoryScreen extends StatelessWidget {
         ),
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: width * 0.02),
-          child: GridView.builder(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-              childAspectRatio: 0.75,
-            ),
-            itemBuilder: (BuildContext context, int index) {
-              return Padding(
-                padding: EdgeInsets.symmetric(horizontal: width * 0.0),
-                child: Stack(
-                  children: [
-                    Container(
-                      color: Colors.red,
-                    ),
-                    Align(
-                      alignment: Alignment.bottomCenter,
-                      child: Container(
-                        height: 40,
-                        width: double.infinity,
-                        color: ProjectColors.kBlackColor.withOpacity(0.2),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Name of the Product Here",
-                              style: kTabBarItemFontStyle.copyWith(
-                                fontSize: 12.0 * kMultiplier * height,
-                                fontWeight: FontWeight.bold,
-                                color: ProjectColors.kWhiteColor,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
+          child: Obx(() => GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10,
+                  childAspectRatio: 0.75,
                 ),
-              );
-            },
-          ),
+                itemCount: productCategoryController.categoryList.length,
+                itemBuilder: (BuildContext context, int index) {
+                  ProductsCategory product =
+                      productCategoryController.categoryList[index];
+                  return Padding(
+                    padding: EdgeInsets.symmetric(horizontal: width * 0.0),
+                    child: Stack(
+                      children: [
+                        Container(
+                          height: height * 0.3,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: NetworkImage(
+                                ProjectConstants.BASE_URL +
+                                    ProjectConstants.UPLOAD_URL +
+                                    product.image!,
+                              ),
+                              alignment: Alignment.center,
+                              fit: BoxFit.contain,
+                            ),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Container(
+                            height: 40,
+                            width: double.infinity,
+                            color: ProjectColors.kBlackColor.withOpacity(0.7),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  product.name.toString(),
+                                  style: kTabBarItemFontStyle.copyWith(
+                                    fontSize: 12.0 * kMultiplier * height,
+                                    fontWeight: FontWeight.bold,
+                                    color: ProjectColors.kWhiteColor,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              )),
         ),
       ),
     );
