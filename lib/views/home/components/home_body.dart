@@ -368,31 +368,8 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                                       ),
                                                     ),
                                                     onPressed: () {
-                                                      // print the number of items in a category
-                                                      // print(categoryController
-                                                      //     .categoryList[index]
-                                                      //     .items
-                                                      //     .length);
-                                                      debugPrint(
-                                                          // "Category Content is: ${categoryController.categoryList[index].id}",
-                                                          // "this category contains ${categoryController.categoryList[index].items.length} items",
-                                                          "");
-
-                                                      // print the content of each category
                                                       debugPrint(
                                                         "Category Content is: ${categoryController.categoryList[index].name}",
-                                                      );
-
-                                                      // print all product that belongs to a category
-                                                      // categoryController
-                                                      //     .categoryList[index]
-                                                      //     .items
-                                                      //     .forEach((element) {
-                                                      //   print(element.name);
-                                                      // });
-
-                                                      debugPrint(
-                                                        "Category Content is: ${categoryController.categoryList[index].id}",
                                                       );
 
                                                       // navigate to the category page
@@ -432,6 +409,8 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                                             height,
                                                         color: ProjectColors
                                                             .kBlackColor,
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
                                                       ),
                                                     ),
                                                   ),
@@ -509,7 +488,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                                     margin: EdgeInsets.only(
                                                       right: height * 0.020,
                                                     ),
-                                                    height: height * 0.12,
+                                                    // height: height * 0.12,
                                                     decoration: BoxDecoration(
                                                       color: ProjectColors
                                                           .kGreyColor
@@ -519,119 +498,103 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                                         height * 0.003,
                                                       ),
                                                     ),
-                                                    child: Row(
-                                                      children: [
-                                                        Container(
-                                                          width: width * 0.30,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            image:
-                                                                DecorationImage(
-                                                              image: AssetImage(
-                                                                ProjectImages
-                                                                    .kDress,
-                                                              ),
-                                                              fit: BoxFit
-                                                                  .contain,
+                                                    child: ListTile(
+                                                      leading: Image.network(
+                                                        ProjectConstants
+                                                                .BASE_URL +
+                                                            ProjectConstants
+                                                                .UPLOAD_URL +
+                                                            productController
+                                                                .productList[
+                                                                    index]
+                                                                .image!,
+                                                        height: height * 0.12,
+                                                        width: width * 0.15,
+                                                        fit: BoxFit.cover,
+                                                      ),
+                                                      // leading: Image.asset(
+                                                      //   productController
+                                                      //       .productList[index]
+                                                      //       .image!,
+                                                      //   height: height * 0.030,
+                                                      //   width: width * 0.040,
+                                                      // ),
+                                                      title: Text(
+                                                        productController
+                                                            .productList[index]
+                                                            .name!,
+                                                        style:
+                                                            kTabBarItemFontStyle
+                                                                .copyWith(
+                                                          fontSize:
+                                                              height * 0.018,
+                                                          color: ProjectColors
+                                                              .kBlackColor,
+                                                          fontWeight:
+                                                              FontWeight.w700,
+                                                        ),
+                                                      ),
+                                                      subtitle: Text(
+                                                        "GHS ${productController.productList[index].price!}",
+                                                        style:
+                                                            kTabBarItemFontStyle
+                                                                .copyWith(
+                                                          fontSize:
+                                                              height * 0.018,
+                                                          color: ProjectColors
+                                                              .kForestGreenColor,
+                                                          fontWeight:
+                                                              FontWeight.w700,
+                                                        ),
+                                                      ),
+                                                      trailing: ElevatedButton(
+                                                        style: ElevatedButton
+                                                            .styleFrom(
+                                                          backgroundColor:
+                                                              ProjectColors
+                                                                  .kWhiteColor,
+                                                          padding: EdgeInsets
+                                                              .symmetric(
+                                                            horizontal:
+                                                                height * 0.015,
+                                                          ),
+                                                          side: BorderSide(
+                                                            color: ProjectColors
+                                                                .kBlackColor,
+                                                          ),
+                                                          elevation: 0,
+                                                          shape:
+                                                              RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                              height * 0.002,
                                                             ),
                                                           ),
                                                         ),
-                                                        Column(
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .center,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Text(
-                                                              productController
-                                                                  .productList[
-                                                                      index]
-                                                                  .name!,
-                                                              style:
-                                                                  kTabBarItemFontStyle
-                                                                      .copyWith(
-                                                                fontSize:
-                                                                    height *
-                                                                        0.018,
-                                                                color: ProjectColors
-                                                                    .kBlackColor,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w700,
-                                                              ),
-                                                            ),
-                                                            Text(
-                                                              "GHS ${productController.productList[index].price!}",
-                                                              style:
-                                                                  kTabBarItemFontStyle
-                                                                      .copyWith(
-                                                                fontSize:
-                                                                    height *
-                                                                        0.018,
-                                                                color: ProjectColors
-                                                                    .kForestGreenColor,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w700,
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                        SizedBox(
-                                                          width: width * 0.10,
-                                                        ),
-                                                        ElevatedButton(
-                                                          style: ElevatedButton
-                                                              .styleFrom(
-                                                            backgroundColor:
-                                                                ProjectColors
-                                                                    .kWhiteColor,
-                                                            padding: EdgeInsets
-                                                                .symmetric(
-                                                              horizontal:
-                                                                  height *
-                                                                      0.015,
-                                                            ),
-                                                            side: BorderSide(
-                                                              color: ProjectColors
-                                                                  .kBlackColor,
-                                                            ),
-                                                            elevation: 0,
-                                                            shape:
-                                                                RoundedRectangleBorder(
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                height * 0.002,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                          onPressed: () {
-                                                            debugPrint(
-                                                              productController
-                                                                  .productList[
-                                                                      index]
-                                                                  .name!,
-                                                            );
-                                                          },
-                                                          child: Text(
-                                                            "Read More",
-                                                            style:
-                                                                kTabBarItemFontStyle
-                                                                    .copyWith(
-                                                              fontSize: height *
-                                                                  0.017,
-                                                              color: ProjectColors
-                                                                  .kBlackColor,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .normal,
-                                                            ),
+                                                        onPressed: () {
+                                                          debugPrint(
+                                                            productController
+                                                                .productList[
+                                                                    index]
+                                                                .name!,
+                                                          );
+                                                        },
+                                                        child: Text(
+                                                          "Read More",
+                                                          style:
+                                                              kTabBarItemFontStyle
+                                                                  .copyWith(
+                                                            fontSize:
+                                                                height * 0.017,
+                                                            color: ProjectColors
+                                                                .kBlackColor,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .normal,
                                                           ),
                                                         ),
-                                                      ],
+                                                      ),
                                                     ),
                                                   ),
                                                 );
