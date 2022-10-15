@@ -35,6 +35,9 @@ class OwnerRecommendedProducts extends StatelessWidget {
                               true
                           ? Stack(
                               children: [
+                                SizedBox(
+                                  height: height * 0.2,
+                                ),
                                 Container(
                                   width: double.maxFinite,
                                   height: height * 0.38,
@@ -60,7 +63,7 @@ class OwnerRecommendedProducts extends StatelessWidget {
                                                   productController
                                                       .productList[i].image!,
                                             ),
-                                            fit: BoxFit.cover,
+                                            fit: BoxFit.contain,
                                           ),
                                         ),
                                       ),
@@ -156,6 +159,3 @@ class OwnerRecommendedProducts extends StatelessWidget {
     );
   }
 }
-
-// if (productController
-//                             .productList[index].isRecommended!) {}
