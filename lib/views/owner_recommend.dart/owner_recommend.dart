@@ -54,17 +54,14 @@ class OwnerRecommendedProducts extends StatelessWidget {
                                             topRight: Radius.circular(10),
                                           ),
                                           image: DecorationImage(
-                                            image: AssetImage(
-                                                ProjectImages.kDress),
-                                            fit: BoxFit.contain,
+                                            image: NetworkImage(
+                                              ProjectConstants.BASE_URL +
+                                                  ProjectConstants.UPLOAD_URL +
+                                                  productController
+                                                      .productList[i].image!,
+                                            ),
+                                            fit: BoxFit.cover,
                                           ),
-                                          // image: DecorationImage(
-                                          //   image: NetworkImage(
-                                          //     productController
-                                          //         .productList[i].image!,
-                                          //   ),
-                                          //   fit: BoxFit.cover,
-                                          // ),
                                         ),
                                       ),
                                       SizedBox(
