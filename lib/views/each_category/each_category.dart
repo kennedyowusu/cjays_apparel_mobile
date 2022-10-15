@@ -6,6 +6,7 @@ import 'package:cjays/models/category.dart';
 import 'package:cjays/models/product_category.dart';
 import 'package:cjays/utils/app_constants.dart';
 import 'package:cjays/utils/app_constants.dart';
+import 'package:cjays/widgets/loader.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -86,60 +87,66 @@ class EachCategoryScreen extends StatelessWidget {
               itemBuilder: (BuildContext context, int index) {
                 ProductsCategory product =
                     productCategoryController.categoryList[index];
-                return Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: width * 0.0,
-                    vertical: 0.0,
-                  ),
-                  child: Stack(
-                    children: [
-                      Container(
-                        height: height * 0.3,
-                        margin: EdgeInsets.only(
-                          bottom: height * 0.04,
+                return productCategoryController.isLoaded
+                    ? Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: width * 0.0,
+                          vertical: 0.0,
                         ),
-                        decoration: BoxDecoration(
-                          color: ProjectColors.kGreyColor.withOpacity(0.4),
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(10),
-                            topRight: Radius.circular(10),
-                          ),
-                          image: DecorationImage(
-                            image: NetworkImage(
-                              ProjectConstants.BASE_URL +
-                                  ProjectConstants.UPLOAD_URL +
-                                  product.image!,
-                            ),
-                            alignment: Alignment.center,
-                            fit: BoxFit.contain,
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.bottomCenter,
-                        child: Container(
-                          height: height * 0.03,
-                          width: double.infinity,
-                          color: ProjectColors.kBlackColor.withOpacity(0.7),
-                          child: Center(
-                            child: Text(
-                              product.name.toString(),
-                              style: kTabBarItemFontStyle.copyWith(
-                                fontSize: 12.0 * kMultiplier * height,
-                                fontWeight: FontWeight.bold,
-                                color: ProjectColors.kWhiteColor,
-                                overflow: TextOverflow.ellipsis,
+                        child: Stack(
+                          children: [
+                            Container(
+                              height: height * 0.3,
+                              margin: EdgeInsets.only(
+                                bottom: height * 0.04,
+                              ),
+                              decoration: BoxDecoration(
+                                color:
+                                    ProjectColors.kGreyColor.withOpacity(0.4),
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(10),
+                                  topRight: Radius.circular(10),
+                                ),
+                                image: DecorationImage(
+                                  image: NetworkImage(
+                                    ProjectConstants.BASE_URL +
+                                        ProjectConstants.UPLOAD_URL +
+                                        product.image!,
+                                  ),
+                                  alignment: Alignment.center,
+                                  fit: BoxFit.contain,
+                                ),
                               ),
                             ),
-                          ),
+                            Align(
+                              alignment: Alignment.bottomCenter,
+                              child: Container(
+                                height: height * 0.03,
+                                width: double.infinity,
+                                color:
+                                    ProjectColors.kBlackColor.withOpacity(0.7),
+                                child: Center(
+                                  child: Text(
+                                    product.name.toString(),
+                                    style: kTabBarItemFontStyle.copyWith(
+                                      fontSize: 12.0 * kMultiplier * height,
+                                      fontWeight: FontWeight.bold,
+                                      color: ProjectColors.kWhiteColor,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: height * 0.01,
+                            ),
+                          ],
                         ),
-                      ),
-                      SizedBox(
-                        height: height * 0.01,
-                      ),
-                    ],
-                  ),
-                );
+                      )
+                    : Center(
+                        child: Loader(),
+                      );
               },
             ),
           ),
