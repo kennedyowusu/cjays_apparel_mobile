@@ -242,7 +242,7 @@ class RecommendationsScreen extends StatelessWidget {
                             child: Center(
                               child: MediumText(
                                 text:
-                                    '(GH¢ ${recommendedData.price}) | Add to Cart',
+                                    'GH¢ ${recommendedData.price} | Add to Cart',
                                 color: ProjectColors.kWhiteColor,
                                 size: 15.0,
                               ),

@@ -1,14 +1,41 @@
-// import 'Product.dart';
+// ignore: file_names
+class CartModel {
+  int id = 0;
+  String name = '';
+  int price = 0;
+  String image = '';
+  int quantity = 0;
+  bool isExist = false;
+  String time = '';
 
-// class Cart {
-//   final Product product;
-//   final int numOfItem;
+  CartModel(
+      {required this.id,
+      required this.name,
+      required this.price,
+      required this.image,
+      required this.quantity,
+      required this.isExist,
+      required this.time});
 
-//   Cart({required this.product, required this.numOfItem});
-// }
+  CartModel.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    name = json['name'];
+    price = json['price'];
+    image = json['image'];
+    quantity = json['quantity'];
+    isExist = json['isExist'];
+    time = json['time'];
+  }
 
-// List<Cart> demoCarts = [
-//   Cart(product: demoProducts[0], numOfItem: 2),
-//   Cart(product: demoProducts[1], numOfItem: 1),
-//   Cart(product: demoProducts[3], numOfItem: 1),
-// ];
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['price'] = price;
+    data['image'] = image;
+    data['quantity'] = quantity;
+    data['isExist'] = isExist;
+    data['time'] = time;
+    return data;
+  }
+}

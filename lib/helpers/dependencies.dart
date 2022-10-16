@@ -1,6 +1,8 @@
+import 'package:cjays/controllers/cart_controller.dart';
 import 'package:cjays/controllers/category_controller.dart';
 import 'package:cjays/controllers/product_controller.dart';
 import 'package:cjays/data/api/api_client.dart';
+import 'package:cjays/data/repository/cart_repo.dart';
 import 'package:cjays/data/repository/category_repo.dart';
 import 'package:cjays/data/repository/product_category_repo.dart';
 import 'package:cjays/utils/app_constants.dart';
@@ -25,6 +27,8 @@ Future<void> init() async {
 
   Get.lazyPut(() => ProductCategoryRepository());
 
+  Get.lazyPut(() => CartRepository());
+
   // Controllers
   Get.lazyPut(
     () => ProductController(
@@ -33,7 +37,5 @@ Future<void> init() async {
   );
 
   Get.lazyPut(() => CategoryController(categoryRepository: Get.find()));
-
-  // Get.lazyPut(
-  //     () => ProductCategoryController(productCategoryRepository: Get.find(), ));
+  Get.lazyPut(() => CartController(cartRepository: Get.find()));
 }

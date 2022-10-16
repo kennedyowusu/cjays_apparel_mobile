@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:cjays/controllers/cart_controller.dart';
 import 'package:cjays/controllers/product_controller.dart';
 import 'package:cjays/models/Product.dart';
 import 'package:cjays/utils/app_constants.dart';
@@ -26,6 +27,11 @@ class ProductDetailsScreen extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
 
     Product productData = Get.find<ProductController>().productList[screenId];
+
+    Get.find<ProductController>().initProduct(
+      productData,
+      Get.find<CartController>(),
+    );
 
     debugPrint('Screen id: $screenId');
     debugPrint('Product Name: ${productData.name}');
@@ -199,7 +205,7 @@ class ProductDetailsScreen extends StatelessWidget {
                           width: 20.0,
                         ),
                         MediumText(
-                          text: productController.quantity.toString(),
+                          text: productController.inCartItems.toString(),
                           size: 15,
                         ),
                         SizedBox(
@@ -229,7 +235,9 @@ class ProductDetailsScreen extends StatelessWidget {
                   ),
                   Expanded(
                     child: GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        productController.addItem(productData);
+                      },
                       child: Container(
                         height: height * 0.08,
                         decoration: BoxDecoration(
