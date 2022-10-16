@@ -1,20 +1,34 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:cjays/controllers/product_controller.dart';
+import 'package:cjays/models/Product.dart';
+import 'package:cjays/utils/app_constants.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:cjays/constants/colors.dart';
-import 'package:cjays/constants/images.dart';
 import 'package:cjays/routes/routes_helper.dart';
 import 'package:cjays/widgets/expanded_text.dart';
 import 'package:cjays/widgets/medium_text.dart';
 import 'package:cjays/widgets/project_icons.dart';
 import 'package:cjays/widgets/small_text.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class RecommendationsScreen extends StatelessWidget {
-  const RecommendationsScreen({super.key});
+  final int screenId;
+
+  const RecommendationsScreen({
+    Key? key,
+    required this.screenId,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
+
+    Product recommendedData =
+        Get.find<ProductController>().productList[screenId];
+
+    debugPrint('screenId: $screenId');
+    debugPrint('productData: $recommendedData');
 
     return SafeArea(
       child: Scaffold(
@@ -84,7 +98,7 @@ class RecommendationsScreen extends StatelessWidget {
                   width: double.maxFinite,
                   padding: EdgeInsets.all(10.0),
                   child: Center(
-                    child: MediumText(text: "Dress Name Here"),
+                    child: MediumText(text: recommendedData.name!),
                   ),
                 ),
               ),
@@ -98,7 +112,11 @@ class RecommendationsScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: ProjectColors.kPrimaryColor,
                     image: DecorationImage(
-                      image: AssetImage(ProjectImages.kDress),
+                      image: NetworkImage(
+                        ProjectConstants.BASE_URL +
+                            ProjectConstants.UPLOAD_URL +
+                            recommendedData.image!,
+                      ),
                       fit: BoxFit.contain,
                     ),
                   ),
@@ -115,8 +133,7 @@ class RecommendationsScreen extends StatelessWidget {
                       bottom: 20.0,
                     ),
                     child: ExpandableText(
-                      text:
-                          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit, tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit, quia. Quo neque error repudiandae fuga? Ipsa laudantium molestias eos  sapiente officiis modi at sunt excepturi expedita sint? Sed quibusdam recusandae alias error harum maxime adipisci amet laborum. Perspiciatis  minima nesciunt dolorem! Officiis iure rerum voluptates a cumque velit  quibusdam sed amet tempora. Sit laborum ab, eius fugit doloribus tenetur  fugiat, temporibus enim commodi iusto libero magni deleniti quod quam  consequuntur! Commodi minima excepturi repudiandae velit hic maxime doloremque. Quaerat provident commodi consectetur veniam similique ad  earum omnis ipsum saepe, voluptas, hic voluptates pariatur est explicabo  fugiat, dolorum eligendi quam cupiditate excepturi mollitia maiores labore  suscipit quas? Nulla, placeat. Voluptatem quaerat non architecto ab laudantium modi minima sunt esse temporibus sint culpa, recusandae aliquam numquam  totam ratione voluptas quod exercitationem fuga. Possimus quis earum veniam  quasi aliquam eligendi, placeat qui corporis!",
+                      text: recommendedData.description!,
                     ),
                   ),
                 ],
@@ -124,115 +141,120 @@ class RecommendationsScreen extends StatelessWidget {
             )
           ],
         ),
-        bottomNavigationBar: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              padding: EdgeInsets.symmetric(
-                horizontal: height * 0.125,
-                vertical: 10.0,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  IconButton(
-                    icon: CircleAvatar(
-                      radius: 20.0,
-                      backgroundColor: ProjectColors.kSecondaryColor,
-                      child: Icon(
-                        Icons.remove,
-                        color: ProjectColors.kWhiteColor,
+        bottomNavigationBar: GetBuilder<ProductController>(
+          builder: (productController) {
+            return Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Container(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: height * 0.125,
+                    vertical: 10.0,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      IconButton(
+                        icon: CircleAvatar(
+                          radius: 20.0,
+                          backgroundColor: ProjectColors.kSecondaryColor,
+                          child: Icon(
+                            Icons.remove,
+                            color: ProjectColors.kWhiteColor,
+                          ),
+                        ),
+                        onPressed: () {},
                       ),
-                    ),
-                    onPressed: () {},
-                  ),
-                  MediumText(
-                    text: "10"
-                        " X "
-                        " GH¢ 5",
-                    color: ProjectColors.kBlackColor,
-                    size: 15.0,
-                  ),
-                  IconButton(
-                    icon: CircleAvatar(
-                      radius: 20.0,
-                      backgroundColor: ProjectColors.kSecondaryColor,
-                      child: Icon(
-                        Icons.add,
-                        color: ProjectColors.kWhiteColor,
+                      MediumText(
+                        text: "0"
+                            " X "
+                            "GH₵ ${recommendedData.price}",
+                        color: ProjectColors.kBlackColor,
+                        size: 15.0,
                       ),
-                    ),
-                    onPressed: () {},
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              height: height * 0.14,
-              padding: EdgeInsets.only(
-                left: 20.0,
-                right: 20.0,
-                top: 20.0,
-                bottom: 20.0,
-              ),
-              decoration: BoxDecoration(
-                color: ProjectColors.kBlackColor,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(
-                    20.0,
-                  ),
-                  topRight: Radius.circular(
-                    20.0,
+                      IconButton(
+                        icon: CircleAvatar(
+                          radius: 20.0,
+                          backgroundColor: ProjectColors.kSecondaryColor,
+                          child: Icon(
+                            Icons.add,
+                            color: ProjectColors.kWhiteColor,
+                          ),
+                        ),
+                        onPressed: () {},
+                      ),
+                    ],
                   ),
                 ),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    height: height * 0.08,
-                    width: width * 0.26,
-                    decoration: BoxDecoration(
-                      color: ProjectColors.kWhiteColor,
-                      borderRadius: BorderRadius.circular(
-                        10.0,
+                Container(
+                  height: height * 0.14,
+                  padding: EdgeInsets.only(
+                    left: 20.0,
+                    right: 20.0,
+                    top: 20.0,
+                    bottom: 20.0,
+                  ),
+                  decoration: BoxDecoration(
+                    color: ProjectColors.kBlackColor,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(
+                        20.0,
+                      ),
+                      topRight: Radius.circular(
+                        20.0,
                       ),
                     ),
-                    child: IconButton(
-                      icon: Icon(
-                        Icons.favorite_sharp,
-                        color: ProjectColors.kVenetianRedColor,
-                      ),
-                      onPressed: () {},
-                    ),
                   ),
-                  SizedBox(
-                    width: 20.0,
-                  ),
-                  Expanded(
-                    child: GestureDetector(
-                      child: Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
                         height: height * 0.08,
+                        width: width * 0.26,
                         decoration: BoxDecoration(
-                          color: ProjectColors.kPrimaryColor,
+                          color: ProjectColors.kWhiteColor,
                           borderRadius: BorderRadius.circular(
                             10.0,
                           ),
                         ),
-                        child: Center(
-                          child: MediumText(
-                            text: 'GH¢ 50.00 | Add to Cart',
-                            color: ProjectColors.kWhiteColor,
-                            size: 15.0,
+                        child: IconButton(
+                          icon: Icon(
+                            Icons.favorite_sharp,
+                            color: ProjectColors.kVenetianRedColor,
+                          ),
+                          onPressed: () {},
+                        ),
+                      ),
+                      SizedBox(
+                        width: 20.0,
+                      ),
+                      Expanded(
+                        child: GestureDetector(
+                          child: Container(
+                            height: height * 0.08,
+                            decoration: BoxDecoration(
+                              color: ProjectColors.kPrimaryColor,
+                              borderRadius: BorderRadius.circular(
+                                10.0,
+                              ),
+                            ),
+                            child: Center(
+                              child: MediumText(
+                                text:
+                                    'GH¢ ${recommendedData.price} | Add to Cart',
+                                color: ProjectColors.kWhiteColor,
+                                size: 15.0,
+                              ),
+                            ),
                           ),
                         ),
                       ),
-                    ),
+                    ],
                   ),
-                ],
-              ),
-            ),
-          ],
+                ),
+              ],
+            );
+          },
         ),
       ),
     );

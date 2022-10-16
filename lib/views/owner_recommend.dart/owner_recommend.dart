@@ -31,8 +31,9 @@ class OwnerRecommendedProducts extends StatelessWidget {
                     separatorBuilder: (context, index) => SizedBox(
                       height: height * 0.0,
                     ),
-                    itemBuilder: (c, i) {
-                      return productController.productList[i].isRecommended ==
+                    itemBuilder: (BuildContext context, int index) {
+                      return productController
+                                  .productList[index].isRecommended ==
                               true
                           ? Stack(
                               children: [
@@ -62,7 +63,8 @@ class OwnerRecommendedProducts extends StatelessWidget {
                                               ProjectConstants.BASE_URL +
                                                   ProjectConstants.UPLOAD_URL +
                                                   productController
-                                                      .productList[i].image!,
+                                                      .productList[index]
+                                                      .image!,
                                             ),
                                             fit: BoxFit.contain,
                                           ),
@@ -87,7 +89,7 @@ class OwnerRecommendedProducts extends StatelessWidget {
                                           children: [
                                             Text(
                                               productController
-                                                  .productList[i].name!,
+                                                  .productList[index].name!,
                                               style: TextStyle(
                                                 overflow: TextOverflow.ellipsis,
                                                 color:
@@ -97,7 +99,7 @@ class OwnerRecommendedProducts extends StatelessWidget {
                                               ),
                                             ),
                                             Text(
-                                              "GHS ${productController.productList[i].price!}",
+                                              "GHS ${productController.productList[index].price!}",
                                               style: TextStyle(
                                                 color: ProjectColors
                                                     .kForestGreenColor,
@@ -117,14 +119,11 @@ class OwnerRecommendedProducts extends StatelessWidget {
                                   child: GestureDetector(
                                     onTap: () {
                                       debugPrint(productController
-                                          .productList[i].id
+                                          .productList[index].id
                                           .toString());
 
                                       Get.toNamed(
-                                        RouteHelper.recommended,
-                                        arguments: productController
-                                            .productList[i].id
-                                            .toString(),
+                                        RouteHelper.getRecommendedRoute(index),
                                       );
                                     },
                                     child: Container(

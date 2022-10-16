@@ -10,13 +10,13 @@ class ProductController extends GetxController {
 
   List<Product> _productList = [];
 
+  List<Product> get productList => _productList;
+
   bool _isLoaded = false;
   bool get isLoaded => _isLoaded;
 
   int _quantity = 0;
   int get quantity => _quantity;
-
-  List<Product> get productList => _productList;
 
   Future<void> getProductList() async {
     Response response = await productRepository.getProductList();
@@ -29,7 +29,9 @@ class ProductController extends GetxController {
         _productList.add(Product.fromJson(item));
       }
       debugPrint('Product List: ${_productList.length}');
+
       _isLoaded = true;
+
       update();
     } else {
       Get.snackbar(
