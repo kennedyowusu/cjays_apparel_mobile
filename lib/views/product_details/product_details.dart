@@ -65,7 +65,6 @@ class ProductDetailsScreen extends StatelessWidget {
                     child: ProjectIcon(
                       icon: Icons.chevron_left_sharp,
                       color: ProjectColors.kWhiteColor,
-                      size: 30,
                     ),
                   ),
                   Stack(

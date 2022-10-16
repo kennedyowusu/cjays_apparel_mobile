@@ -22,7 +22,7 @@ class MediumText extends StatelessWidget {
       overflow: overflow,
       style: TextStyle(
         color: color,
-        fontSize: size == 0 ? 16.0 : size,
+        fontSize: size == size ? 16.0 : size,
         fontWeight: FontWeight.w400,
         fontFamily: 'Poppins',
       ),

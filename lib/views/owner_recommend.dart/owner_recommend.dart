@@ -1,6 +1,4 @@
 import 'package:cjays/constants/colors.dart';
-import 'package:cjays/constants/images.dart';
-import 'package:cjays/constants/styles.dart';
 import 'package:cjays/controllers/product_controller.dart';
 import 'package:cjays/routes/routes_helper.dart';
 import 'package:cjays/utils/app_constants.dart';
@@ -15,8 +13,6 @@ class OwnerRecommendedProducts extends StatelessWidget {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-
-    // productController.productList[index].isRecommended == true
 
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: width * 0.02),
@@ -99,7 +95,8 @@ class OwnerRecommendedProducts extends StatelessWidget {
                                               ),
                                             ),
                                             Text(
-                                              "GHS ${productController.productList[index].price!}",
+                                              "GHS ${productController.productList[index].price!}"
+                                                  .split('.')[0],
                                               style: TextStyle(
                                                 color: ProjectColors
                                                     .kForestGreenColor,

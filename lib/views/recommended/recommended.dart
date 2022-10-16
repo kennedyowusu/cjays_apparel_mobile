@@ -28,7 +28,7 @@ class RecommendationsScreen extends StatelessWidget {
         Get.find<ProductController>().productList[screenId];
 
     debugPrint('screenId: $screenId');
-    debugPrint('productData: $recommendedData');
+    debugPrint('recommended Data: ${recommendedData.name}');
 
     return SafeArea(
       child: Scaffold(
@@ -167,8 +167,9 @@ class RecommendationsScreen extends StatelessWidget {
                       ),
                       MediumText(
                         text: "0"
-                            " X "
-                            "GH₵ ${recommendedData.price}",
+                                " X "
+                                "GH₵ ${recommendedData.price}"
+                            .split('.')[0],
                         color: ProjectColors.kBlackColor,
                         size: 15.0,
                       ),
@@ -241,7 +242,7 @@ class RecommendationsScreen extends StatelessWidget {
                             child: Center(
                               child: MediumText(
                                 text:
-                                    'GH¢ ${recommendedData.price} | Add to Cart',
+                                    '(GH¢ ${recommendedData.price}) | Add to Cart',
                                 color: ProjectColors.kWhiteColor,
                                 size: 15.0,
                               ),

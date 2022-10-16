@@ -14,7 +14,6 @@ import 'package:cjays/views/home/components/curve_and_plus_product_card.dart';
 import 'package:cjays/views/home/components/discount_text.dart';
 import 'package:cjays/views/home/components/second_header.dart';
 import 'package:cjays/views/owner_recommend.dart/owner_recommend.dart';
-import 'package:cjays/views/product_details/product_details.dart';
 import 'package:cjays/widgets/loader.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -124,7 +123,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                   color: Colors.black,
                                   child: Center(
                                     child: Text(
-                                      "Free Delivery Over GHS 500",
+                                      "Free Delivery Over GH¢ 500",
                                       style: TextStyle(
                                         fontSize: height * 0.016,
                                         color: ProjectColors.kWhiteColor,
@@ -223,7 +222,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                                 ),
                                                 children: [
                                                   TextSpan(
-                                                    text: 'GHS50.00',
+                                                    text: 'GH¢ 50.00',
                                                     style: kTabBarItemFontStyle
                                                         .copyWith(
                                                       fontSize: height * 0.018,
@@ -484,7 +483,8 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                                         ),
                                                       ),
                                                       subtitle: Text(
-                                                        "GHS ${productController.productList[index].price!}",
+                                                        "GH¢ ${productController.productList[index].price!}"
+                                                            .split('.')[0],
                                                         style:
                                                             kTabBarItemFontStyle
                                                                 .copyWith(
@@ -602,7 +602,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                       width: width,
                                       title: "Super Deals",
                                       text: "Starts at",
-                                      subtitle: "GHS30",
+                                      subtitle: "GH¢30",
                                       buttonText: "Shop Now",
                                       image: ProjectImages.kSea,
                                     ),
@@ -652,7 +652,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                                   .productList[0].image!,
                                           newPrice: productController
                                               .productList[0].price!,
-                                          oldPrice: ' GHS100.00',
+                                          oldPrice: ' GH¢100.00',
                                           color: homeController.isFavorite.value
                                               ? ProjectColors.kVenetianRedColor
                                               : ProjectColors.kBlackColor,
@@ -671,13 +671,6 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                                 0,
                                               ),
                                             );
-
-                                            // Get.toNamed(
-                                            //   RouteHelper
-                                            //       .getProductDetailsScreenRoute(
-                                            //           productController
-                                            //               .productList[0].id!),
-                                            // );
                                           },
                                         ),
                                         SizedBox(
@@ -694,7 +687,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                                   .productList[1].image!,
                                           newPrice: productController
                                               .productList[1].price!,
-                                          oldPrice: ' GHS110.00',
+                                          oldPrice: ' GH¢110.00',
                                           color: homeController.isFavorite.value
                                               ? ProjectColors.kVenetianRedColor
                                               : ProjectColors.kBlackColor,
@@ -713,12 +706,6 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                                 1,
                                               ),
                                             );
-                                            //   Get.toNamed(
-                                            //     RouteHelper
-                                            //         .getProductDetailsScreenRoute(
-                                            //             productController
-                                            //                 .productList[1].id!),
-                                            //   );
                                           },
                                         ),
                                       ],
@@ -743,7 +730,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                                   .productList[2].image!,
                                           newPrice: productController
                                               .productList[2].price!,
-                                          oldPrice: ' GHS140.00',
+                                          oldPrice: ' GH¢140.00',
                                           color: homeController.isFavorite.value
                                               ? ProjectColors.kVenetianRedColor
                                               : ProjectColors.kBlackColor,
@@ -762,13 +749,6 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                                 2,
                                               ),
                                             );
-
-                                            // Get.toNamed(
-                                            //   RouteHelper
-                                            //       .getProductDetailsScreenRoute(
-                                            //           productController
-                                            //               .productList[2].id!),
-                                            // );
                                           },
                                         ),
                                         SizedBox(
@@ -785,7 +765,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                                   .productList[3].image!,
                                           newPrice: productController
                                               .productList[3].price!,
-                                          oldPrice: ' GHS120.00',
+                                          oldPrice: ' GH¢120.00',
                                           color: homeController.isFavorite.value
                                               ? ProjectColors.kVenetianRedColor
                                               : ProjectColors.kBlackColor,
@@ -804,13 +784,6 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                                 3,
                                               ),
                                             );
-
-                                            // Get.toNamed(
-                                            //   RouteHelper
-                                            //       .getProductDetailsScreenRoute(
-                                            //           productController
-                                            //               .productList[3].id!),
-                                            // );
                                           },
                                         ),
                                       ],
@@ -838,7 +811,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                                   .productList[4].image!,
                                           newPrice: productController
                                               .productList[4].price!,
-                                          oldPrice: ' GHS140.00',
+                                          oldPrice: ' GH¢140.00',
                                           color: homeController.isFavorite.value
                                               ? ProjectColors.kVenetianRedColor
                                               : ProjectColors.kBlackColor,
@@ -857,13 +830,6 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                                 4,
                                               ),
                                             );
-
-                                            // Get.toNamed(
-                                            //   RouteHelper
-                                            //       .getProductDetailsScreenRoute(
-                                            //           productController
-                                            //               .productList[4].id!),
-                                            // );
                                           },
                                         ),
                                         SizedBox(
@@ -879,8 +845,9 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                               productController
                                                   .productList[5].image!,
                                           newPrice: productController
-                                              .productList[5].price!,
-                                          oldPrice: ' GHS120.00',
+                                              .productList[5].price!
+                                              .split('.')[0],
+                                          oldPrice: ' GH¢120.00',
                                           color: homeController.isFavorite.value
                                               ? ProjectColors.kVenetianRedColor
                                               : ProjectColors.kBlackColor,
@@ -899,13 +866,6 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                                 5,
                                               ),
                                             );
-
-                                            //   Get.toNamed(
-                                            //     RouteHelper
-                                            //         .getProductDetailsScreenRoute(
-                                            //             productController
-                                            //                 .productList[5].id!),
-                                            //   );
                                           },
                                         ),
                                       ],
@@ -930,7 +890,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                                   .productList[6].image!,
                                           newPrice: productController
                                               .productList[6].price!,
-                                          oldPrice: ' GHS140.00',
+                                          oldPrice: ' GH¢140.00',
                                           color: homeController.isFavorite.value
                                               ? ProjectColors.kVenetianRedColor
                                               : ProjectColors.kBlackColor,
@@ -949,13 +909,6 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                                 6,
                                               ),
                                             );
-
-                                            // Get.toNamed(
-                                            //   RouteHelper
-                                            //       .getProductDetailsScreenRoute(
-                                            //           productController
-                                            //               .productList[6].id!),
-                                            // );
                                           },
                                         ),
                                         SizedBox(
@@ -971,8 +924,9 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                               productController
                                                   .productList[7].image!,
                                           newPrice: productController
-                                              .productList[7].price!,
-                                          oldPrice: ' GHS120.00',
+                                              .productList[7].price!
+                                              .split('.')[0],
+                                          oldPrice: ' GH¢120.00',
                                           color: homeController.isFavorite.value
                                               ? ProjectColors.kVenetianRedColor
                                               : ProjectColors.kBlackColor,
@@ -991,14 +945,6 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                                 7,
                                               ),
                                             );
-
-                                            // Get.toNamed(
-                                            //   RouteHelper
-                                            //       .getProductDetailsScreenRoute(
-                                            //           productController
-                                            //               .productList[7].id
-                                            //               ),
-                                            // );
                                           },
                                         ),
                                       ],
