@@ -40,13 +40,5 @@ class RouteHelper {
       },
       transition: Transition.fadeIn,
     ),
-    // GetPage(
-    //   name: allCategoryScreen,
-    //   page: () {
-    //     String? categoryId = Get.parameters['categoryId'];
-    //     return AllCategoryScreen(categoryId: int.parse(categoryId ?? ''));
-    //   },
-    //   transition: Transition.fadeIn,
-    // ),
   ];
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:cjays/controllers/product_controller.dart';
+import 'package:cjays/models/Product.dart';
 import 'package:cjays/utils/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -19,12 +20,14 @@ class ProductDetailsScreen extends StatelessWidget {
     required this.productId,
   }) : super(key: key);
 
+  var data = Get.arguments;
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
-    var product = Get.find<ProductController>().productList[productId];
+    Product product = Get.find<ProductController>().productList[productId];
 
     debugPrint('ProductDetailsScreen: productId: $productId');
     debugPrint('Product Name: ${product.name}');

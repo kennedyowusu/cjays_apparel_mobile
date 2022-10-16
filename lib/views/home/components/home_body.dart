@@ -14,6 +14,7 @@ import 'package:cjays/views/home/components/curve_and_plus_product_card.dart';
 import 'package:cjays/views/home/components/discount_text.dart';
 import 'package:cjays/views/home/components/second_header.dart';
 import 'package:cjays/views/owner_recommend.dart/owner_recommend.dart';
+import 'package:cjays/views/product_details/product_details.dart';
 import 'package:cjays/widgets/loader.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -372,20 +373,6 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                                         "Category Content is: ${categoryController.categoryList[index].name}",
                                                       );
 
-                                                      // navigate to the category page
-                                                      // Navigator.push(
-                                                      //   context,
-                                                      //   MaterialPageRoute(
-                                                      //     builder: (context) =>
-                                                      //         EachCategoryScreen(
-                                                      //       category:
-                                                      //           categoryController
-                                                      //                   .categoryList[
-                                                      //               index],
-                                                      //     ),
-                                                      //   ),
-                                                      // );
-
                                                       Get.to(
                                                         () =>
                                                             EachCategoryScreen(
@@ -433,37 +420,6 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                     letterSpacing: 1.2,
                                   ),
                                 ),
-                                // GetBuilder<ProductController>(
-                                //   builder: (productController) {
-                                //     return productController.isLoaded
-                                //         ? Column(
-                                //             children: [
-                                //               ListView(
-                                //                 scrollDirection:
-                                //                     Axis.horizontal,
-                                //                 shrinkWrap: true,
-                                //                 children: List.generate(
-                                //                   5,
-                                //                   (index) {
-                                //                     return Container(
-                                //                       margin: EdgeInsets.only(
-                                //                         left: height * 0.020,
-                                //                       ),
-                                //                       height: height * 0.20,
-                                //                       width: width * 0.15,
-                                //                       color: Colors.red,
-                                //                     );
-                                //                   },
-                                //                 ),
-                                //               ),
-                                //             ],
-                                //           )
-                                //         : Center(
-                                //             child: Loader(),
-                                //           );
-                                // },
-                                // ),
-
                                 GetBuilder<ProductController>(
                                   builder: (productController) {
                                     return productController.isLoaded
@@ -512,13 +468,6 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                                         width: width * 0.15,
                                                         fit: BoxFit.cover,
                                                       ),
-                                                      // leading: Image.asset(
-                                                      //   productController
-                                                      //       .productList[index]
-                                                      //       .image!,
-                                                      //   height: height * 0.030,
-                                                      //   width: width * 0.040,
-                                                      // ),
                                                       title: Text(
                                                         productController
                                                             .productList[index]
@@ -579,6 +528,45 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                                                     index]
                                                                 .name!,
                                                           );
+
+                                                          // pass data to the next screen
+                                                          // Get.to(
+                                                          //   () =>
+                                                          //       ProductDetailsScreen(
+                                                          //     productId:
+                                                          //         productController
+                                                          //             .productList[
+                                                          //                 index]
+                                                          //             .id!,
+                                                          //   ),
+                                                          // );
+
+                                                          // pass product detials to the next screen
+
+                                                          // Get.to(
+                                                          //   () =>
+                                                          //       ProductDetailsScreen(
+                                                          //     productId:
+                                                          //         productController
+                                                          //             .productList[
+                                                          //                 index]
+                                                          //             .id!,
+                                                          //   ),
+                                                          //   arguments:
+                                                          //       productController
+                                                          //               .productList[
+                                                          //           index],
+                                                          // );
+
+                                                          // Get.toNamed(
+                                                          //   RouteHelper
+                                                          //       .getProductDetailsScreenRoute(
+                                                          //     productController
+                                                          //         .productList[
+                                                          //             index]
+                                                          //         .id!,
+                                                          //   ),
+                                                          // );
                                                         },
                                                         child: Text(
                                                           "Read More",
@@ -862,36 +850,9 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                     );
                                   },
                                 ),
-
                                 SizedBox(
                                   height: height * 0.004,
                                 ),
-
-                                // GetBuilder<ProductController>(
-                                //   builder: (productController) {
-                                //     return Row(
-                                //       children: List.generate(
-                                //         2,
-                                //         (index) => CurveAndPlusProductCard(
-                                //           height: height,
-                                //           width: width,
-                                //           percentage: '-21%',
-                                //           title: 'Curves + Plus'.toUpperCase(),
-                                //           image: ProjectImages.kCurvyPlus3,
-                                //           newPrice: productController
-                                //               .productList[index].price,
-                                //           oldPrice: 'GHS120.00',
-                                //           color: homeController.isFavorite.value
-                                //               ? ProjectColors.kVenetianRedColor
-                                //               : ProjectColors.kBlackColor,
-                                //           icon: homeController.isFavorite.value
-                                //               ? Icons.favorite
-                                //               : Icons.favorite_border,
-                                //         ),
-                                //       ),
-                                //     );
-                                //   },
-                                // ),
                                 SizedBox(
                                   height: height * 0.004,
                                 ),
@@ -984,7 +945,6 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                     );
                                   },
                                 ),
-
                                 SizedBox(
                                   height: height * 0.004,
                                 ),
@@ -1085,26 +1045,6 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
 
                         // Recommended Starts Here
                         OwnerRecommendedProducts(),
-                        // ListView.builder(
-                        //   itemCount: 1,
-                        //   itemBuilder: (c, i) {
-                        //     return Column(
-                        //       mainAxisAlignment: MainAxisAlignment.center,
-                        //       children: [
-                        //         Text(
-                        //           "I will figure out what to put here soon"
-                        //               .toUpperCase(),
-                        //           style: kTabBarItemFontStyle.copyWith(
-                        //             fontSize: 18.0 * kMultiplier * height,
-                        //             letterSpacing: 1.2,
-                        //             fontWeight: FontWeight.bold,
-                        //             color: ProjectColors.kBlackColor,
-                        //           ),
-                        //         ),
-                        //       ],
-                        //     );
-                        //   },
-                        // )
                       ],
                     ),
                   ),

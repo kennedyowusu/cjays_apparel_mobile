@@ -7,7 +7,6 @@ import 'package:cjays/views/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'controllers/product_category_controller.dart';
 import 'helpers/dependencies.dart' as dependencies;
 
 dynamic initScreen = 1;
