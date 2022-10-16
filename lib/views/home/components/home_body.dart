@@ -529,47 +529,14 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                                                 .name!,
                                                           );
 
-                                                          // pass data to the next screen
-                                                          // Get.to(
-                                                          //   () =>
-                                                          //       ProductDetailsScreen(
-                                                          //     productId:
-                                                          //         productController
-                                                          //             .productList[
-                                                          //                 index]
-                                                          //             .id!,
-                                                          //   ),
-                                                          // );
-
-                                                          // pass product detials to the next screen
-
-                                                          // Get.to(
-                                                          //   () =>
-                                                          //       ProductDetailsScreen(
-                                                          //     productId:
-                                                          //         productController
-                                                          //             .productList[
-                                                          //                 index]
-                                                          //             .id!,
-                                                          //   ),
-                                                          //   arguments:
-                                                          //       productController
-                                                          //               .productList[
-                                                          //           index],
-                                                          // );
-
-                                                          // Get.toNamed(
-                                                          //   RouteHelper
-                                                          //       .getProductDetailsScreenRoute(
-                                                          //     productController
-                                                          //         .productList[
-                                                          //             index]
-                                                          //         .id!,
-                                                          //   ),
-                                                          // );
+                                                          Get.toNamed(
+                                                            RouteHelper
+                                                                .getProductDetailsScreenRoute(
+                                                                    index),
+                                                          );
                                                         },
                                                         child: Text(
-                                                          "Read More",
+                                                          "View More",
                                                           style:
                                                               kTabBarItemFontStyle
                                                                   .copyWith(

@@ -2,6 +2,7 @@ import 'package:cjays/constants/colors.dart';
 import 'package:cjays/constants/images.dart';
 import 'package:cjays/constants/styles.dart';
 import 'package:cjays/controllers/product_controller.dart';
+import 'package:cjays/routes/routes_helper.dart';
 import 'package:cjays/utils/app_constants.dart';
 import 'package:cjays/widgets/loader.dart';
 import 'package:flutter/material.dart';
@@ -118,6 +119,13 @@ class OwnerRecommendedProducts extends StatelessWidget {
                                       debugPrint(productController
                                           .productList[i].id
                                           .toString());
+
+                                      Get.toNamed(
+                                        RouteHelper.recommended,
+                                        arguments: productController
+                                            .productList[i].id
+                                            .toString(),
+                                      );
                                     },
                                     child: Container(
                                       width: width * 0.10,

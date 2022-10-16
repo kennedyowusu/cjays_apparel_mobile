@@ -1,10 +1,12 @@
 import 'package:cjays/constants/colors.dart';
 import 'package:cjays/constants/images.dart';
+import 'package:cjays/routes/routes_helper.dart';
 import 'package:cjays/widgets/expanded_text.dart';
 import 'package:cjays/widgets/medium_text.dart';
 import 'package:cjays/widgets/project_icons.dart';
 import 'package:cjays/widgets/small_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class RecommendationsScreen extends StatelessWidget {
   const RecommendationsScreen({super.key});
@@ -34,7 +36,9 @@ class RecommendationsScreen extends StatelessWidget {
                         color: ProjectColors.kWhiteColor,
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.toNamed(RouteHelper.home);
+                    },
                   ),
                   GestureDetector(
                     onTap: () {},
@@ -95,7 +99,7 @@ class RecommendationsScreen extends StatelessWidget {
                     color: ProjectColors.kPrimaryColor,
                     image: DecorationImage(
                       image: AssetImage(ProjectImages.kDress),
-                      fit: BoxFit.cover,
+                      fit: BoxFit.contain,
                     ),
                   ),
                 ),

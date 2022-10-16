@@ -4,9 +4,6 @@ import 'package:cjays/views/auth/sign_success/login_success_screen.dart';
 import 'package:cjays/views/auth/signin/sign_in.dart';
 import 'package:cjays/views/auth/signup/sign_up_screen.dart';
 import 'package:cjays/views/bags/bags.dart';
-import 'package:cjays/views/cart/cart_screen.dart';
-import 'package:cjays/views/details/details_screen.dart';
-import 'package:cjays/views/home/home.dart';
 import 'package:cjays/views/new_arrival/new_arrival.dart';
 import 'package:cjays/views/otp/otp_screen.dart';
 import 'package:cjays/views/profile/profile_screen.dart';
@@ -23,7 +20,6 @@ final Map<String, WidgetBuilder> routes = {
   CompleteProfileScreen.routeName: (context) => CompleteProfileScreen(),
   OtpScreen.routeName: (context) => OtpScreen(),
   // HomeScreen.routeName: (context) => HomeScreen(),
-  // DetailsScreen.routeName: (context) => DetailsScreen(),
   // CartScreen.routeName: (context) => CartScreen(),
   ShopScreen.routeName: (context) => ShopScreen(),
   NewArrivalScreen.routeName: (context) => NewArrivalScreen(),

@@ -13,24 +13,24 @@ import 'package:cjays/widgets/project_icons.dart';
 import 'package:cjays/widgets/small_text.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
-  int productId;
+  final int screenId;
 
   ProductDetailsScreen({
     Key? key,
-    required this.productId,
+    required this.screenId,
   }) : super(key: key);
 
-  var data = Get.arguments;
+  final data = Get.arguments;
 
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
-    Product product = Get.find<ProductController>().productList[productId];
+    Product productData = Get.find<ProductController>().productList[screenId];
 
-    debugPrint('ProductDetailsScreen: productId: $productId');
-    debugPrint('Product Name: ${product.name}');
+    debugPrint('Screen id: $screenId');
+    debugPrint('Product Name: ${productData.name}');
 
     return SafeArea(
       child: Scaffold(
@@ -45,11 +45,10 @@ class ProductDetailsScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: ProjectColors.kPrimaryColor,
                   image: DecorationImage(
-                    // image: AssetImage(ProjectImages.kDress),
                     image: NetworkImage(ProjectConstants.BASE_URL +
                         ProjectConstants.UPLOAD_URL +
-                        product.image!),
-                    fit: BoxFit.cover,
+                        productData.image!),
+                    fit: BoxFit.contain,
                   ),
                 ),
               ),
@@ -66,8 +65,9 @@ class ProductDetailsScreen extends StatelessWidget {
                       Get.to(() => HomeScreen());
                     },
                     child: ProjectIcon(
-                      icon: Icons.arrow_back_ios,
+                      icon: Icons.chevron_left_sharp,
                       color: ProjectColors.kWhiteColor,
+                      size: 30,
                     ),
                   ),
                   Stack(
@@ -124,7 +124,7 @@ class ProductDetailsScreen extends StatelessWidget {
                       height: 20,
                     ),
                     MediumText(
-                      text: product.name!,
+                      text: productData.name!,
                       color: ProjectColors.kBlackColor,
                       size: 20.0,
                     ),
@@ -141,7 +141,7 @@ class ProductDetailsScreen extends StatelessWidget {
                     Expanded(
                       child: SingleChildScrollView(
                         child: ExpandableText(
-                          text: product.description!,
+                          text: productData.description!,
                         ),
                       ),
                     ),
@@ -241,7 +241,7 @@ class ProductDetailsScreen extends StatelessWidget {
                         ),
                         child: Center(
                           child: MediumText(
-                            text: "GH₵ ${product.price} | Add to Cart",
+                            text: "GH₵ ${productData.price} | Add to Cart",
                             color: ProjectColors.kWhiteColor,
                             size: 15,
                           ),
