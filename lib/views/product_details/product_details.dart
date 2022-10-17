@@ -73,31 +73,41 @@ class ProductDetailsScreen extends StatelessWidget {
                       color: ProjectColors.kWhiteColor,
                     ),
                   ),
-                  Stack(
-                    children: [
-                      ProjectIcon(
-                        icon: Icons.shopping_bag_outlined,
-                        color: ProjectColors.kWhiteColor,
-                      ),
-                      Positioned(
-                        top: 0,
-                        right: 0,
-                        child: ProjectIcon(
-                          icon: Icons.circle,
-                          size: 20.0,
-                          color: Colors.transparent,
-                          backgroundColor: ProjectColors.kWhiteColor,
-                        ),
-                      ),
-                      Positioned(
-                        top: 3,
-                        right: 5,
-                        child: SmallText(
-                          text: '0',
-                          color: ProjectColors.kPrimaryColor,
-                        ),
-                      )
-                    ],
+                  GetBuilder<ProductController>(
+                    builder: (productController) {
+                      return Stack(
+                        children: [
+                          ProjectIcon(
+                            icon: Icons.shopping_bag_outlined,
+                            color: ProjectColors.kWhiteColor,
+                          ),
+                          Get.find<ProductController>().totalItems >= 1
+                              ? Positioned(
+                                  top: 0,
+                                  right: 0,
+                                  child: ProjectIcon(
+                                    icon: Icons.circle,
+                                    size: 20.0,
+                                    color: Colors.transparent,
+                                    backgroundColor: ProjectColors.kWhiteColor,
+                                  ),
+                                )
+                              : Container(),
+                          Get.find<ProductController>().totalItems >= 1
+                              ? Positioned(
+                                  top: 3,
+                                  right: 7,
+                                  child: SmallText(
+                                    text: Get.find<ProductController>()
+                                        .totalItems
+                                        .toString(),
+                                    color: ProjectColors.kPrimaryColor,
+                                  ),
+                                )
+                              : Container(),
+                        ],
+                      );
+                    },
                   )
                 ],
               ),

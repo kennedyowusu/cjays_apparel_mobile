@@ -92,4 +92,12 @@ class CartController extends GetxController {
       backgroundColor: Colors.red,
     );
   }
+
+  int get totalItems {
+    int totalQuantity = 0;
+    items.forEach((key, value) {
+      totalQuantity += value.quantity;
+    });
+    return totalQuantity;
+  }
 }

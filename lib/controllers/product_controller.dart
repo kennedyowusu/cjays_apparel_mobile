@@ -90,7 +90,6 @@ class ProductController extends GetxController {
   void addItem(
     Product product,
   ) {
-    // if (_quantity > 0) {
     _cartController.addItem(product, _quantity);
     _quantity = 0;
 
@@ -99,9 +98,12 @@ class ProductController extends GetxController {
     _cartController.items.forEach((key, value) {
       debugPrint("key is: $key & value is: ${value.quantity.toString()}");
     });
-    // } else {
-    //   showSnackBar("Oops", "Item Quantity can't be 0");
-    // }
+
+    update();
+  }
+
+  int get totalItems {
+    return _cartController.totalItems;
   }
 
   SnackbarController showSnackBar(String title, String message) {
