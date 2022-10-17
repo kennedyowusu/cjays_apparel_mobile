@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:cjays/controllers/cart_controller.dart';
 import 'package:cjays/controllers/product_controller.dart';
 import 'package:cjays/models/Product.dart';
 import 'package:cjays/utils/app_constants.dart';
@@ -27,6 +28,11 @@ class RecommendationsScreen extends StatelessWidget {
     Product recommendedData =
         Get.find<ProductController>().productList[screenId];
 
+    Get.find<ProductController>().initProduct(
+      recommendedData,
+      Get.find<CartController>(),
+    );
+
     debugPrint('screenId: $screenId');
     debugPrint('recommended Data: ${recommendedData.name}');
 
@@ -54,35 +60,71 @@ class RecommendationsScreen extends StatelessWidget {
                       Get.toNamed(RouteHelper.home);
                     },
                   ),
-                  GestureDetector(
-                    onTap: () {},
-                    child: Stack(
-                      children: [
-                        ProjectIcon(
-                          icon: Icons.shopping_bag_outlined,
-                          color: ProjectColors.kWhiteColor,
-                        ),
-                        Positioned(
-                          top: 0,
-                          right: 0,
-                          child: ProjectIcon(
-                            icon: Icons.circle,
-                            size: 20.0,
-                            color: Colors.transparent,
-                            backgroundColor: ProjectColors.kWhiteColor,
+                  GetBuilder<ProductController>(
+                    builder: (productController) {
+                      return Stack(
+                        children: [
+                          ProjectIcon(
+                            icon: Icons.shopping_bag_outlined,
+                            color: ProjectColors.kWhiteColor,
                           ),
-                        ),
-                        Positioned(
-                          top: 3,
-                          right: 5,
-                          child: SmallText(
-                            text: '0',
-                            color: ProjectColors.kPrimaryColor,
-                          ),
-                        )
-                      ],
-                    ),
+                          Get.find<ProductController>().totalItems >= 1
+                              ? Positioned(
+                                  top: 0,
+                                  right: 0,
+                                  child: ProjectIcon(
+                                    icon: Icons.circle,
+                                    size: 20.0,
+                                    color: Colors.transparent,
+                                    backgroundColor: ProjectColors.kWhiteColor,
+                                  ),
+                                )
+                              : Container(),
+                          Get.find<ProductController>().totalItems >= 1
+                              ? Positioned(
+                                  top: 3,
+                                  right: 7,
+                                  child: SmallText(
+                                    text: Get.find<ProductController>()
+                                        .totalItems
+                                        .toString(),
+                                    color: ProjectColors.kPrimaryColor,
+                                  ),
+                                )
+                              : Container(),
+                        ],
+                      );
+                    },
                   ),
+                  // GestureDetector(
+                  //   onTap: () {},
+                  //   child: Stack(
+                  //     children: [
+                  //       ProjectIcon(
+                  //         icon: Icons.shopping_bag_outlined,
+                  //         color: ProjectColors.kWhiteColor,
+                  //       ),
+                  //       Positioned(
+                  //         top: 0,
+                  //         right: 0,
+                  //         child: ProjectIcon(
+                  //           icon: Icons.circle,
+                  //           size: 20.0,
+                  //           color: Colors.transparent,
+                  //           backgroundColor: ProjectColors.kWhiteColor,
+                  //         ),
+                  //       ),
+                  //       Positioned(
+                  //         top: 3,
+                  //         right: 5,
+                  //         child: SmallText(
+                  //           text: '0',
+                  //           color: ProjectColors.kPrimaryColor,
+                  //         ),
+                  //       )
+                  //     ],
+                  //   ),
+                  // ),
                 ],
               ),
               bottom: PreferredSize(
@@ -163,10 +205,12 @@ class RecommendationsScreen extends StatelessWidget {
                             color: ProjectColors.kWhiteColor,
                           ),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          productController.setQuantity(false);
+                        },
                       ),
                       MediumText(
-                        text: "0"
+                        text: "${productController.inCartItems}"
                                 " X "
                                 "GH₵ ${recommendedData.price}"
                             .split('.')[0],
@@ -182,7 +226,9 @@ class RecommendationsScreen extends StatelessWidget {
                             color: ProjectColors.kWhiteColor,
                           ),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          productController.setQuantity(true);
+                        },
                       ),
                     ],
                   ),
@@ -231,6 +277,11 @@ class RecommendationsScreen extends StatelessWidget {
                       ),
                       Expanded(
                         child: GestureDetector(
+                          onTap: () {
+                            productController.addItem(
+                              recommendedData,
+                            );
+                          },
                           child: Container(
                             height: height * 0.08,
                             decoration: BoxDecoration(

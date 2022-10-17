@@ -2,6 +2,7 @@
 import 'package:cjays/controllers/cart_controller.dart';
 import 'package:cjays/controllers/product_controller.dart';
 import 'package:cjays/models/Product.dart';
+import 'package:cjays/routes/routes_helper.dart';
 import 'package:cjays/utils/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -66,7 +67,7 @@ class ProductDetailsScreen extends StatelessWidget {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Get.to(() => HomeScreen());
+                      Get.toNamed(RouteHelper.home);
                     },
                     child: ProjectIcon(
                       icon: Icons.chevron_left_sharp,
@@ -108,7 +109,7 @@ class ProductDetailsScreen extends StatelessWidget {
                         ],
                       );
                     },
-                  )
+                  ),
                 ],
               ),
             ),
