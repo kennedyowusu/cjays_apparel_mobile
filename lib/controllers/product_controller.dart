@@ -62,6 +62,10 @@ class ProductController extends GetxController {
     if ((_inCartItems + quantity) < 0) {
       showSnackBar("Sorry", "Quantity can't be less than 0");
       return 0;
+    }
+    if (_inCartItems > 0) {
+      _quantity = -_inCartItems;
+      return _quantity;
     } else if ((_inCartItems + quantity) > 10) {
       showSnackBar("Oops", "Quantity can't be more than 10");
       return 10;
