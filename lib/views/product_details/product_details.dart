@@ -6,9 +6,7 @@ import 'package:cjays/routes/routes_helper.dart';
 import 'package:cjays/utils/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'package:cjays/constants/colors.dart';
-import 'package:cjays/views/home/home.dart';
 import 'package:cjays/widgets/expanded_text.dart';
 import 'package:cjays/widgets/medium_text.dart';
 import 'package:cjays/widgets/project_icons.dart';
@@ -16,10 +14,12 @@ import 'package:cjays/widgets/small_text.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
   final int screenId;
+  final String screen;
 
   ProductDetailsScreen({
     Key? key,
     required this.screenId,
+    required this.screen,
   }) : super(key: key);
 
   @override
@@ -50,9 +50,11 @@ class ProductDetailsScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: ProjectColors.kPrimaryColor,
                   image: DecorationImage(
-                    image: NetworkImage(ProjectConstants.BASE_URL +
-                        ProjectConstants.UPLOAD_URL +
-                        productData.image!),
+                    image: NetworkImage(
+                      ProjectConstants.BASE_URL +
+                          ProjectConstants.UPLOAD_URL +
+                          productData.image!,
+                    ),
                     fit: BoxFit.contain,
                   ),
                 ),
@@ -67,7 +69,11 @@ class ProductDetailsScreen extends StatelessWidget {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Get.toNamed(RouteHelper.home);
+                      if (screen == 'cartscreen') {
+                        Get.toNamed(RouteHelper.getCartScreen());
+                      } else {
+                        Get.offNamed(RouteHelper.getInitialRoute());
+                      }
                     },
                     child: ProjectIcon(
                       icon: Icons.chevron_left_sharp,
@@ -76,37 +82,45 @@ class ProductDetailsScreen extends StatelessWidget {
                   ),
                   GetBuilder<ProductController>(
                     builder: (productController) {
-                      return Stack(
-                        children: [
-                          ProjectIcon(
-                            icon: Icons.shopping_bag_outlined,
-                            color: ProjectColors.kWhiteColor,
-                          ),
-                          Get.find<ProductController>().totalItems >= 1
-                              ? Positioned(
-                                  top: 0,
-                                  right: 0,
-                                  child: ProjectIcon(
-                                    icon: Icons.circle,
-                                    size: 20.0,
-                                    color: Colors.transparent,
-                                    backgroundColor: ProjectColors.kWhiteColor,
-                                  ),
-                                )
-                              : Container(),
-                          Get.find<ProductController>().totalItems >= 1
-                              ? Positioned(
-                                  top: 3,
-                                  right: 7,
-                                  child: SmallText(
-                                    text: Get.find<ProductController>()
-                                        .totalItems
-                                        .toString(),
-                                    color: ProjectColors.kPrimaryColor,
-                                  ),
-                                )
-                              : Container(),
-                        ],
+                      return GestureDetector(
+                        onTap: () {
+                          if (productController.totalItems >= 1) {
+                            Get.toNamed(RouteHelper.getCartScreen());
+                          }
+                        },
+                        child: Stack(
+                          children: [
+                            ProjectIcon(
+                              icon: Icons.shopping_bag_outlined,
+                              color: ProjectColors.kWhiteColor,
+                            ),
+                            productController.totalItems >= 1
+                                ? Positioned(
+                                    top: 0,
+                                    right: 0,
+                                    child: ProjectIcon(
+                                      icon: Icons.circle,
+                                      size: 20.0,
+                                      color: Colors.transparent,
+                                      backgroundColor:
+                                          ProjectColors.kWhiteColor,
+                                    ),
+                                  )
+                                : Container(),
+                            productController.totalItems >= 1
+                                ? Positioned(
+                                    top: 3,
+                                    right: 7,
+                                    child: SmallText(
+                                      text: Get.find<ProductController>()
+                                          .totalItems
+                                          .toString(),
+                                      color: ProjectColors.kPrimaryColor,
+                                    ),
+                                  )
+                                : Container(),
+                          ],
+                        ),
                       );
                     },
                   ),

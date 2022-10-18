@@ -14,10 +14,12 @@ import 'package:cjays/widgets/small_text.dart';
 
 class RecommendationsScreen extends StatelessWidget {
   final int screenId;
+  final String screen;
 
   const RecommendationsScreen({
     Key? key,
     required this.screenId,
+    required this.screen,
   }) : super(key: key);
 
   @override
@@ -57,42 +59,54 @@ class RecommendationsScreen extends StatelessWidget {
                       ),
                     ),
                     onPressed: () {
-                      Get.toNamed(RouteHelper.home);
+                      if (screen == 'cartscreen') {
+                        Get.toNamed(RouteHelper.getCartScreen());
+                      } else {
+                        Get.offNamed(RouteHelper.getInitialRoute());
+                      }
                     },
                   ),
                   GetBuilder<ProductController>(
                     builder: (productController) {
-                      return Stack(
-                        children: [
-                          ProjectIcon(
-                            icon: Icons.shopping_bag_outlined,
-                            color: ProjectColors.kWhiteColor,
-                          ),
-                          Get.find<ProductController>().totalItems >= 1
-                              ? Positioned(
-                                  top: 0,
-                                  right: 0,
-                                  child: ProjectIcon(
-                                    icon: Icons.circle,
-                                    size: 20.0,
-                                    color: Colors.transparent,
-                                    backgroundColor: ProjectColors.kWhiteColor,
-                                  ),
-                                )
-                              : Container(),
-                          Get.find<ProductController>().totalItems >= 1
-                              ? Positioned(
-                                  top: 3,
-                                  right: 7,
-                                  child: SmallText(
-                                    text: Get.find<ProductController>()
-                                        .totalItems
-                                        .toString(),
-                                    color: ProjectColors.kPrimaryColor,
-                                  ),
-                                )
-                              : Container(),
-                        ],
+                      return GestureDetector(
+                        onTap: () {
+                          if (productController.totalItems >= 1) {
+                            Get.toNamed(RouteHelper.getCartScreen());
+                          }
+                        },
+                        child: Stack(
+                          children: [
+                            ProjectIcon(
+                              icon: Icons.shopping_bag_outlined,
+                              color: ProjectColors.kWhiteColor,
+                            ),
+                            productController.totalItems >= 1
+                                ? Positioned(
+                                    top: 0,
+                                    right: 0,
+                                    child: ProjectIcon(
+                                      icon: Icons.circle,
+                                      size: 20.0,
+                                      color: Colors.transparent,
+                                      backgroundColor:
+                                          ProjectColors.kWhiteColor,
+                                    ),
+                                  )
+                                : Container(),
+                            productController.totalItems >= 1
+                                ? Positioned(
+                                    top: 3,
+                                    right: 7,
+                                    child: SmallText(
+                                      text: Get.find<ProductController>()
+                                          .totalItems
+                                          .toString(),
+                                      color: ProjectColors.kPrimaryColor,
+                                    ),
+                                  )
+                                : Container(),
+                          ],
+                        ),
                       );
                     },
                   ),

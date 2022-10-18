@@ -120,7 +120,8 @@ class OwnerRecommendedProducts extends StatelessWidget {
                                           .toString());
 
                                       Get.toNamed(
-                                        RouteHelper.getRecommendedRoute(index),
+                                        RouteHelper.getRecommendedRoute(
+                                            index, 'homescreen'),
                                       );
                                     },
                                     child: Container(

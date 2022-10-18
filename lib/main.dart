@@ -1,5 +1,6 @@
 import 'package:cjays/constants/text.dart';
 import 'package:cjays/controllers/binding/all_controller_binding.dart';
+import 'package:cjays/controllers/cart_controller.dart';
 import 'package:cjays/controllers/category_controller.dart';
 import 'package:cjays/controllers/product_controller.dart';
 import 'package:cjays/routes/routes_helper.dart';
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.find<CategoryController>().getCategoryList();
     Get.find<ProductController>().getProductList();
-    // Get.find<ProductCategoryController>().getProductCategoryList();
+    Get.find<CartController>();
     return GetMaterialApp(
       initialBinding: AllControllerBinding(),
       title: ProjectText.kAppName,

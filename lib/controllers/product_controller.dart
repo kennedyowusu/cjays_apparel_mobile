@@ -1,5 +1,6 @@
 import 'package:cjays/controllers/cart_controller.dart';
 import 'package:cjays/data/repository/product_repo.dart';
+import 'package:cjays/models/Cart.dart';
 import 'package:cjays/models/Product.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -108,6 +109,10 @@ class ProductController extends GetxController {
 
   int get totalItems {
     return _cartController.totalItems;
+  }
+
+  List<CartModel> get getItems {
+    return _cartController.getItems;
   }
 
   SnackbarController showSnackBar(String title, String message) {

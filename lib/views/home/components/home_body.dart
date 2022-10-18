@@ -532,7 +532,9 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                                           Get.toNamed(
                                                             RouteHelper
                                                                 .getProductDetailsScreenRoute(
-                                                                    index),
+                                                              index,
+                                                              'details',
+                                                            ),
                                                           );
                                                         },
                                                         child: Text(
@@ -669,6 +671,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                               RouteHelper
                                                   .getProductDetailsScreenRoute(
                                                 0,
+                                                'details',
                                               ),
                                             );
                                           },
@@ -704,6 +707,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                               RouteHelper
                                                   .getProductDetailsScreenRoute(
                                                 1,
+                                                'details',
                                               ),
                                             );
                                           },
@@ -747,6 +751,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                               RouteHelper
                                                   .getProductDetailsScreenRoute(
                                                 2,
+                                                'details',
                                               ),
                                             );
                                           },
@@ -782,6 +787,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                               RouteHelper
                                                   .getProductDetailsScreenRoute(
                                                 3,
+                                                'details',
                                               ),
                                             );
                                           },
@@ -828,6 +834,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                               RouteHelper
                                                   .getProductDetailsScreenRoute(
                                                 4,
+                                                'details',
                                               ),
                                             );
                                           },
@@ -864,6 +871,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                               RouteHelper
                                                   .getProductDetailsScreenRoute(
                                                 5,
+                                                'details',
                                               ),
                                             );
                                           },
@@ -907,6 +915,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                               RouteHelper
                                                   .getProductDetailsScreenRoute(
                                                 6,
+                                                'details',
                                               ),
                                             );
                                           },
@@ -943,6 +952,7 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
                                               RouteHelper
                                                   .getProductDetailsScreenRoute(
                                                 7,
+                                                'details',
                                               ),
                                             );
                                           },

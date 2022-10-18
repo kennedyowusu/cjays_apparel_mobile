@@ -29,6 +29,7 @@ class CartController extends GetxController {
             quantity: existingItem.quantity + quantity,
             isExist: existingItem.isExist,
             time: existingItem.time,
+            product: existingItem.product,
           );
         },
       );
@@ -54,6 +55,7 @@ class CartController extends GetxController {
               quantity: quantity,
               isExist: true,
               time: DateTime.now().toString(),
+              product: product,
             );
           },
         );
@@ -62,6 +64,7 @@ class CartController extends GetxController {
         debugPrint("quantity is 0");
       }
     }
+    update();
   }
 
   bool existInCart(Product product) {
@@ -99,5 +102,12 @@ class CartController extends GetxController {
       totalQuantity += value.quantity;
     });
     return totalQuantity;
+  }
+
+  List<CartModel> get getItems {
+    List<CartModel> cartItems = [];
+    return items.entries.map((e) {
+      return e.value;
+    }).toList();
   }
 }
