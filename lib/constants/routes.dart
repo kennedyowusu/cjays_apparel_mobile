@@ -8,11 +8,9 @@ import 'package:cjays/views/new_arrival/new_arrival.dart';
 import 'package:cjays/views/otp/otp_screen.dart';
 import 'package:cjays/views/profile/profile_screen.dart';
 import 'package:cjays/views/shop/shop.dart';
-import 'package:cjays/views/splash/splash.dart';
 import 'package:flutter/material.dart';
 
 final Map<String, WidgetBuilder> routes = {
-  SplashScreen.routeName: (context) => SplashScreen(),
   LoginScreen.routeName: (context) => LoginScreen(),
   ForgotPasswordScreen.routeName: (context) => ForgotPasswordScreen(),
   LoginSuccessScreen.routeName: (context) => LoginSuccessScreen(),

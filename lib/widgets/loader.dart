@@ -8,8 +8,10 @@ class Loader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CircularProgressIndicator(
-      color: ProjectColors.kPrimaryColor,
+    return Center(
+      child: CircularProgressIndicator(
+        color: ProjectColors.kPrimaryColor,
+      ),
     );
   }
 }
