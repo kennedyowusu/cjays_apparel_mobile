@@ -9,6 +9,8 @@ class ProjectConstants {
   static const String UPLOAD_URL = "/products/";
 
   static const String TOKEN = "BDtoken";
+
+  static const String CART_LIST = "cart-list";
 }
 
 const String BASE_URL = "http://192.168.1.102:8000";

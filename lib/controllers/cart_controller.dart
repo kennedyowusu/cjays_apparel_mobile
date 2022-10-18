@@ -11,6 +11,8 @@ class CartController extends GetxController {
 
   Map<int, CartModel> items = {};
 
+  List<CartModel> storageItems = [];
+
   void addItem(Product product, int quantity) {
     int totalQuantity = 0;
 
@@ -64,6 +66,8 @@ class CartController extends GetxController {
         debugPrint("quantity is 0");
       }
     }
+
+    cartRepository.addToCartList(getItems);
     update();
   }
 
@@ -117,5 +121,23 @@ class CartController extends GetxController {
       totalAmount += value.price * value.quantity;
     });
     return totalAmount;
+  }
+
+  List<CartModel> getCartData() {
+    setCartData = cartRepository.getCartList();
+    return storageItems;
+  }
+
+  set setCartData(List<CartModel> cartList) {
+    storageItems = cartList;
+
+    debugPrint("Length of storageItems are: ${storageItems.length}");
+
+    for (int i = 0; i < storageItems.length; i++) {
+      items.putIfAbsent(
+        storageItems[i].product.id!,
+        () => storageItems[i],
+      );
+    }
   }
 }

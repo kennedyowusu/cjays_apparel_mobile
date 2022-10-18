@@ -4,8 +4,6 @@ import 'package:cjays/controllers/cart_controller.dart';
 import 'package:cjays/controllers/category_controller.dart';
 import 'package:cjays/controllers/product_controller.dart';
 import 'package:cjays/routes/routes_helper.dart';
-import 'package:cjays/views/home/home.dart';
-import 'package:cjays/views/splash/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -32,6 +30,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    Get.find<CartController>().getCartData();
     return GetBuilder<CategoryController>(
       builder: (categoryController) {
         return GetBuilder<ProductController>(

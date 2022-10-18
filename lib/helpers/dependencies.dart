@@ -7,10 +7,16 @@ import 'package:cjays/data/repository/category_repo.dart';
 import 'package:cjays/data/repository/product_category_repo.dart';
 import 'package:cjays/utils/app_constants.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../data/repository/product_repo.dart';
 
 Future<void> init() async {
+  // Shared Preferences
+  final SharedPreferences preferences = await SharedPreferences.getInstance();
+
+  Get.lazyPut(() => preferences);
+
   // Api Client
   Get.lazyPut(
     () => ApiClient(appBaseUrl: ProjectConstants.BASE_URL),
@@ -27,7 +33,7 @@ Future<void> init() async {
 
   Get.lazyPut(() => ProductCategoryRepository());
 
-  Get.lazyPut(() => CartRepository());
+  Get.lazyPut(() => CartRepository(preferences: Get.find()));
 
   // Controllers
   Get.lazyPut(
