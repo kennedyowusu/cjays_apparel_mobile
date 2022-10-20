@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:cjays/constants/colors.dart';
-import 'package:cjays/constants/sizes.dart';
+import 'package:cjays/constants/images.dart';
 import 'package:cjays/constants/styles.dart';
 import 'package:cjays/controllers/cart_controller.dart';
 import 'package:cjays/enums.dart';
@@ -13,7 +13,6 @@ import 'package:cjays/widgets/medium_text.dart';
 import 'package:cjays/widgets/no_data_view.dart';
 import 'package:cjays/widgets/project_dimensions.dart';
 import 'package:cjays/widgets/project_icons.dart';
-import 'package:cjays/widgets/small_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -114,239 +113,293 @@ class CartHistoryScreen extends StatelessWidget {
           ),
         ),
         body: SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(
-                height: height * 0.79,
-                // height: ProjectDimensions.heightTen * 60,
-                width: double.maxFinite,
-                margin: EdgeInsets.symmetric(
-                  horizontal: 20.0 * kMultiplier * width,
-                  vertical: 10.0 * kMultiplier * height,
-                ),
-                child: MediaQuery.removePadding(
-                  context: context,
-                  removeTop: true,
-                  child: ListView(
-                    children: [
-                      for (int i = 0; i < itemsPerOrder.length; i++)
+          child: GetBuilder<CartController>(
+            builder: (cartController) {
+              return cartController.getCartHistoryList().isNotEmpty
+                  ? Column(
+                      children: [
                         Container(
-                          height: 140.0 * kMultiplier * height,
-                          margin: EdgeInsets.only(
-                            bottom: 10.0 * kMultiplier * height,
+                          height: height * 0.79,
+                          width: double.maxFinite,
+                          margin: EdgeInsets.symmetric(
+                            horizontal: 20.0 * kMultiplier * width,
+                            vertical: 10.0 * kMultiplier * height,
                           ),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all(
-                              color: ProjectColors.kGreyColor,
-                              width: 1.0,
-                            ),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  left: 8.0,
-                                  top: 2.0,
-                                  bottom: 2.0,
-                                  right: 10.0,
-                                ),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    timeWidget(listCounter),
-                                    MediumText(
-                                      text: "Order No. ${i + 1}",
+                          child: MediaQuery.removePadding(
+                            context: context,
+                            removeTop: true,
+                            child: ListView(
+                              children: [
+                                for (int i = 0; i < itemsPerOrder.length; i++)
+                                  Container(
+                                    height: 140.0 * kMultiplier * height,
+                                    margin: EdgeInsets.only(
+                                      bottom: 10.0 * kMultiplier * height,
                                     ),
-                                  ],
-                                ),
-                              ),
-                              SizedBox(
-                                height: 5.0 * kMultiplier * height,
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Wrap(
-                                    direction: Axis.horizontal,
-                                    children: List.generate(
-                                      itemsPerOrder[i],
-                                      (index) {
-                                        if (listCounter <
-                                            getCartHistoryList.length) {
-                                          listCounter++;
-                                        }
-                                        return index <= 2
-                                            ? Padding(
-                                                padding: const EdgeInsets.only(
-                                                  left: 8.0,
-                                                ),
-                                                child: Container(
-                                                  height: 100.0 *
-                                                      kMultiplier *
-                                                      height,
-                                                  width: 160.0 *
-                                                      kMultiplier *
-                                                      width,
-                                                  margin: EdgeInsets.only(
-                                                    right: 0.0 *
-                                                        kMultiplier *
-                                                        width,
-                                                    left: index == 0
-                                                        ? 0.0
-                                                        : 2.0 *
-                                                            kMultiplier *
-                                                            width,
-                                                  ),
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                      8.0 *
-                                                          kMultiplier *
-                                                          height,
-                                                    ),
-                                                    border: Border.all(
-                                                      color: ProjectColors
-                                                          .kGreyColor,
-                                                      width: 1.0 *
-                                                          kMultiplier *
-                                                          height,
-                                                    ),
-                                                    image: DecorationImage(
-                                                      image: NetworkImage(
-                                                        ProjectConstants
-                                                                .BASE_URL +
-                                                            ProjectConstants
-                                                                .UPLOAD_URL +
-                                                            getCartHistoryList[
-                                                                    listCounter -
-                                                                        1]
-                                                                .image,
-                                                      ),
-                                                      fit: BoxFit.contain,
-                                                    ),
-                                                  ),
-                                                ),
-                                              )
-                                            : Container();
-                                      },
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      border: Border.all(
+                                        color: ProjectColors.kGreyColor,
+                                        width: 1.0,
+                                      ),
                                     ),
-                                  ),
-                                  SizedBox(
-                                    height: 100.0 * kMultiplier * height,
                                     child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.end,
+                                          CrossAxisAlignment.start,
                                       children: [
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                            left: 8.0,
+                                            top: 2.0,
+                                            bottom: 2.0,
+                                            right: 10.0,
+                                          ),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              timeWidget(listCounter),
+                                              MediumText(
+                                                text: "Order No. ${i + 1}",
+                                              ),
+                                            ],
+                                          ),
+                                        ),
                                         SizedBox(
                                           height: 5.0 * kMultiplier * height,
                                         ),
                                         Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
                                           children: [
-                                            Padding(
-                                              padding: EdgeInsets.only(
-                                                right:
-                                                    10.0 * kMultiplier * height,
+                                            Wrap(
+                                              direction: Axis.horizontal,
+                                              children: List.generate(
+                                                itemsPerOrder[i],
+                                                (index) {
+                                                  if (listCounter <
+                                                      getCartHistoryList
+                                                          .length) {
+                                                    listCounter++;
+                                                  }
+                                                  return index <= 2
+                                                      ? Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                            left: 8.0,
+                                                          ),
+                                                          child: Container(
+                                                            height: 100.0 *
+                                                                kMultiplier *
+                                                                height,
+                                                            width: 160.0 *
+                                                                kMultiplier *
+                                                                width,
+                                                            margin:
+                                                                EdgeInsets.only(
+                                                              right: 0.0 *
+                                                                  kMultiplier *
+                                                                  width,
+                                                              left: index == 0
+                                                                  ? 0.0
+                                                                  : 2.0 *
+                                                                      kMultiplier *
+                                                                      width,
+                                                            ),
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                8.0 *
+                                                                    kMultiplier *
+                                                                    height,
+                                                              ),
+                                                              border:
+                                                                  Border.all(
+                                                                color: ProjectColors
+                                                                    .kGreyColor,
+                                                                width: 1.0 *
+                                                                    kMultiplier *
+                                                                    height,
+                                                              ),
+                                                              image:
+                                                                  DecorationImage(
+                                                                image:
+                                                                    NetworkImage(
+                                                                  ProjectConstants.BASE_URL +
+                                                                      ProjectConstants
+                                                                          .UPLOAD_URL +
+                                                                      getCartHistoryList[listCounter -
+                                                                              1]
+                                                                          .image,
+                                                                ),
+                                                                fit: BoxFit
+                                                                    .contain,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        )
+                                                      : Container();
+                                                },
                                               ),
-                                              child: MediumText(
-                                                text: itemsPerOrder[i] == 1
-                                                    ? '1 Item'
-                                                    : '${itemsPerOrder[i]} Items',
-                                                color:
-                                                    ProjectColors.kBlackColor,
+                                            ),
+                                            SizedBox(
+                                              height:
+                                                  100.0 * kMultiplier * height,
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.end,
+                                                children: [
+                                                  SizedBox(
+                                                    height: 5.0 *
+                                                        kMultiplier *
+                                                        height,
+                                                  ),
+                                                  Row(
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsets.only(
+                                                          right: 10.0 *
+                                                              kMultiplier *
+                                                              height,
+                                                        ),
+                                                        child: MediumText(
+                                                          text: itemsPerOrder[
+                                                                      i] ==
+                                                                  1
+                                                              ? '1 Item'
+                                                              : '${itemsPerOrder[i]} Items',
+                                                          color: ProjectColors
+                                                              .kBlackColor,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  GestureDetector(
+                                                    onTap: () {
+                                                      List<String> orderTime =
+                                                          cartOrderTimeToList();
+
+                                                      Map<int, CartModel>
+                                                          moreOrder = {};
+
+                                                      for (int j = 0;
+                                                          j <
+                                                              getCartHistoryList
+                                                                  .length;
+                                                          j++) {
+                                                        if (getCartHistoryList[
+                                                                    j]
+                                                                .time ==
+                                                            orderTime[i]) {
+                                                          moreOrder.putIfAbsent(
+                                                            getCartHistoryList[
+                                                                    j]
+                                                                .id,
+                                                            () {
+                                                              return CartModel
+                                                                  .fromJson(
+                                                                jsonDecode(
+                                                                  jsonEncode(
+                                                                    getCartHistoryList[
+                                                                        j],
+                                                                  ),
+                                                                ),
+                                                              );
+                                                            },
+                                                          );
+                                                        }
+                                                      }
+                                                      Get.find<CartController>()
+                                                          .setItems = moreOrder;
+
+                                                      Get.find<CartController>()
+                                                          .addToCartList();
+
+                                                      Get.toNamed(
+                                                        RouteHelper
+                                                            .getCartScreen(),
+                                                      );
+                                                    },
+                                                    child: Container(
+                                                      height: 40.0 *
+                                                          kMultiplier *
+                                                          height,
+                                                      width: 200.0 *
+                                                          kMultiplier *
+                                                          width,
+                                                      margin: EdgeInsets.only(
+                                                        right: 10.0 *
+                                                            kMultiplier *
+                                                            height,
+                                                      ),
+                                                      padding:
+                                                          EdgeInsets.symmetric(
+                                                        horizontal:
+                                                            ProjectDimensions
+                                                                .widthTen,
+                                                        vertical:
+                                                            ProjectDimensions
+                                                                    .heightTen /
+                                                                5,
+                                                      ),
+                                                      decoration: BoxDecoration(
+                                                        color: ProjectColors
+                                                            .kWhiteColor,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(
+                                                          4.0 *
+                                                              kMultiplier *
+                                                              height,
+                                                        ),
+                                                        border: Border.all(
+                                                          color: ProjectColors
+                                                              .kGreyColor,
+                                                        ),
+                                                      ),
+                                                      child: Center(
+                                                        child: MediumText(
+                                                          text: "View More",
+                                                          size: ProjectDimensions
+                                                                  .textSizeTwelve /
+                                                              2,
+                                                          color: ProjectColors
+                                                              .kPrimaryColor,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
                                             ),
                                           ],
-                                        ),
-                                        GestureDetector(
-                                          onTap: () {
-                                            List<String> orderTime =
-                                                cartOrderTimeToList();
-
-                                            Map<int, CartModel> moreOrder = {};
-
-                                            for (int j = 0;
-                                                j < getCartHistoryList.length;
-                                                j++) {
-                                              if (getCartHistoryList[j].time ==
-                                                  orderTime[i]) {
-                                                moreOrder.putIfAbsent(
-                                                  getCartHistoryList[j].id,
-                                                  () {
-                                                    return CartModel.fromJson(
-                                                      jsonDecode(
-                                                        jsonEncode(
-                                                          getCartHistoryList[j],
-                                                        ),
-                                                      ),
-                                                    );
-                                                  },
-                                                );
-                                              }
-                                            }
-                                            Get.find<CartController>()
-                                                .setItems = moreOrder;
-
-                                            Get.find<CartController>()
-                                                .addToCartList();
-
-                                            Get.toNamed(
-                                              RouteHelper.getCartScreen(),
-                                            );
-                                          },
-                                          child: Container(
-                                            height: 40.0 * kMultiplier * height,
-                                            width: 200.0 * kMultiplier * width,
-                                            margin: EdgeInsets.only(
-                                              right:
-                                                  10.0 * kMultiplier * height,
-                                            ),
-                                            padding: EdgeInsets.symmetric(
-                                              horizontal:
-                                                  ProjectDimensions.widthTen,
-                                              vertical:
-                                                  ProjectDimensions.heightTen /
-                                                      5,
-                                            ),
-                                            decoration: BoxDecoration(
-                                              color: ProjectColors.kWhiteColor,
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                4.0 * kMultiplier * height,
-                                              ),
-                                              border: Border.all(
-                                                color: ProjectColors.kGreyColor,
-                                              ),
-                                            ),
-                                            child: Center(
-                                              child: MediumText(
-                                                text: "View More",
-                                                size: ProjectDimensions
-                                                    .textSizeTwelve,
-                                                color:
-                                                    ProjectColors.kPrimaryColor,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
+                                        )
                                       ],
                                     ),
-                                  ),
-                                ],
-                              )
-                            ],
+                                  )
+                              ],
+                            ),
                           ),
-                        )
-                    ],
-                  ),
-                ),
-              ),
-            ],
+                        ),
+                      ],
+                    )
+                  : SizedBox(
+                      height: MediaQuery.of(context).size.height / 1.5,
+                      child: Center(
+                        child: NoDataView(
+                          imagePath: ProjectImages.kNoDataImage,
+                          message: "Sorry, Your Cart History is Empty",
+                        ),
+                      ),
+                    );
+            },
           ),
         ),
         bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.bag),

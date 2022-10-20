@@ -217,7 +217,7 @@ class CartBody extends StatelessWidget {
                     child: Center(
                       child: NoDataView(
                         imagePath: ProjectImages.kNoDataImage,
-                        message: "Sorry, Your Cart History is Empty",
+                        message: "Sorry, You have no Product in your cart",
                       ),
                     ),
                   );

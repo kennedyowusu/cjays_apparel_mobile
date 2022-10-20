@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
       builder: (categoryController) {
         return GetBuilder<ProductController>(
           builder: (productController) {
-            return GetBuilder<ProductController>(
+            return GetBuilder<RecommendedController>(
               builder: (recommendedController) {
                 return GetBuilder<CartController>(
                   builder: (cartController) {

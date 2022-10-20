@@ -14,8 +14,8 @@ class CartRepository {
   List<String> cartHistory = [];
 
   void addToCartList(List<CartModel> cartList) {
-    // preferences.remove(ProjectConstants.CART_LIST);
-    // preferences.remove(ProjectConstants.CART_HISTORY_LIST);
+    preferences.remove(ProjectConstants.CART_LIST);
+    preferences.remove(ProjectConstants.CART_HISTORY_LIST);
 
     String time = DateTime.now().toString();
 
