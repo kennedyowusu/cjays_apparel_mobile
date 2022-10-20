@@ -5,6 +5,7 @@ import 'package:cjays/constants/text.dart';
 import 'package:cjays/controllers/cart_controller.dart';
 import 'package:cjays/controllers/category_controller.dart';
 import 'package:cjays/controllers/product_controller.dart';
+import 'package:cjays/controllers/recommended_controller.dart';
 import 'package:cjays/routes/routes_helper.dart';
 import 'package:cjays/utils/secure_storage.dart';
 import 'package:cjays/views/home/home.dart';
@@ -34,6 +35,7 @@ class _SplashScreenState extends State<SplashScreen>
   Future<void> loadResources() async {
     await Get.find<CategoryController>().getCategoryList();
     await Get.find<ProductController>().getProductList();
+    Get.find<RecommendedController>().getRecommendedList();
     Get.find<CartController>();
   }
 

@@ -1,7 +1,9 @@
 import 'package:cjays/constants/colors.dart';
+import 'package:cjays/constants/images.dart';
 import 'package:cjays/controllers/cart_controller.dart';
 import 'package:cjays/routes/routes_helper.dart';
 import 'package:cjays/widgets/medium_text.dart';
+import 'package:cjays/widgets/no_data_view.dart';
 import 'package:cjays/widgets/project_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -76,74 +78,79 @@ class CartScreen extends StatelessWidget {
         ),
         bottomNavigationBar: GetBuilder<CartController>(
           builder: (cartController) {
-            return Container(
-              height: height * 0.125,
-              padding: EdgeInsets.only(
-                left: 20.0,
-                right: 20.0,
-                top: 20.0,
-                bottom: 30.0,
-              ),
-              decoration: BoxDecoration(
-                color: ProjectColors.kBlackColor,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(10.0),
-                  topRight: Radius.circular(10.0),
-                ),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    height: height * 0.08,
-                    width: width * 0.40,
+            return cartController.getItems.isNotEmpty
+                ? Container(
+                    height: height * 0.125,
+                    padding: EdgeInsets.only(
+                      left: 20.0,
+                      right: 20.0,
+                      top: 20.0,
+                      bottom: 30.0,
+                    ),
                     decoration: BoxDecoration(
-                      color: ProjectColors.kWhiteColor,
-                      borderRadius: BorderRadius.circular(10),
+                      color: ProjectColors.kBlackColor,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(10.0),
+                        topRight: Radius.circular(10.0),
+                      ),
                     ),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        SizedBox(
-                          width: 20.0,
-                        ),
-                        MediumText(
-                          text: "GH₵ ${cartController.totalAmount}",
-                          size: 15,
+                        Container(
+                          height: height * 0.08,
+                          width: width * 0.40,
+                          decoration: BoxDecoration(
+                            color: ProjectColors.kWhiteColor,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                width: 20.0,
+                              ),
+                              MediumText(
+                                text: "GH₵ ${cartController.totalAmount}",
+                                size: 15,
+                              ),
+                              SizedBox(
+                                width: 20,
+                              ),
+                            ],
+                          ),
                         ),
                         SizedBox(
                           width: 20,
                         ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: () {
-                        // productController.addItem(productData);
-                      },
-                      child: Container(
-                        height: height * 0.08,
-                        decoration: BoxDecoration(
-                          color: ProjectColors.kVenetianRedColor,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Center(
-                          child: MediumText(
-                            text: "Checkout",
-                            color: ProjectColors.kWhiteColor,
-                            size: 15,
+                        Expanded(
+                          child: GestureDetector(
+                            onTap: () {
+                              // productController.addItem(productData);
+
+                              debugPrint("Checkout tapped");
+                              cartController.addToHistory();
+                            },
+                            child: Container(
+                              height: height * 0.08,
+                              decoration: BoxDecoration(
+                                color: ProjectColors.kVenetianRedColor,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Center(
+                                child: MediumText(
+                                  text: "Checkout",
+                                  color: ProjectColors.kWhiteColor,
+                                  size: 15,
+                                ),
+                              ),
+                            ),
                           ),
                         ),
-                      ),
+                      ],
                     ),
-                  ),
-                ],
-              ),
-            );
+                  )
+                : SizedBox();
           },
         ),
       ),

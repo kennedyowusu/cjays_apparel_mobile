@@ -3,6 +3,7 @@ import 'package:cjays/controllers/binding/all_controller_binding.dart';
 import 'package:cjays/controllers/cart_controller.dart';
 import 'package:cjays/controllers/category_controller.dart';
 import 'package:cjays/controllers/product_controller.dart';
+import 'package:cjays/controllers/recommended_controller.dart';
 import 'package:cjays/routes/routes_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -35,19 +36,23 @@ class MyApp extends StatelessWidget {
       builder: (categoryController) {
         return GetBuilder<ProductController>(
           builder: (productController) {
-            return GetBuilder<CartController>(
-              builder: (cartController) {
-                return GetMaterialApp(
-                  initialBinding: AllControllerBinding(),
-                  title: ProjectText.kAppName,
-                  debugShowCheckedModeBanner: false,
-                  defaultTransition: Transition.rightToLeft,
-                  // initialRoute:
-                  //     initScreen == 0 ? OnboardingScreen.routeName : SplashScreen.routeName,
-                  // routes: routes,
-                  // home: SplashScreen(),
-                  initialRoute: RouteHelper.getSplashScreen(),
-                  getPages: RouteHelper.routes,
+            return GetBuilder<ProductController>(
+              builder: (recommendedController) {
+                return GetBuilder<CartController>(
+                  builder: (cartController) {
+                    return GetMaterialApp(
+                      initialBinding: AllControllerBinding(),
+                      title: ProjectText.kAppName,
+                      debugShowCheckedModeBanner: false,
+                      defaultTransition: Transition.rightToLeft,
+                      // initialRoute:
+                      //     initScreen == 0 ? OnboardingScreen.routeName : SplashScreen.routeName,
+                      // routes: routes,
+                      // home: SplashScreen(),
+                      initialRoute: RouteHelper.getSplashScreen(),
+                      getPages: RouteHelper.routes,
+                    );
+                  },
                 );
               },
             );

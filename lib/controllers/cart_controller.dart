@@ -1,6 +1,7 @@
 import 'package:cjays/data/repository/cart_repo.dart';
 import 'package:cjays/models/Cart.dart';
 import 'package:cjays/models/Product.dart';
+import 'package:cjays/widgets/display_message.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -90,16 +91,6 @@ class CartController extends GetxController {
     return quantity;
   }
 
-  SnackbarController showSnackBar(String title, String message) {
-    return Get.snackbar(
-      title,
-      message,
-      snackPosition: SnackPosition.BOTTOM,
-      colorText: Colors.white,
-      backgroundColor: Colors.red,
-    );
-  }
-
   int get totalItems {
     int totalQuantity = 0;
     items.forEach((key, value) {
@@ -139,5 +130,31 @@ class CartController extends GetxController {
         () => storageItems[i],
       );
     }
+  }
+
+  void addToHistory() {
+    cartRepository.addToCartHistoryList();
+    clearCart();
+  }
+
+  void clearCart() {
+    items = {};
+
+    update();
+  }
+
+  List<CartModel> getCartHistoryList() {
+    return cartRepository.getCartHistoryList();
+  }
+
+  set setItems(Map<int, CartModel> setItems) {
+    items = {};
+    items = setItems;
+    // update();
+  }
+
+  void addToCartList() {
+    cartRepository.addToCartList(getItems);
+    update();
   }
 }

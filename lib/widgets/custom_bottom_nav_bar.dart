@@ -1,7 +1,7 @@
 import 'package:cjays/constants/colors.dart';
 import 'package:cjays/constants/styles.dart';
 import 'package:cjays/enums.dart';
-import 'package:cjays/views/bags/bags.dart';
+import 'package:cjays/views/cart_history/cart_history.dart';
 import 'package:cjays/views/home/home.dart';
 import 'package:cjays/views/new_arrival/new_arrival.dart';
 import 'package:cjays/views/profile/profile_screen.dart';
@@ -42,7 +42,7 @@ class CustomBottomNavBar extends StatelessWidget {
                 Icons.home_outlined,
                 size: 30.0,
                 color: MenuState.home == selectedMenu
-                    ? ProjectColors.kBlackColor
+                    ? ProjectColors.kPrimaryColor
                     : inActiveIconColor,
               ),
               onPressed: () => Get.to(() => HomeScreen()),
@@ -64,7 +64,7 @@ class CustomBottomNavBar extends StatelessWidget {
                 Icons.new_label_outlined,
                 size: 30.0,
                 color: MenuState.arrival == selectedMenu
-                    ? ProjectColors.kBlackColor
+                    ? ProjectColors.kPrimaryColor
                     : inActiveIconColor,
               ),
               onPressed: () => Get.to(() => NewArrivalScreen()),
@@ -75,17 +75,17 @@ class CustomBottomNavBar extends StatelessWidget {
                 Icons.shopping_bag_outlined,
                 size: 30.0,
                 color: MenuState.bag == selectedMenu
-                    ? ProjectColors.kBlackColor
+                    ? ProjectColors.kPrimaryColor
                     : inActiveIconColor,
               ),
-              onPressed: () => Get.to(() => BagScreen()),
+              onPressed: () => Get.to(() => CartHistoryScreen()),
               // Navigator.pushNamed(context, BagScreen.routeName),
             ),
             IconButton(
               icon: Icon(
                 Icons.person_outline,
                 color: MenuState.profile == selectedMenu
-                    ? ProjectColors.kBlackColor
+                    ? ProjectColors.kPrimaryColor
                     : inActiveIconColor,
               ),
               onPressed: () => Get.to(() => ProfileScreen()),

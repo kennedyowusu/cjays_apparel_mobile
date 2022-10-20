@@ -11,10 +11,18 @@ class CartRepository {
   CartRepository({required this.preferences});
 
   List<String> cart = [];
+  List<String> cartHistory = [];
 
   void addToCartList(List<CartModel> cartList) {
+    // preferences.remove(ProjectConstants.CART_LIST);
+    // preferences.remove(ProjectConstants.CART_HISTORY_LIST);
+
+    String time = DateTime.now().toString();
+
     cart = [];
+
     cartList.forEach((element) {
+      element.time = time;
       return cart.add(jsonEncode(element));
     });
 
@@ -30,7 +38,7 @@ class CartRepository {
           .toString(),
     );
 
-    getCartList();
+    // getCartList();
   }
 
   List<CartModel> getCartList() {
@@ -59,14 +67,70 @@ class CartRepository {
     return cartList;
   }
 
-  // void removeFromCart(Cart cart) {
-  //   final List<Cart> cartItems = getCartItems();
-  //   cartItems.removeWhere((element) => element.id == cart.id);
-  //   preferences.setStringList(
-  //       'cart', cartItems.map((e) => json.encode(e.toJson())).toList());
-  // }
+  List<CartModel> getCartHistoryList() {
+    if (preferences.containsKey(ProjectConstants.CART_HISTORY_LIST)) {
+      cartHistory = [];
 
-  // void clearCart() {
-  //   preferences.remove('cart');
-  // }
+      cartHistory = preferences.getStringList(
+        ProjectConstants.CART_HISTORY_LIST,
+      )!;
+
+      debugPrint("Cart History: $cartHistory");
+    }
+
+    List<CartModel> cartHistoryList = [];
+
+    cartHistory.forEach(
+      (element) {
+        cartHistoryList.add(
+          CartModel.fromJson(
+            jsonDecode(element),
+          ),
+        );
+      },
+    );
+
+    return cartHistoryList;
+  }
+
+  void addToCartHistoryList() {
+    if (preferences.containsKey(ProjectConstants.CART_HISTORY_LIST)) {
+      cartHistory = preferences.getStringList(
+        ProjectConstants.CART_HISTORY_LIST,
+      )!;
+
+      // preferences.setStringList(
+      //   ProjectConstants.CART_HISTORY_LIST,
+      //   cartHistory,
+      // );
+    }
+
+    for (int i = 0; i < cart.length; i++) {
+      cartHistory.add(cart[i]);
+      debugPrint("Cart History List: ${cart[i]}");
+    }
+
+    removeFromCart();
+
+    preferences.setStringList(
+      ProjectConstants.CART_HISTORY_LIST,
+      cartHistory,
+    );
+
+    debugPrint(
+        "The length of cart history list: ${getCartHistoryList().length}");
+
+    // debugPrint("The time for the order is ${getCartHistoryList().first.time}");
+
+    for (int j = 0; j < getCartHistoryList().length; j++) {
+      debugPrint(
+        "The time for the order is ${getCartHistoryList()[j].time}",
+      );
+    }
+  }
+
+  void removeFromCart() {
+    cart = [];
+    preferences.remove(ProjectConstants.CART_LIST);
+  }
 }

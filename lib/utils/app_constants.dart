@@ -11,6 +11,7 @@ class ProjectConstants {
   static const String TOKEN = "BDtoken";
 
   static const String CART_LIST = "cart-list";
+  static const String CART_HISTORY_LIST = "cart-history-list";
 }
 
 const String BASE_URL = "http://192.168.1.102:8000";
