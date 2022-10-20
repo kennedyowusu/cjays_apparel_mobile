@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'helpers/dependencies.dart' as dependencies;
+import 'package:flutter/services.dart';
 
 dynamic initScreen = 1;
 
@@ -22,7 +23,11 @@ void main() async {
   });
 
   await dependencies.init();
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]).then((_) {
+    runApp(MyApp());
+  });
 }
 
 class MyApp extends StatelessWidget {
@@ -49,7 +54,7 @@ class MyApp extends StatelessWidget {
                       //     initScreen == 0 ? OnboardingScreen.routeName : SplashScreen.routeName,
                       // routes: routes,
                       // home: SplashScreen(),
-                      initialRoute: RouteHelper.getSplashScreen(),
+                      initialRoute: RouteHelper.getRegisterScreen(),
                       getPages: RouteHelper.routes,
                     );
                   },

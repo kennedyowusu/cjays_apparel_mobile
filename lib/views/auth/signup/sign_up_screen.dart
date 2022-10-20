@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-import 'components/body.dart';
+import 'components/sign_body.dart';
 
-class SignUpScreen extends StatelessWidget {
+class RegisterScreen extends StatelessWidget {
   static String routeName = "/sign_up";
 
-  SignUpScreen({Key? key}) : super(key: key);
+  RegisterScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Body(),
+        body: RegisterBody(),
       ),
     );
   }

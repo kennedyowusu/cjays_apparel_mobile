@@ -1,3 +1,6 @@
+import 'package:cjays/views/auth/forgot_password/forgot_password_screen.dart';
+import 'package:cjays/views/auth/signin/sign_in.dart';
+import 'package:cjays/views/auth/signup/sign_up_screen.dart';
 import 'package:cjays/views/cart/cart_screen.dart';
 import 'package:cjays/views/home/home.dart';
 import 'package:cjays/views/product_details/product_details.dart';
@@ -12,6 +15,10 @@ class RouteHelper {
   static const String productDetailsScreen = '/product-details-screen';
   static const String cartScreen = '/cart-screen';
 
+  static const String loginScreen = '/login-screen';
+  static const String registerScreen = '/register-screen';
+  static const String forgotPasswordScreen = '/forgot-password-screen';
+
   static getSplashScreen() => splashScreen;
   static getInitialRoute() => home;
   static getRecommendedRoute(int screenId, String screen) =>
@@ -19,6 +26,10 @@ class RouteHelper {
   static getProductDetailsScreenRoute(int screenId, String screen) =>
       '$productDetailsScreen?screenId=$screenId&screen=$screen';
   static getCartScreen() => cartScreen;
+
+  static getLoginScreen() => loginScreen;
+  static getRegisterScreen() => registerScreen;
+  static getForgotPasswordScreen() => forgotPasswordScreen;
 
   static List<GetPage> routes = [
     GetPage(
@@ -51,6 +62,24 @@ class RouteHelper {
       name: cartScreen,
       page: () {
         return CartScreen();
+      },
+    ),
+    GetPage(
+      name: loginScreen,
+      page: () {
+        return LoginScreen();
+      },
+    ),
+    GetPage(
+      name: registerScreen,
+      page: () {
+        return RegisterScreen();
+      },
+    ),
+    GetPage(
+      name: forgotPasswordScreen,
+      page: () {
+        return ForgotPasswordScreen();
       },
     ),
   ];
