@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'profile_menu.dart';
 import 'profile_pic.dart';
 
-class Body extends StatelessWidget {
-  const Body({Key? key}) : super(key: key);
+class ProfileBody extends StatelessWidget {
+  const ProfileBody({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,28 +15,28 @@ class Body extends StatelessWidget {
           ProfilePic(),
           SizedBox(height: 20),
           ProfileMenu(
-            text: "My Account",
-            icon: "assets/icons/User Icon.svg",
+            text: "Name",
+            iconData: Icons.person,
             press: () => {},
           ),
           ProfileMenu(
-            text: "Notifications",
-            icon: "assets/icons/Bell.svg",
+            text: "Phone Number",
+            iconData: Icons.phone_android_sharp,
             press: () {},
           ),
           ProfileMenu(
-            text: "Settings",
-            icon: "assets/icons/Settings.svg",
+            text: "Email Address",
+            iconData: Icons.email,
             press: () {},
           ),
           ProfileMenu(
-            text: "Help Center",
-            icon: "assets/icons/Question mark.svg",
+            text: "House Address",
+            iconData: Icons.location_on,
             press: () {},
           ),
           ProfileMenu(
             text: "Log Out",
-            icon: "assets/icons/Log out.svg",
+            iconData: Icons.logout,
             press: () {},
           ),
         ],

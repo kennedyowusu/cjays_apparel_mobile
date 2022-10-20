@@ -1,4 +1,5 @@
 import 'package:cjays/constants/colors.dart';
+import 'package:cjays/widgets/project_dimensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -6,36 +7,54 @@ class ProfileMenu extends StatelessWidget {
   const ProfileMenu({
     Key? key,
     required this.text,
-    required this.icon,
+    required this.iconData,
     this.press,
   }) : super(key: key);
 
-  final String text, icon;
+  final String text;
+  final IconData iconData;
   final VoidCallback? press;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      child: TextButton(
-        style: TextButton.styleFrom(
-          primary: ProjectColors.kPrimaryColor,
-          padding: EdgeInsets.all(20),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-          backgroundColor: Color(0xFFF5F6F9),
+      child: Container(
+        padding: EdgeInsets.only(
+          left: 20,
+          right: 20,
         ),
-        onPressed: press,
+        decoration: BoxDecoration(
+          color: Color(0xFFF5F6F9),
+          borderRadius: BorderRadius.circular(5),
+        ),
         child: Row(
           children: [
-            SvgPicture.asset(
-              icon,
-              color: ProjectColors.kPrimaryColor,
-              width: 22,
+            Container(
+              height: ProjectDimensions.heightTwenty * 3,
+              width: ProjectDimensions.widthTwenty * 3,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(
+                  color: ProjectColors.kWhiteColor,
+                  width: 2.0,
+                ),
+              ),
+              child: Icon(
+                iconData,
+                color: ProjectColors.kPrimaryColor,
+                size: ProjectDimensions.heightTen * 2,
+              ),
             ),
+
+            // SvgPicture.asset(
+            //   icon,
+            //   color: ProjectColors.kPrimaryColor,
+            //   width: 22,
+            // ),
             SizedBox(width: 20),
             Expanded(child: Text(text)),
-            Icon(Icons.arrow_forward_ios),
+            // Icon(Icons.arrow_forward_ios),
           ],
         ),
       ),

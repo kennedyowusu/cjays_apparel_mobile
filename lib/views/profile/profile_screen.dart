@@ -4,7 +4,7 @@ import 'package:cjays/enums.dart';
 import 'package:cjays/widgets/custom_bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 
-import 'components/body.dart';
+import 'components/profile_body.dart';
 
 class ProfileScreen extends StatelessWidget {
   static String routeName = "/profile";
@@ -23,7 +23,7 @@ class ProfileScreen extends StatelessWidget {
           ),
           child: AppBar(
             title: Text(
-              "Cjays Apparel".toUpperCase(),
+              "Profile".toUpperCase(),
               style: kTabBarItemFontStyle.copyWith(
                 fontSize: 20.0 * kMultiplier * height,
                 fontWeight: FontWeight.bold,
@@ -52,7 +52,7 @@ class ProfileScreen extends StatelessWidget {
             elevation: 0.0,
           ),
         ),
-        body: Body(),
+        body: ProfileBody(),
         bottomNavigationBar:
             CustomBottomNavBar(selectedMenu: MenuState.profile),
       ),

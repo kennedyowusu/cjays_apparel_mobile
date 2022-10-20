@@ -1,11 +1,9 @@
 import 'package:cjays/constants/colors.dart';
-import 'package:cjays/constants/styles.dart';
 import 'package:cjays/enums.dart';
 import 'package:cjays/views/cart_history/cart_history.dart';
 import 'package:cjays/views/home/home.dart';
 import 'package:cjays/views/new_arrival/new_arrival.dart';
 import 'package:cjays/views/profile/profile_screen.dart';
-import 'package:cjays/views/shop/shop.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
