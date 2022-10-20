@@ -2,9 +2,11 @@ import 'package:cjays/constants/colors.dart';
 import 'package:cjays/constants/images.dart';
 import 'package:cjays/constants/sizes.dart';
 import 'package:cjays/constants/styles.dart';
+import 'package:cjays/controllers/cart_controller.dart';
 import 'package:cjays/controllers/category_controller.dart';
 import 'package:cjays/controllers/home.dart/home.dart';
 import 'package:cjays/controllers/product_controller.dart';
+import 'package:cjays/controllers/recommended_controller.dart';
 import 'package:cjays/routes/routes_helper.dart';
 import 'package:cjays/utils/app_constants.dart';
 import 'package:cjays/utils/secure_storage.dart';
@@ -15,6 +17,7 @@ import 'package:cjays/views/home/components/discount_text.dart';
 import 'package:cjays/views/home/components/second_header.dart';
 import 'package:cjays/views/owner_recommend.dart/owner_recommend.dart';
 import 'package:cjays/widgets/loader.dart';
+import 'package:cjays/widgets/refresher.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -36,8 +39,9 @@ class _HomeBodyState extends State<HomeBody> with TickerProviderStateMixin {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
-    return SafeArea(
-      child: SingleChildScrollView(
+    return SingleChildScrollView(
+      child: RefreshIndicator(
+        onRefresh: loadResources,
         child: Column(
           children: [
             SizedBox(

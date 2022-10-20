@@ -10,6 +10,7 @@ import 'package:cjays/routes/routes_helper.dart';
 import 'package:cjays/utils/secure_storage.dart';
 import 'package:cjays/views/home/home.dart';
 import 'package:cjays/views/onboarding/onboarding.dart';
+import 'package:cjays/widgets/refresher.dart';
 import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -31,13 +32,6 @@ class _SplashScreenState extends State<SplashScreen>
   final UserSecureStorage userSecureStorage = UserSecureStorage();
 
   String emailAddress = "";
-
-  Future<void> loadResources() async {
-    await Get.find<CategoryController>().getCategoryList();
-    await Get.find<ProductController>().getProductList();
-    Get.find<RecommendedController>().getRecommendedList();
-    Get.find<CartController>();
-  }
 
   @override
   void initState() {
