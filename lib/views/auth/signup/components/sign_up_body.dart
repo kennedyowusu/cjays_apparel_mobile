@@ -2,6 +2,8 @@ import 'package:cjays/constants/colors.dart';
 import 'package:cjays/constants/images.dart';
 import 'package:cjays/constants/sizes.dart';
 import 'package:cjays/views/auth/signin/sign_in.dart';
+import 'package:cjays/widgets/already_have_account.dart';
+import 'package:cjays/widgets/auth_button.dart';
 import 'package:cjays/widgets/input_field.dart';
 import 'package:cjays/widgets/medium_text.dart';
 import 'package:cjays/widgets/project_dimensions.dart';
@@ -95,57 +97,32 @@ class RegisterBody extends StatelessWidget {
                   controller: passwordController,
                   labelText: "Password",
                   hintText: "Enter your password",
-                  icon: Icons.lock,
+                  icon: Icons.password,
                 ),
                 SizedBox(height: size.height * 0.002),
                 InputField(
                   controller: confirmPasswordController,
                   labelText: "Confirm Password",
                   hintText: "confirm your password",
-                  icon: Icons.lock,
+                  icon: Icons.password,
                 ),
                 SizedBox(height: size.height * 0.002),
-                Container(
-                  margin: EdgeInsets.only(
-                    top: ProjectDimensions.heightTen * 2.5,
-                  ),
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: ProjectColors.kPrimaryColor,
-                      foregroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      minimumSize: Size(width, height * 0.06),
-                      // maximumSize: Size(width * 0.8, height * 0.06),
-                    ),
-                    onPressed: () {},
-                    child: MediumText(
-                      text: "Register",
-                      color: ProjectColors.kWhiteColor,
-                    ),
-                  ),
+                AuthButton(
+                  width: width,
+                  height: height,
+                  text: "Register",
+                  onPressed: () {},
                 ),
                 SizedBox(height: size.height * 0.002),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    MediumText(
-                      text: "Already have an account?",
-                      color: ProjectColors.kBlackColor,
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        Get.to(
-                          () => LoginScreen(),
-                        );
-                      },
-                      child: MediumText(
-                        text: "Login",
-                        color: ProjectColors.kPrimaryColor,
-                      ),
-                    ),
-                  ],
+                AlreadyHaveAccount(
+                  text: "Already have an account?",
+                  subText: "Sign In",
+                  onPressed: () {
+                    Get.to(
+                      () => LoginScreen(),
+                      transition: Transition.leftToRight,
+                    );
+                  },
                 ),
                 SizedBox(height: size.height * 0.002),
                 Wrap(
@@ -156,9 +133,6 @@ class RegisterBody extends StatelessWidget {
                       child: CircleAvatar(
                         radius: 20,
                         backgroundColor: ProjectColors.kGreyColor,
-                        // backgroundImage: AssetImage(
-                        //   registerImages[index],
-                        // ),
                         child: SvgPicture.asset(
                           registerImages[index],
                           height: 20,
