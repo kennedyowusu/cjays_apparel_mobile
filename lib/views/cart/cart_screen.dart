@@ -1,5 +1,6 @@
 import 'package:cjays/constants/colors.dart';
 import 'package:cjays/constants/images.dart';
+import 'package:cjays/controllers/auth/auth_controller.dart';
 import 'package:cjays/controllers/cart_controller.dart';
 import 'package:cjays/routes/routes_helper.dart';
 import 'package:cjays/widgets/medium_text.dart';
@@ -126,10 +127,12 @@ class CartScreen extends StatelessWidget {
                         Expanded(
                           child: GestureDetector(
                             onTap: () {
-                              // productController.addItem(productData);
-
-                              debugPrint("Checkout tapped");
-                              cartController.addToHistory();
+                              if (Get.find<AuthenticationController>()
+                                  .isUserLoggedIn()) {
+                                cartController.addToHistory();
+                              } else {
+                                Get.toNamed(RouteHelper.getLoginScreen());
+                              }
                             },
                             child: Container(
                               height: height * 0.08,

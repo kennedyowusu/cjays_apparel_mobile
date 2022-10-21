@@ -2,19 +2,12 @@ import 'package:cjays/constants/colors.dart';
 import 'package:cjays/constants/images.dart';
 import 'package:cjays/constants/sizes.dart';
 import 'package:cjays/constants/text.dart';
-import 'package:cjays/controllers/cart_controller.dart';
-import 'package:cjays/controllers/category_controller.dart';
-import 'package:cjays/controllers/product_controller.dart';
-import 'package:cjays/controllers/recommended_controller.dart';
 import 'package:cjays/routes/routes_helper.dart';
 import 'package:cjays/utils/secure_storage.dart';
-import 'package:cjays/views/home/home.dart';
-import 'package:cjays/views/onboarding/onboarding.dart';
 import 'package:cjays/widgets/refresher.dart';
 import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:page_transition/page_transition.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -173,15 +166,6 @@ class _SplashScreenState extends State<SplashScreen>
                       Get.offNamed(
                         RouteHelper.getInitialRoute(),
                       );
-                      // Navigator.push(
-                      //   context,
-                      //   PageTransition(
-                      //     type: PageTransitionType.rightToLeft,
-                      //     child: emailAddress == " "
-                      //         ? OnboardingScreen()
-                      //         : HomeScreen(),
-                      //   ),
-                      // );
                     },
                     onVerticalDragUpdate: (details) {
                       int sensitivity = 8;
@@ -189,15 +173,6 @@ class _SplashScreenState extends State<SplashScreen>
                         Get.offNamed(
                           RouteHelper.getInitialRoute(),
                         );
-                        // Navigator.push(
-                        //   context,
-                        //   PageTransition(
-                        //     type: PageTransitionType.rightToLeft,
-                        //     child: emailAddress == " "
-                        //         ? OnboardingScreen()
-                        //         : HomeScreen(),
-                        //   ),
-                        // );
                       }
                     },
                     child: AbsorbPointer(

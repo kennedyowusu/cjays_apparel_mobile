@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
                       //     initScreen == 0 ? OnboardingScreen.routeName : SplashScreen.routeName,
                       // routes: routes,
                       // home: SplashScreen(),
-                      initialRoute: RouteHelper.getRegisterScreen(),
+                      initialRoute: RouteHelper.getSplashScreen(),
                       getPages: RouteHelper.routes,
                     );
                   },

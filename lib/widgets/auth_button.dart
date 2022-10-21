@@ -33,7 +33,7 @@ class AuthButton extends StatelessWidget {
           // maximumSize: Size(width * 0.8, height * 0.06),
         ),
         onPressed: () {
-          onPressed();
+          onPressed;
         },
         child: MediumText(
           text: text,

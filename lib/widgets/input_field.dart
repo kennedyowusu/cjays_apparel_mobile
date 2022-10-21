@@ -9,11 +9,13 @@ class InputField extends StatelessWidget {
     required this.hintText,
     required this.icon,
     required this.controller,
+    this.isPassword = false,
   });
 
   final String labelText, hintText;
   final IconData icon;
   final TextEditingController controller;
+  final bool isPassword;
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +24,7 @@ class InputField extends StatelessWidget {
         top: ProjectDimensions.heightTen * 2.5,
       ),
       child: TextFormField(
+        obscureText: isPassword ? true : false,
         controller: controller,
         decoration: InputDecoration(
           labelText: labelText,
