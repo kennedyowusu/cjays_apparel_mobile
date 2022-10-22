@@ -3,8 +3,11 @@ import 'package:cjays/controllers/auth/auth_controller.dart';
 import 'package:cjays/controllers/cart_controller.dart';
 import 'package:cjays/controllers/user_controller.dart';
 import 'package:cjays/routes/routes_helper.dart';
+import 'package:cjays/widgets/auth_button.dart';
 import 'package:cjays/widgets/loader.dart';
+import 'package:cjays/widgets/medium_text.dart';
 import 'package:cjays/widgets/no_data_view.dart';
+import 'package:cjays/widgets/project_dimensions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,6 +19,9 @@ class ProfileBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+
     bool userLoggedIn = Get.find<AuthenticationController>().isUserLoggedIn();
 
     if (userLoggedIn) {
@@ -77,13 +83,32 @@ class ProfileBody extends StatelessWidget {
                   : Center(
                       child: Loader(),
                     ))
-              : SizedBox(
-                  height: MediaQuery.of(context).size.height / 1.5,
-                  child: Center(
-                    child: NoDataView(
-                      imagePath: ProjectImages.kNoProfileData,
-                      message: "Please Login to view your profile",
-                    ),
+              : Center(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        ProjectImages.kNoProfileData,
+                        height: height * 0.5,
+                        width: width * 0.5,
+                      ),
+                      MediumText(
+                        text: "Please Login to view your profile",
+                      ),
+                      SizedBox(
+                        height: ProjectDimensions.heightTwenty * 3.7,
+                        width: width * 0.8,
+                        child: AuthButton(
+                          text: "Sign In",
+                          onPressed: () {
+                            Get.offNamed(RouteHelper.getLoginScreen());
+                          },
+                          height: height,
+                          width: double.maxFinite,
+                        ),
+                      )
+                    ],
                   ),
                 );
         },
