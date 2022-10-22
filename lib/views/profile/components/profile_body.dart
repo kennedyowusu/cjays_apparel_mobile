@@ -32,7 +32,7 @@ class ProfileBody extends StatelessWidget {
       child: GetBuilder<UserController>(
         builder: (userController) {
           return userLoggedIn
-              ? (userController.isLoading
+              ? (!userController.isLoading
                   ? Column(
                       children: [
                         ProfilePic(),
@@ -89,7 +89,6 @@ class ProfileBody extends StatelessWidget {
                           imagePath: ProjectImages.kNoProfileData,
                           message: "Please Login to view your profile",
                         ),
-                        Text("Hello")
                       ],
                     ),
                   ),
