@@ -23,6 +23,9 @@ dependencies:
   google_fonts: ^3.0.1
   shared_preferences: ^2.0.15
   intl: ^0.17.0
+  geolocator: ^9.0.2
+  google_maps_flutter: ^2.2.1
+  geocoding: ^2.0.5
 
 dev_dependencies:
   flutter_test:
