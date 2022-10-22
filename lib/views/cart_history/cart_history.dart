@@ -94,13 +94,6 @@ class CartHistoryScreen extends StatelessWidget {
             backgroundColor: ProjectColors.kWhiteColor,
             actions: [
               IconButton(
-                icon: Icon(
-                  Icons.monetization_on,
-                  color: ProjectColors.kPrimaryColor,
-                ),
-                onPressed: () {},
-              ),
-              IconButton(
                 icon: ProjectIcon(
                   icon: Icons.shopping_bag_outlined,
                   color: ProjectColors.kWhiteColor,
