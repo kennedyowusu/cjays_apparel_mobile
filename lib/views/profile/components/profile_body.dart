@@ -24,13 +24,15 @@ class ProfileBody extends StatelessWidget {
     if (userLoggedIn) {
       Get.find<UserController>().getUserData();
       debugPrint("User Logged In");
+    } else {
+      debugPrint("User Not Logged In");
     }
     return SingleChildScrollView(
       padding: EdgeInsets.symmetric(vertical: 20),
       child: GetBuilder<UserController>(
         builder: (userController) {
           return userLoggedIn
-              ? (!userController.isLoading
+              ? (userController.isLoading
                   ? Column(
                       children: [
                         ProfilePic(),

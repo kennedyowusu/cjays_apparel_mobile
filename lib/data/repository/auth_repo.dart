@@ -1,6 +1,6 @@
 import 'package:cjays/data/api/api_client.dart';
 import 'package:cjays/models/auth.dart';
-import 'package:cjays/models/sign_in';
+import 'package:cjays/models/sign_in.dart';
 import 'package:cjays/utils/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

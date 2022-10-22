@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:cjays/data/repository/auth_repo.dart';
 import 'package:cjays/models/auth.dart';
 import 'package:cjays/models/response.dart';
-import 'package:cjays/models/sign_in';
+import 'package:cjays/models/sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

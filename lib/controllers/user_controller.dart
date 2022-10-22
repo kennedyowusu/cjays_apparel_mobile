@@ -19,16 +19,18 @@ class UserController extends GetxController implements GetxService {
 
     // type 'String' is not a subtype of type 'Map<String, dynamic>'
 
-    if (response.statusCode == 200) {
-      // userModel = UserModel.fromJson(Map<String, dynamic>.from(response.body));
+    // userModel = UserModel.fromJson(
+    //   Map<String, dynamic>.from(response.body),
+    // );
 
+    if (response.statusCode == 200) {
       userModel = UserModel.fromJson(response.body);
 
       isLoading = true;
       responseModel = ResponseModel(true, "Success");
     } else {
+      debugPrint("Cannot get user data ${response.statusText}");
       responseModel = ResponseModel(false, response.statusText!);
-      debugPrint(response.statusText!);
     }
 
     update();

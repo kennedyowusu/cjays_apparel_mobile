@@ -3,6 +3,7 @@ import 'package:cjays/constants/images.dart';
 import 'package:cjays/constants/sizes.dart';
 import 'package:cjays/constants/text.dart';
 import 'package:cjays/controllers/auth/auth_controller.dart';
+import 'package:cjays/models/sign_in.dart';
 import 'package:cjays/routes/routes_helper.dart';
 import 'package:cjays/views/auth/signup/sign_up_screen.dart';
 import 'package:cjays/widgets/already_have_account.dart';
@@ -13,7 +14,6 @@ import 'package:cjays/widgets/loader.dart';
 import 'package:cjays/widgets/project_dimensions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:cjays/models/sign_in';
 
 class LoginBody extends StatelessWidget {
   LoginBody({Key? key}) : super(key: key);

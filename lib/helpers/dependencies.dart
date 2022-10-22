@@ -29,6 +29,11 @@ Future<void> init() async {
   );
 
   // Repositories
+  Get.lazyPut(() =>
+      AuthenticationRepository(apiClient: Get.find(), preferences: Get.find()));
+
+  Get.lazyPut(() => UserRepository(apiClient: Get.find()));
+
   Get.lazyPut(
     () => ProductRepository(
       apiClient: Get.find(),
@@ -43,11 +48,12 @@ Future<void> init() async {
 
   Get.lazyPut(() => RecommendedRepository(apiClient: Get.find()));
 
-  Get.lazyPut(() =>
-      AuthenticationRepository(apiClient: Get.find(), preferences: Get.find()));
-  Get.lazyPut(() => UserRepository(apiClient: Get.find()));
-
   // Controllers
+  Get.lazyPut(
+      () => AuthenticationController(authenticationRepository: Get.find()));
+
+  Get.lazyPut(() => UserController(userRepository: Get.find()));
+
   Get.lazyPut(
     () => ProductController(
       productRepository: Get.find(),
@@ -57,7 +63,4 @@ Future<void> init() async {
   Get.lazyPut(() => CategoryController(categoryRepository: Get.find()));
   Get.lazyPut(() => CartController(cartRepository: Get.find()));
   Get.lazyPut(() => RecommendedController(recommendedRepository: Get.find()));
-  Get.lazyPut(
-      () => AuthenticationController(authenticationRepository: Get.find()));
-  Get.lazyPut(() => UserController(userRepository: Get.find()));
 }
