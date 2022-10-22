@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 
 class ProductCategoryController extends GetxController {
   ProductCategoryRepository productCategoryRepository =
-      ProductCategoryRepository();
+      ProductCategoryRepository(apiClient: Get.find());
   final Category category;
 
   ProductCategoryController({required this.category});

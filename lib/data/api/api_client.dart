@@ -1,17 +1,19 @@
 import 'package:cjays/utils/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ApiClient extends GetConnect implements GetxService {
   late String token;
   final String appBaseUrl;
+  late SharedPreferences preferences;
 
   late Map<String, String> _mainHeaders;
 
-  ApiClient({required this.appBaseUrl}) {
+  ApiClient({required this.appBaseUrl, required this.preferences}) {
     baseUrl = appBaseUrl;
     timeout = Duration(seconds: 30);
-    token = ProjectConstants.TOKEN;
+    token = preferences.getString(ProjectConstants.TOKEN) ?? "";
 
     _mainHeaders = {
       'Content-Type': 'application/json; charset=UTF-8',

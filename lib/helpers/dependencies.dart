@@ -25,7 +25,8 @@ Future<void> init() async {
 
   // Api Client
   Get.lazyPut(
-    () => ApiClient(appBaseUrl: ProjectConstants.BASE_URL),
+    () => ApiClient(
+        appBaseUrl: ProjectConstants.BASE_URL, preferences: Get.find()),
   );
 
   // Repositories
@@ -42,7 +43,7 @@ Future<void> init() async {
 
   Get.lazyPut(() => CategoryRepository(apiClient: Get.find()));
 
-  Get.lazyPut(() => ProductCategoryRepository());
+  Get.lazyPut(() => ProductCategoryRepository(apiClient: Get.find()));
 
   Get.lazyPut(() => CartRepository(preferences: Get.find()));
 
