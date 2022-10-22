@@ -56,4 +56,14 @@ class AuthenticationRepository {
       debugPrint(e.toString());
     }
   }
+
+  bool logUserOut() {
+    preferences.remove(ProjectConstants.TOKEN);
+    preferences.remove(ProjectConstants.EMAIL);
+    preferences.remove(ProjectConstants.PASSWORD);
+    apiClient.token = '';
+    apiClient.updateHeaders('');
+
+    return true;
+  }
 }

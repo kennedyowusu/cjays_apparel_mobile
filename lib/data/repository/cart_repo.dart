@@ -98,11 +98,6 @@ class CartRepository {
       cartHistory = preferences.getStringList(
         ProjectConstants.CART_HISTORY_LIST,
       )!;
-
-      // preferences.setStringList(
-      //   ProjectConstants.CART_HISTORY_LIST,
-      //   cartHistory,
-      // );
     }
 
     for (int i = 0; i < cart.length; i++) {
@@ -118,9 +113,8 @@ class CartRepository {
     );
 
     debugPrint(
-        "The length of cart history list: ${getCartHistoryList().length}");
-
-    // debugPrint("The time for the order is ${getCartHistoryList().first.time}");
+      "The length of cart history list: ${getCartHistoryList().length}",
+    );
 
     for (int j = 0; j < getCartHistoryList().length; j++) {
       debugPrint(
@@ -132,5 +126,11 @@ class CartRepository {
   void removeFromCart() {
     cart = [];
     preferences.remove(ProjectConstants.CART_LIST);
+  }
+
+  void clearCartHistory() {
+    removeFromCart();
+    cartHistory = [];
+    preferences.remove(ProjectConstants.CART_HISTORY_LIST);
   }
 }

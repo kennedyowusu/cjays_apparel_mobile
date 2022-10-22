@@ -69,4 +69,8 @@ class AuthenticationController extends GetxController implements GetxService {
   bool isUserLoggedIn() {
     return authenticationRepository.isUserLoggedIn();
   }
+
+  bool logUserOut() {
+    return authenticationRepository.logUserOut();
+  }
 }
