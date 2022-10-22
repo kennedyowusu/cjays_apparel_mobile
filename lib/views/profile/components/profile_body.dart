@@ -3,7 +3,6 @@ import 'package:cjays/controllers/auth/auth_controller.dart';
 import 'package:cjays/controllers/cart_controller.dart';
 import 'package:cjays/controllers/user_controller.dart';
 import 'package:cjays/routes/routes_helper.dart';
-import 'package:cjays/widgets/auth_button.dart';
 import 'package:cjays/widgets/loader.dart';
 import 'package:cjays/widgets/no_data_view.dart';
 import 'package:flutter/material.dart';
@@ -17,22 +16,20 @@ class ProfileBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
     bool userLoggedIn = Get.find<AuthenticationController>().isUserLoggedIn();
 
     if (userLoggedIn) {
       Get.find<UserController>().getUserData();
       debugPrint("User Logged In");
     } else {
-      debugPrint("User Not Logged In");
+      debugPrint("User Not Logged In \n");
     }
     return SingleChildScrollView(
       padding: EdgeInsets.symmetric(vertical: 20),
       child: GetBuilder<UserController>(
         builder: (userController) {
           return userLoggedIn
-              ? (!userController.isLoading
+              ? (userController.isLoading
                   ? Column(
                       children: [
                         ProfilePic(),
