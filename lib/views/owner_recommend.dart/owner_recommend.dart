@@ -155,9 +155,7 @@ class OwnerRecommendedProducts extends StatelessWidget {
                           : SizedBox();
                     },
                   )
-                : Center(
-                    child: Loader(),
-                  ),
+                : Loader(),
           );
         },
       ),
