@@ -22,7 +22,7 @@ class ProfileBody extends StatelessWidget {
       Get.find<UserController>().getUserData();
       debugPrint("User Logged In");
     } else {
-      debugPrint("User Not Logged In \n");
+      debugPrint("User Not Logged In");
     }
     return SingleChildScrollView(
       padding: EdgeInsets.symmetric(vertical: 20),
@@ -80,13 +80,9 @@ class ProfileBody extends StatelessWidget {
               : SizedBox(
                   height: MediaQuery.of(context).size.height / 1.5,
                   child: Center(
-                    child: Column(
-                      children: [
-                        NoDataView(
-                          imagePath: ProjectImages.kNoProfileData,
-                          message: "Please Login to view your profile",
-                        ),
-                      ],
+                    child: NoDataView(
+                      imagePath: ProjectImages.kNoProfileData,
+                      message: "Please Login to view your profile",
                     ),
                   ),
                 );

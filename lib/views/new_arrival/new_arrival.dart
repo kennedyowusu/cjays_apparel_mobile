@@ -33,15 +33,6 @@ class NewArrivalScreen extends StatelessWidget {
             ),
             automaticallyImplyLeading: false,
             backgroundColor: ProjectColors.kWhiteColor,
-            actions: [
-              IconButton(
-                icon: Icon(
-                  Icons.favorite_border_sharp,
-                  color: ProjectColors.kBlackColor,
-                ),
-                onPressed: () {},
-              ),
-            ],
             centerTitle: true,
             elevation: 0.0,
           ),

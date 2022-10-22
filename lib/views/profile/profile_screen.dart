@@ -32,22 +32,6 @@ class ProfileScreen extends StatelessWidget {
             ),
             automaticallyImplyLeading: false,
             backgroundColor: ProjectColors.kWhiteColor,
-            actions: [
-              IconButton(
-                icon: Icon(
-                  Icons.monetization_on,
-                  color: ProjectColors.kPrimaryColor,
-                ),
-                onPressed: () {},
-              ),
-              IconButton(
-                icon: Icon(
-                  Icons.notifications_none,
-                  color: ProjectColors.kBlackColor,
-                ),
-                onPressed: () {},
-              ),
-            ],
             centerTitle: true,
             elevation: 0.0,
           ),

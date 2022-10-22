@@ -1,3 +1,4 @@
+import 'package:cjays/constants/colors.dart';
 import 'package:cjays/constants/images.dart';
 import 'package:cjays/widgets/project_dimensions.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,7 @@ class ProfilePic extends StatelessWidget {
         clipBehavior: Clip.none,
         children: [
           CircleAvatar(
+            backgroundColor: ProjectColors.kGreyColor,
             backgroundImage: AssetImage(ProjectImages.kPlaceholder),
           ),
           // Positioned(
