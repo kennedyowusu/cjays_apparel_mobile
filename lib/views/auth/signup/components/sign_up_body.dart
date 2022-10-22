@@ -212,13 +212,13 @@ class RegisterBody extends StatelessWidget {
         confirmPassword: confirmPassword,
       );
       authController.registration(authModel).then((status) {
-        if (status.isSuccess!) {
-          Get.offAllNamed(
+        if (status.isSuccess) {
+          Get.toNamed(
             RouteHelper.getInitialRoute(),
           );
           debugPrint(authModel.toString());
         } else {
-          displayCustomSnackBar(status.message!);
+          displayCustomSnackBar(status.message);
         }
       });
     }

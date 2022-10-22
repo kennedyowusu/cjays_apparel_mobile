@@ -62,13 +62,6 @@ class CartBody extends StatelessWidget {
                                           productIndex, 'cartscreen'),
                                     );
                                   } else {
-                                    // int recommendedIndex =
-                                    //     Get.find<RecommendedController>()
-                                    //         .recommendedList
-                                    //         .indexOf(
-                                    //           cartList[index].product,
-                                    //         );
-
                                     int recommendedIndex =
                                         Get.find<ProductController>()
                                             .productList

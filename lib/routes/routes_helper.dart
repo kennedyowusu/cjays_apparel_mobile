@@ -69,6 +69,7 @@ class RouteHelper {
       page: () {
         return LoginScreen();
       },
+      transition: Transition.fadeIn,
     ),
     GetPage(
       name: registerScreen,
