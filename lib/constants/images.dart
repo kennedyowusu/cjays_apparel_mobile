@@ -40,4 +40,5 @@ class ProjectImages {
   static const String kDress4 = "assets/images/dress-4.jpg";
   static const String kDress5 = "assets/images/dress-5.jpg";
   static const String kNoDataImage = "assets/images/empty-cart.png";
+  static const String kNoProfileData = "assets/images/access_account.png";
 }

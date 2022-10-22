@@ -18,4 +18,6 @@ class ProjectConstants {
 
   static const String REGISTRATION_URL = "/api/auth/register";
   static const String LOGIN_URL = "/api/auth/login";
+
+  static const String USER_DATA = "/api/user";
 }
