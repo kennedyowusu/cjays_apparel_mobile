@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:cjays/data/repository/auth_repo.dart';
 import 'package:cjays/models/auth.dart';
 import 'package:cjays/models/response.dart';
@@ -44,14 +46,14 @@ class AuthenticationController extends GetxController implements GetxService {
 
     if (response.statusCode == 200) {
       debugPrint("User token from backend is: ${response.body["token"]}");
-      authenticationRepository.saveUserToken(response.body["token"]);
-      // authenticationRepository.saveUserLoginData(
-      //   signInModel.email,
-      //   signInModel.password,
-      // );
+      authenticationRepository.saveUserToken(
+        jsonEncode(response.body["token"]),
+
+        // Map<String, dynamic>.from(response.body)["token".toString()],
+      );
 
       debugPrint("the response body is: ${response.body["token"]}");
-      responseModel = ResponseModel(true, response.body["token"]);
+      responseModel = ResponseModel(true, jsonEncode(response.body["token"]));
     } else {
       responseModel = ResponseModel(false, response.statusText!);
     }

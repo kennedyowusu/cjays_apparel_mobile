@@ -8,4 +8,11 @@ class ResponseModel {
     message = json['message'];
     isSuccess = json['isSuccess'];
   }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['message'] = message;
+    data['isSuccess'] = isSuccess;
+    return data;
+  }
 }

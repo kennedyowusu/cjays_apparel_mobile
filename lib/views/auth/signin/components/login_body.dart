@@ -162,10 +162,9 @@ class LoginBody extends StatelessWidget {
         (status) {
           if (status.isSuccess) {
             debugPrint("Registration Successful");
-            // Get.offAllNamed(
-            //   RouteHelper.getInitialRoute(),
-            // );
-            // debugPrint("Registration Successful");
+            Get.offAllNamed(
+              RouteHelper.getInitialRoute(),
+            );
           } else {
             displayCustomSnackBar(status.message);
             debugPrint("Registration Failed");
