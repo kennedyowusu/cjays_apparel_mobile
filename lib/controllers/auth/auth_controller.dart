@@ -20,10 +20,10 @@ class AuthenticationController extends GetxController implements GetxService {
     late ResponseModel responseModel;
 
     if (response.statusCode == 200) {
-      authenticationRepository.saveUserToken(response.body['token']);
-      responseModel = ResponseModel(true, response.body['message']);
+      authenticationRepository.saveUserToken(response.body["token"]);
+      responseModel = ResponseModel(true, response.body["token"]);
     } else {
-      responseModel = ResponseModel(false, response.statusText.toString());
+      responseModel = ResponseModel(false, response.statusText!);
       debugPrint(response.statusText.toString());
     }
     isLoading = false;
@@ -32,6 +32,10 @@ class AuthenticationController extends GetxController implements GetxService {
   }
 
   Future<ResponseModel> loginUser(SignInModel signInModel) async {
+    debugPrint(
+      "User token from user's device is: ${authenticationRepository.getUserToken()}",
+    );
+
     isLoading = true;
     update();
 
@@ -39,11 +43,17 @@ class AuthenticationController extends GetxController implements GetxService {
     late ResponseModel responseModel;
 
     if (response.statusCode == 200) {
-      authenticationRepository.saveUserToken(response.body['token']);
+      debugPrint("User token from backend is: ${response.body["token"]}");
+      authenticationRepository.saveUserToken(response.body["token"]);
+      // authenticationRepository.saveUserLoginData(
+      //   signInModel.email,
+      //   signInModel.password,
+      // );
 
+      debugPrint("the response body is: ${response.body["token"]}");
       responseModel = ResponseModel(true, response.body["token"]);
     } else {
-      responseModel = ResponseModel(false, response.statusText.toString());
+      responseModel = ResponseModel(false, response.statusText!);
     }
     isLoading = false;
     update();

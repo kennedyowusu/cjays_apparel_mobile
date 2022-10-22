@@ -160,12 +160,15 @@ class LoginBody extends StatelessWidget {
       );
       authController.loginUser(signInModel).then(
         (status) {
-          if (status.isSuccess!) {
-            Get.offAndToNamed(
-              RouteHelper.getInitialRoute(),
-            );
+          if (status.isSuccess) {
+            debugPrint("Registration Successful");
+            // Get.offAllNamed(
+            //   RouteHelper.getInitialRoute(),
+            // );
+            // debugPrint("Registration Successful");
           } else {
-            displayCustomSnackBar(status.message!);
+            displayCustomSnackBar(status.message);
+            debugPrint("Registration Failed");
           }
         },
       );

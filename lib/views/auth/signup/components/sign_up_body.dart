@@ -213,7 +213,7 @@ class RegisterBody extends StatelessWidget {
       );
       authController.registration(authModel).then((status) {
         if (status.isSuccess!) {
-          Get.offAndToNamed(
+          Get.offAllNamed(
             RouteHelper.getInitialRoute(),
           );
           debugPrint(authModel.toString());
