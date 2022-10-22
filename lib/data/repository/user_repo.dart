@@ -9,7 +9,7 @@ class UserRepository {
 
   Future<Response> getUserData() async {
     return await apiClient.getData(
-      ProjectConstants.USER_DATA,
+      ProjectConstants.USER_DATA_URL,
     );
   }
 }
