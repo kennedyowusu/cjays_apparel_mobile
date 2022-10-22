@@ -81,9 +81,14 @@ class ProfileBody extends StatelessWidget {
               : SizedBox(
                   height: MediaQuery.of(context).size.height / 1.5,
                   child: Center(
-                    child: NoDataView(
-                      imagePath: ProjectImages.kNoProfileData,
-                      message: "Please Login to view your profile",
+                    child: Column(
+                      children: [
+                        NoDataView(
+                          imagePath: ProjectImages.kNoProfileData,
+                          message: "Please Login to view your profile",
+                        ),
+                        Text("Hello")
+                      ],
                     ),
                   ),
                 );
