@@ -1,3 +1,4 @@
+import 'package:cjays/views/address/add_address.dart';
 import 'package:cjays/views/auth/signin/sign_in.dart';
 import 'package:cjays/views/auth/signup/sign_up_screen.dart';
 import 'package:cjays/views/cart/cart_screen.dart';
@@ -17,6 +18,8 @@ class RouteHelper {
   static const String loginScreen = '/login-screen';
   static const String registerScreen = '/register-screen';
 
+  static const addAddressScreen = '/add-address-screen';
+
   static getSplashScreen() => splashScreen;
   static getInitialRoute() => home;
   static getRecommendedRoute(int screenId, String screen) =>
@@ -27,6 +30,7 @@ class RouteHelper {
 
   static getLoginScreen() => loginScreen;
   static getRegisterScreen() => registerScreen;
+  static getAddAddressScreen() => addAddressScreen;
 
   static List<GetPage> routes = [
     GetPage(
@@ -73,6 +77,13 @@ class RouteHelper {
       page: () {
         return RegisterScreen();
       },
+    ),
+    GetPage(
+      name: addAddressScreen,
+      page: () {
+        return AddAddressScreen();
+      },
+      transition: Transition.fadeIn,
     ),
   ];
 }

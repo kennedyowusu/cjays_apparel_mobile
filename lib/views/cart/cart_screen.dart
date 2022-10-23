@@ -1,10 +1,9 @@
 import 'package:cjays/constants/colors.dart';
-import 'package:cjays/constants/images.dart';
 import 'package:cjays/controllers/auth/auth_controller.dart';
 import 'package:cjays/controllers/cart_controller.dart';
+import 'package:cjays/controllers/location_controller.dart';
 import 'package:cjays/routes/routes_helper.dart';
 import 'package:cjays/widgets/medium_text.dart';
-import 'package:cjays/widgets/no_data_view.dart';
 import 'package:cjays/widgets/project_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -130,6 +129,14 @@ class CartScreen extends StatelessWidget {
                               if (Get.find<AuthenticationController>()
                                   .isUserLoggedIn()) {
                                 cartController.addToHistory();
+
+                                if (Get.find<LocationController>()
+                                    .addressList
+                                    .isEmpty) {
+                                  Get.toNamed(
+                                    RouteHelper.getAddAddressScreen(),
+                                  );
+                                }
                               } else {
                                 Get.toNamed(RouteHelper.getLoginScreen());
                               }
