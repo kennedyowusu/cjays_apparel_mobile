@@ -20,4 +20,7 @@ class ProjectConstants {
   static const String LOGIN_URL = "/api/auth/login";
 
   static const String USER_DATA_URL = "/api/user";
+
+  static const String USER_ADDRESS = "/api/user/address";
+  static const String GEOCODE_URI = "/api/geocode";
 }
